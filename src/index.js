@@ -7,5 +7,11 @@ import { render } from 'react-dom';
 import store from './configureStore';
 import { Provider } from 'react-redux';
 
-ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
