@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 
 registerServiceWorker();
 
-render(
+ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
