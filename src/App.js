@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom';
 import NotesPage from './containers/NotesPage';
+import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
 const App = (props) =>
   <Router>
