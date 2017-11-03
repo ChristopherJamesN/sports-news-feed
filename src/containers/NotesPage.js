@@ -5,7 +5,7 @@ import NotesList from '../components/NotesList';
 import NotesShow from './NotesShow';
 import NotesNew from './NotesNew';
 
-const MoviesPage = ({ match, notes }) =>
+const NotesPage = ({ match, notes }) =>
   <div>
     <NotesList notes={notes} />
     <Route path={`${match.url}/new`} component={NotesNew} />
