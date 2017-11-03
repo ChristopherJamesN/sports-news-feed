@@ -11,10 +11,10 @@ const App = (props) =>
           <Grid>
             <Navbar.Header>
               <Navbar.Brand>
-                <NavLink style={{ marginRight: '10px' }} to="/notes">See All The Notes!</NavLink>
-                <NavLink style={{ marginRight: '10px' }} to="/notes/new">Add A Note</NavLink>
+                <NavLink style={{ marginRight: '10px' }} to="/notes">See All Notes</NavLink>
+                <NavLink style={{ marginRight: '10px' }} to="/notes/new">Add a Note</NavLink>
                 <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
-            </Navbar.Brand>
+              </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
         </Grid>
@@ -22,18 +22,9 @@ const App = (props) =>
       <Jumbotron>
           <Grid>
             <h1>
-              <Route exact path="/" render={() => <h3>Welcome to the NBA News Feed App</h3>} />
+              <Route exact path="/" render={() => <h3>Welcome to the NBA News Feed App</h3> } />
               <Route path="/notes" component={NotesPage} />
             </h1>
-            <p>
-              <Button
-                bsStyle="success"
-                bsSize="large"
-                href="http://www.nba.com/news"
-                target="_blank">
-                View News
-              </Button>
-            </p>
           </Grid>
         </Jumbotron>
 
