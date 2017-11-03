@@ -11,7 +11,7 @@ const App = (props) =>
         <NavLink style={{ marginRight: '10px' }} to="/pets/new">Add A Note</NavLink>
       </div>
       <Route exact path="/" render={() => <h3>Welcome to the NBA News Feed App</h3>} />
-      <Route path="/pets" component={NotesPage} />
+      <Route path="/notes" component={NotesPage} />
     </div>
   </Router>;
 
