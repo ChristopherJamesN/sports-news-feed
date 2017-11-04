@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const NotesShow = ({ note }) =>
-  <div className="col-md-8">
+  <div className="col-md-12">
     <h2>Name: {note.name}</h2>
     <p>Description: {note.description}</p>
   </div>;
