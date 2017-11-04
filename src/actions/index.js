@@ -17,6 +17,13 @@ export function fetchNotes() {
   };
 }
 
+export function addNews(newsItem){
+  return {
+    type: 'ADD_NEWS',
+    newsItem
+  };
+};
+
 export function fetchNews() {
   const news = [
     {id: 1, name: 'First news article', content: 'The first news article.'},
@@ -28,3 +35,16 @@ export function fetchNews() {
     news
   };
 }
+
+/*
+
+export function fetchNews() {
+  return (dispatch) => {
+    dispatch({ type: 'START_ADDING_NEWS_REQUEST' });
+    return fetch('http://stats.nba.com/stats/scoreboard/?GameDate=02/14/2015&LeagueID=00&DayOffset=0')
+      .then(response => response.json())
+      .then(news => dispatch({ type: 'ADD_NEWS', news }));
+  };
+}
+
+*/
