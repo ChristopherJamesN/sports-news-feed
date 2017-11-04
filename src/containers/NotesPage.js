@@ -7,7 +7,6 @@ import NotesNew from './NotesNew';
 
 const NotesPage = ({ match, notes }) =>
   <div>
-    <NotesList notes={notes} />
     <Switch>
       <Route path={`${match.url}/new`} component={NotesNew} />
       <Route path={`${match.url}/:noteId`} component={NotesShow}/>
@@ -15,6 +14,7 @@ const NotesPage = ({ match, notes }) =>
         <h3>Please select a note from the list.</h3>
       )}/>
     </Switch>
+    <NotesList notes={notes} />
   </div>;
 
 const mapStateToProps = (state) => {
