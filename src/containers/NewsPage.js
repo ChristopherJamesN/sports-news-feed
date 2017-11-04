@@ -3,20 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NewsList from '../components/NewsList';
 import NewsShow from './NewsShow';
-import fetchNews from '../actions/index';
+import { fetchNews } from '../actions';
 
 class NewsPage extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      news: []
-    };
-  }
-
-  componentWillMount() {
-    fetchNews();
+  componentDidMount() {
+    this.props.fetchNews();
   }
 
   render() {
@@ -42,4 +34,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(NewsPage);
+export default connect(mapStateToProps, { fetchNews })(NewsPage);
