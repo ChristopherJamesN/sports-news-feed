@@ -1,24 +1,15 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NotesPage from '../containers/NotesPage';
-import { Grid, Navbar, Jumbotron } from 'react-bootstrap';
+import { Grid, Jumbotron } from 'react-bootstrap';
+import NavBar from './Navbar';
+
 
 const App = (props) =>
   <Router>
     <div>
-      <Navbar inverse fixedTop>
-          <Grid>
-            <Navbar.Header>
-              <Navbar.Brand>
-                <NavLink style={{ marginRight: '10px' }} to="/notes">See All Notes</NavLink>
-                <NavLink style={{ marginRight: '10px' }} to="/notes/new">Add a Note</NavLink>
-                <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
-              </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
-        </Grid>
-      </Navbar>
+    <NavBar />
       <Jumbotron>
           <Grid>
             <h1>
