@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import NewsList from '../components/NewsList';
 import NewsShow from './NewsShow';
 import { fetchNews } from '../actions';
+import { bindActionCreators } from 'redux';
 
 class NewsPage extends Component {
 
   componentDidMount() {
-    this.props.fetchNews();
+    fetchNews();
   }
 
   render() {
@@ -26,10 +27,14 @@ class NewsPage extends Component {
   }
 }
 
+function mapDispatchToProps(dispatch){
+  bindActionCreators({fetchNews: fetchNews}, dispatch)
+}
+
 const mapStateToProps = (state) => {
   return {
     news: state.news
   };
 }
 
-export default connect(mapStateToProps, { fetchNews })(NewsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(NewsPage);
