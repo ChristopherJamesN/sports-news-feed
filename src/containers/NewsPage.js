@@ -5,7 +5,7 @@ import NewsList from '../components/NewsList';
 import NewsShow from './NewsShow';
 import fetchNews() from '../actions/index';
 
-componentWillMount () {
+componentWillMount() {
   fetchNews();
 }
 

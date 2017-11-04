@@ -8,6 +8,7 @@ const NavBar = props => {
         <Grid>
           <Navbar.Header>
             <Navbar.Brand>
+              <NavLink style={{ marginRight: '10px' }} to="/news">See All News</NavLink>
               <NavLink style={{ marginRight: '10px' }} to="/notes">See All Notes</NavLink>
               <NavLink style={{ marginRight: '10px' }} to="/notes/new">Add a Note</NavLink>
               <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
