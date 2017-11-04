@@ -1,5 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import fetchNews from '../actions/index';
+
+componentWillMount() {
+  fetchNews();
+}
 
 const NewsList = ({ news }) => {
   const renderNews = news.map(newsItem =>
