@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 
 const NewsShow = ({ newsItem }) =>
   <div className="col-md-12">
-    <h2>Name: {newsItem.articles}</h2>
-    <p>Content: {newsItem.content}</p>
+    <h2>Name: {newsItem.title}</h2>
+    <p>Description: {newsItem.description}</p>
+    <p>Link: {newsItem.url}</p>
   </div>;
 
 const mapStateToProps = (state, ownProps) => {
-  const newsItem = state.news.find(newsItem => newsItem.id == ownProps.match.params.newsItemId)
+  const newsItem = state.news.find(newsItem => newsItem.publishedAt == ownProps.match.params.newsItemPublishedAt)
 
   if (newsItem) {
     return { newsItem }

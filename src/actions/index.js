@@ -45,7 +45,7 @@ export function fetchNews() {
 export function fetchNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
-    return fetch('https://newsapi.org/v1/articles?source=espn&apiKey=APIKEYHERE')
+    return fetch('https://newsapi.org/v1/articles?source=espn&apiKey=')
       .then(response => response.json())
       .then(responseJSON => responseJSON.articles)
       .then(payload => dispatch({ type: 'FETCH_NEWS', payload }));
