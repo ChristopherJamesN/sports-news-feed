@@ -17,8 +17,7 @@ const App = (props) =>
               <Route path="/notes" component={NotesPage} />
             </h1>
           </Grid>
-        </Jumbotron>
-
+      </Jumbotron>
     </div>
   </Router>;
 
