@@ -29,19 +29,26 @@ class NotesNew extends Component {
       <div>
         <h2>Add a Note</h2>
         <form onSubmit={this.handleOnSubmit} >
-          <input
-            type="text"
-            placeholder="Name"
-            name="name"
-            onChange={this.handleOnChange} />
-          <input
-            type="text"
-            placeholder="Description"
-            name="description"
-            onChange={this.handleOnChange} />
-          <input
-            type="submit"
-            value="Add Note" />
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Name"
+              name="name"
+              className="form-control"
+              onChange={this.handleOnChange} />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Description"
+              name="description"
+              className="form-control"
+              onChange={this.handleOnChange} />
+          </div>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              >Add Note</button>
         </form>
       </div>
     );
