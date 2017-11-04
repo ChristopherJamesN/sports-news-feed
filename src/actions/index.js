@@ -16,3 +16,15 @@ export function fetchNotes() {
     notes
   };
 }
+
+export function fetchNews() {
+  const news = [
+    {id: 1, name: 'First news article', content: 'The first news article.'},
+    {id: 2, name: 'Second news article', content: 'The second news article.'},
+    {id: 3, name: 'Third news article', content: 'The third news article.'}
+  ];
+  return {
+    type: 'FETCH_NEWS',
+    news
+  };
+}
