@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const NewsShow = ({ newsItem }) =>
   <div className="col-md-12">
-    <h2>Name: {newsItem.name}</h2>
+    <h2>Name: {newsItem.articles}</h2>
     <p>Content: {newsItem.content}</p>
   </div>;
 

@@ -1,3 +1,5 @@
+import "isomorphic-fetch"
+
 export function addNote(note){
   return {
     type: 'ADD_NOTE',
@@ -24,6 +26,8 @@ export function addNews(newsItem){
   };
 };
 
+/*
+
 export function fetchNews() {
   const news = [
     {id: 1, name: 'First news article', content: 'The first news article.'},
@@ -36,15 +40,14 @@ export function fetchNews() {
   };
 }
 
-/*
+*/
 
 export function fetchNews() {
   return (dispatch) => {
-    dispatch({ type: 'START_ADDING_NEWS_REQUEST' });
-    return fetch('http://stats.nba.com/stats/scoreboard/?GameDate=02/14/2015&LeagueID=00&DayOffset=0')
+    dispatch({ type: 'LOADING_NEWS' });
+    return fetch('https://newsapi.org/v1/articles?source=espn&apiKey=APIKEYHERE')
       .then(response => response.json())
-      .then(news => dispatch({ type: 'ADD_NEWS', news }));
+      .then(responseJSON => responseJSON.articles)
+      .then(payload => dispatch({ type: 'FETCH_NEWS', payload }));
   };
 }
-
-*/
