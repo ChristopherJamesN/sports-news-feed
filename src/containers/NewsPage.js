@@ -3,6 +3,11 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NewsList from '../components/NewsList';
 import NewsShow from './NewsShow';
+import fetchNews() from '../actions/index';
+
+componentWillMount () {
+  fetchNews();
+}
 
 const NewsPage = ({ match, news }) =>
   <div>
