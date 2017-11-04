@@ -14,9 +14,11 @@ const App = (props) =>
           <Grid>
             <h1>
               <Route exact path="/" render={() => <h3>Welcome to the NBA News Feed App</h3> } />
+            </h1>
+            <p>
               <Route path="/notes" component={NotesPage} />
               <Route path="/news" component={NewsPage} />
-            </h1>
+            </p>
           </Grid>
       </Jumbotron>
     </div>
