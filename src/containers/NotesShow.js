@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 const NotesShow = ({ note }) =>
   <div className="col-md-8">
-    <h2>{note.name}</h2>
-    <p>{note.description}</p>
+    <h2>Name: {note.name}</h2>
+    <p>Description: {note.description}</p>
   </div>;
 
 const mapStateToProps = (state, ownProps) => {
