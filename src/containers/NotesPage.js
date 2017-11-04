@@ -12,7 +12,7 @@ const NotesPage = ({ match, notes }) =>
       <Route path={`${match.url}/new`} component={NotesNew} />
       <Route path={`${match.url}/:noteId`} component={NotesShow}/>
       <Route exact path={match.url} render={() => (
-        <h3>Please select a Note from the list.</h3>
+        <h3>Please select a note from the list.</h3>
       )}/>
     </Switch>
   </div>;
