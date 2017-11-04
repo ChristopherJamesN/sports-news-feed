@@ -17,7 +17,7 @@ export function fetchNotes() {
   };
 }
 
-export function fetchNews() {
+export default function fetchNews() {
   const news = [
     {id: 1, name: 'First news article', content: 'The first news article.'},
     {id: 2, name: 'Second news article', content: 'The second news article.'},

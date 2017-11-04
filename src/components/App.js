@@ -5,12 +5,6 @@ import NotesPage from '../containers/NotesPage';
 import NewsPage from '../containers/NewsPage';
 import { Grid, Jumbotron } from 'react-bootstrap';
 import NavBar from './Navbar';
-import fetchNews from '../actions/index';
-
-componentDidMount() {
-  fetchNews();
-}
-
 
 const App = (props) =>
   <Router>
