@@ -11,8 +11,7 @@ class NewsPage extends Component {
     super(props);
 
     this.state = {
-      name: '',
-      content: '',
+      news: []
     };
   }
 
@@ -21,14 +20,13 @@ class NewsPage extends Component {
   }
 
   render() {
-    const { match, news } = this.props;
 
     return (
       <div>
-        <NewsList news={news} />
+        <NewsList news={this.state.news} />
         <Switch>
-          <Route path={`${match.url}/:newsItemId`} component={NewsShow}/>
-          <Route exact path={match.url} render={() => (
+          <Route path={`${this.props.match.url}/:newsItemId`} component={NewsShow}/>
+          <Route exact path={this.props.match.url} render={() => (
             <h3>Please select a news item from the list.</h3>
           )}/>
         </Switch>
