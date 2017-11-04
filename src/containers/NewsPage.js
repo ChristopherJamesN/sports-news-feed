@@ -12,10 +12,9 @@ class NewsPage extends Component {
   }
 
   render() {
-
     return (
       <div>
-        <NewsList news={this.state.news} />
+        <NewsList news={this.props.news} />
         <Switch>
           <Route path={`${this.props.match.url}/:newsItemId`} component={NewsShow}/>
           <Route exact path={this.props.match.url} render={() => (
@@ -25,7 +24,6 @@ class NewsPage extends Component {
       </div>
     )
   }
-
 }
 
 const mapStateToProps = (state) => {
