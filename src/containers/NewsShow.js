@@ -5,7 +5,7 @@ const NewsShow = ({ newsItem }) =>
   <div className="col-md-12">
     <h2>Name: {newsItem.title}</h2>
     <p>Description: {newsItem.description}</p>
-    <p>Link: {newsItem.url}</p>
+    <a href={newsItem.url}>Link</a>
   </div>;
 
 const mapStateToProps = (state, ownProps) => {
