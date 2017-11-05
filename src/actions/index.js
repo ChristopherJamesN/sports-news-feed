@@ -1,4 +1,5 @@
 import "isomorphic-fetch"
+import ESPNAPI from './URLs.js'
 
 export function addNote(note){
   return {
@@ -43,7 +44,7 @@ export function fetchNews() {
 export function fetchNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
-    return fetch('https://newsapi.org/v1/articles?source=espn&apiKey=568a09824e1a4dd3b96e50bccd29bc88')
+    return fetch(ESPNAPI)
       .then(response => {
         return response.json()
       }).then(responseJSON => {
