@@ -9,7 +9,7 @@ import { bindActionCreators } from 'redux';
 class NewsPage extends Component {
 
   componentDidMount() {
-    fetchNews();
+    this.props.fetchNews();
   }
 
   render() {
@@ -27,14 +27,10 @@ class NewsPage extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  bindActionCreators({fetchNews: fetchNews}, dispatch)
-}
-
 const mapStateToProps = (state) => {
   return {
     news: state.news
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewsPage);
+export default connect(mapStateToProps, {fetchNews})(NewsPage);
