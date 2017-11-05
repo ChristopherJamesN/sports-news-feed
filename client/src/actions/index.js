@@ -52,3 +52,12 @@ export function fetchNews() {
       }).then(news => dispatch({ type: 'FETCH_NEWS', news }));
   };
 }
+
+/*
+export function search(query) {
+  return fetch(`/api/food?q=${query}`, {
+    accept: 'application/json',
+  }).then(checkStatus)
+    .then(parseJSON);
+}
+*/
