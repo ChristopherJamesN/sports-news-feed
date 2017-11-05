@@ -27,27 +27,25 @@ export function addNews(newsItem){
 };
 
 /*
-
 export function fetchNews() {
   const news = [
-    {id: 1, name: 'First news article', content: 'The first news article.'},
-    {id: 2, name: 'Second news article', content: 'The second news article.'},
-    {id: 3, name: 'Third news article', content: 'The third news article.'}
+    {id: 1, name: 'First news article', title: 'The first news article.'},
+    {id: 2, name: 'Second news article', title: 'The second news article.'},
+    {id: 3, name: 'Third news article', title: 'The third news article.'}
   ];
   return {
     type: 'FETCH_NEWS',
     news
   };
 }
-
 */
 
 export function fetchNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
-    return fetch('https://newsapi.org/v1/articles?source=espn&apiKey=')
+    const news = fetch('https://newsapi.org/v1/articles?source=espn&apiKey=')
       .then(response => response.json())
       .then(responseJSON => responseJSON.articles)
-      .then(payload => dispatch({ type: 'FETCH_NEWS', payload }));
+    dispatch({ type: 'FETCH_NEWS', news })
   };
 }

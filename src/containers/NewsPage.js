@@ -27,7 +27,7 @@ class NewsPage extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch){
+const mapDispatchToProps = (dispatch) => {
   bindActionCreators({fetchNews: fetchNews}, dispatch)
 }
 
