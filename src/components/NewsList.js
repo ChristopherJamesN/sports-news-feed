@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const NewsList = ({ news }) => {
 
   const renderNews = news.map(newsItem =>
-    <Link style={{ marginRight: '12px' }} key={newsItem.publishedAt} to={`/news/${newsItem.publishedAt}`}>{newsItem.title}</Link>
+    <Link style={{ marginRight: '12px' }} key={newsItem.publishedAt} to={`/news/${newsItem.publishedAt}`}>{newsItem.title}<br></br></Link>
   );
 
   return (
