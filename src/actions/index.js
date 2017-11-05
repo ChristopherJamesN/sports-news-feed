@@ -43,9 +43,11 @@ export function fetchNews() {
 export function fetchNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
-    const news = fetch('https://newsapi.org/v1/articles?source=espn&apiKey=')
-      .then(response => response.json())
-      .then(responseJSON => responseJSON.articles)
-    dispatch({ type: 'FETCH_NEWS', news })
+    return fetch('https://newsapi.org/v1/articles?source=espn&apiKey=')
+      .then(response => {
+        return response.json()
+      }).then(responseJSON => {
+        return responseJSON.articles
+      }).then(news => dispatch({ type: 'FETCH_NEWS', news }));
   };
 }
