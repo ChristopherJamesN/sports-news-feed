@@ -54,8 +54,8 @@ export function fetchNews() {
 }
 
 /*
-export function search(query) {
-  return fetch(`/api/food?q=${query}`, {
+export function fetchNotes(query) {
+  return fetch(`/api/note?q=${query}`, {
     accept: 'application/json',
   }).then(checkStatus)
     .then(parseJSON);
