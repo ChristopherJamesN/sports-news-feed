@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NotesList from '../components/NotesList';
 import NotesShow from './NotesShow';
 import NotesNew from './NotesNew';
-import * as actions from '../actions/actionCreators'
+import * as actions from '../actions/index'
+import { bindActionCreators } from 'redux';
 
 class NotesPage extends Component {
 
@@ -16,14 +17,14 @@ class NotesPage extends Component {
     return (
     <div>
       <Switch>
-        <Route path={`${match.url}/new`} component={NotesNew} />
-        <Route path={`${match.url}/:noteId`} component={NotesShow}/>
-        <Route exact path={match.url} render={() => (
+        <Route path={`${this.props.match.url}/new`} component={NotesNew} />
+        <Route path={`${this.props.match.url}/:noteId`} component={NotesShow}/>
+        <Route exact path={this.props.match.url} render={() => (
           <h3>Please select a note from the list.</h3>
         )}/>
       </Switch>
-      <NotesList notes={notes} />
-    </div>;
+      <NotesList notes={this.props.notes} />
+    </div>
   )}
 }
 
