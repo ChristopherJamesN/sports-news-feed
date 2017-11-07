@@ -1,4 +1,9 @@
-export default (state = [], action) => {
+const initialState = {
+  loading: '',
+  notes: []
+}
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_NOTES':
       return action.notes;
