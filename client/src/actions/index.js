@@ -29,6 +29,22 @@ export function getNotes() {
   }
 }
 
+export function persistNote(name, description) {
+  const noteInfo = JSON.stringify({
+    note:{
+      name: name,
+      description: description
+    }
+  });
+  return (dispatch) => {
+    dispatch({ type: 'SAVING_NOTE' })
+    return fetch('/api/notes', {
+      method: "post", body: noteInfo, headers: { "Content-Type": "application/json" }})
+      .then(response => response.json())
+      .then(window.location = '/notes')
+  }
+}
+
 export function addNews(newsItem){
   return {
     type: 'ADD_NEWS',
