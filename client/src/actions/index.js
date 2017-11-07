@@ -45,6 +45,17 @@ export function persistNote(name, description) {
   }
 }
 
+export function updateNote(noteId) {
+  return (dispatch) => {
+    dispatch({ type: 'UPDATING_NOTES' })
+    return fetch(`/api/notes/${noteId}`, {
+      method: "put", body: JSON.stringify({id:noteId}), headers: { "Content-Type": "application/json" }
+    })
+      .then(response => response.json())
+      .then(payload => dispatch({ type: 'SHOW_NOTES', payload }))
+  }
+}
+
 export function fetchNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
