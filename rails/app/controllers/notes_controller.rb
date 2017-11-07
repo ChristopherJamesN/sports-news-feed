@@ -1,28 +1,27 @@
 class NotesController < ApplicationController
   def index
-    q = params[:q]
-
-    if q.blank?
-      render status: 400, json: { error: 'Expected parameter `q` '}
-    else
-      render(
-        status: 200,
-        json: Note.where(["description LIKE ?", "%#{q}%"]).limit(100)
-      )
-    end
+    @notes = Note.all
+    render json: @notes
   end
 
   def create
     @note = Note.new(note_params)
-
-    respond_to do |format|
-      if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
-        format.json { render :show, status: :created, location: @note }
-      else
-        format.html { render :new }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
+    if @note.save
+      render json: @note, status: 201
     end
   end
+
+  def update
+    @note = Note.find(params[:id])
+    @note.save
+    render json: @note
+  end
+
+
+
+  private
+  def note_params
+    params.require(:note).permit(:name, :description)
+  end
+
 end
