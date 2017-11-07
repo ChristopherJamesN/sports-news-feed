@@ -20,6 +20,15 @@ export function fetchNotes() {
   };
 }
 
+export function getNotes() {
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_NOTES' })
+    return fetch('/api/notes')
+      .then(response => response.json())
+      .then(payload => dispatch({ type: 'SHOW_NOTES', payload }))
+  }
+}
+
 export function addNews(newsItem){
   return {
     type: 'ADD_NEWS',
