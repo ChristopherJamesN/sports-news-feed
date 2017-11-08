@@ -14,7 +14,7 @@ class NotesShow extends Component {
     handleOnSubmit = event => {
       event.preventDefault();
       const { updateNote, history } = this.props
-      updateNote(this.state.name, this.state.description);
+      updateNote(this.props.note.id, this.state.name, this.state.description);
       history.push('/notes');
     }
 
