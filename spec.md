@@ -7,8 +7,8 @@ Specs:
 - [x] There should be 5 stateless components (App.js, Navbar.js, NewsList.js, NotesList.js, Footer)
 - [x] There should be 3 routes (Route to all news, all notes, add a new note, and home)
 - [x] The Application must make use of react-router and proper RESTful routing (Yes react router used for all routing, news items and note items can be viewed by id.)
-- [] Use Redux middleware to respond to and modify state change
-- [] Make use of async actions to send data to and receive data from a server
+- [x] Use Redux middleware to respond to and modify state change (Thunk is used to respond to and modify state change.)
+- [x] Make use of async actions to send data to and receive data from a server (Use async actions to send and receive data from external news api as well as internal rails API.)
 - [] Your Rails API should handle the data persistence. You should be using fetch() within your actions to GET and POST data from your API - do not use jQuery methods.
 - [x] Your client-side application should handle the display of data with minimal data manipulation
 - [x] Your application should have some minimal styling: feel free to stick to a framework (like react-bootstrap), but if you want to write (additional) CSS yourself, go for it! (React-Bootstrap used for styling.)
