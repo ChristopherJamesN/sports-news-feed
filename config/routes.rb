@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   scope '/api' do
-    get :notes, to: 'notes#index'
-    post :notes, to: 'notes#create'
+    resources :notes, only: [:index, :create, :update]
   end
 end
