@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addNote } from '../actions';
 import {persistNote} from '../actions';
 
 class NotesNew extends Component {
