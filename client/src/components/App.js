@@ -5,6 +5,7 @@ import NotesPage from '../containers/NotesPage';
 import NewsPage from '../containers/NewsPage';
 import { Grid, Jumbotron } from 'react-bootstrap';
 import NavBar from './Navbar';
+import Footer from './Footer';
 
 const App = (props) =>
   <Router>
@@ -18,9 +19,10 @@ const App = (props) =>
             </h2>
             <h1>
               <Route exact path="/" render={() => <h3>Welcome to the Sports News Feed App</h3> } />
-            </h1>  
+            </h1>
           </Grid>
       </Jumbotron>
+      <Footer />
     </div>
   </Router>;
 
