@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addNote } from '../actions';
+import {persistNote} from '../actions';
 
 class NotesNew extends Component {
   constructor(props) {
@@ -13,8 +14,8 @@ class NotesNew extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    const { addNote, history } = this.props
-    addNote(this.state);
+    const { persistNote, history } = this.props
+    persistNote(this.state);
     history.push('/notes');
   }
 
@@ -55,4 +56,4 @@ class NotesNew extends Component {
   }
 };
 
-export default connect(null, { addNote })(NotesNew);
+export default connect(null, { persistNote })(NotesNew);
