@@ -39,4 +39,4 @@ const mapDispatchToProps = (dispatch) => {
   return { getNotes: bindActionCreators(getNotes, dispatch) }
 };
 
-export default connect(mapStateToProps, {getNotes})(NotesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(NotesPage);
