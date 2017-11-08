@@ -6,8 +6,8 @@ class NotesShow extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        name: this.state.name,
-        description: this.state.description,
+        name: this.props.note.name,
+        description: this.props.note.description,
       };
     }
 
@@ -27,8 +27,8 @@ class NotesShow extends Component {
   render() {
     return (
       <div className="col-md-12">
-        <h2>Name: {note.name}</h2>
-        <p>Description: {note.description}</p>
+        <h2>Name: {this.props.note.name}</h2>
+        <p>Description: {this.props.note.description}</p>
       </div>
     );
   }
