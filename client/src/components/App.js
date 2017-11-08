@@ -12,13 +12,13 @@ const App = (props) =>
     <NavBar />
       <Jumbotron>
           <Grid>
-            <h1>
-              <Route exact path="/" render={() => <h3>Welcome to the Sports News Feed App</h3> } />
-            </h1>
-            <p>
+            <h2>
               <Route path="/notes" component={NotesPage} />
               <Route path="/news" component={NewsPage} />
-            </p>
+            </h2>
+            <h1>
+              <Route exact path="/" render={() => <h3>Welcome to the Sports News Feed App</h3> } />
+            </h1>  
           </Grid>
       </Jumbotron>
     </div>
