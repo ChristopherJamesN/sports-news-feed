@@ -16,6 +16,7 @@ class NotesPage extends Component {
   render() {
     return (
     <div>
+    <NotesList notes={this.props.notes} />
       <Switch>
         <Route path={`${this.props.match.url}/new`} component={NotesNew} />
         <Route path={`${this.props.match.url}/:noteId`} component={NotesShow}/>
@@ -23,7 +24,6 @@ class NotesPage extends Component {
           <h3>Please select a note from the list.</h3>
         )}/>
       </Switch>
-      <NotesList notes={this.props.notes} />
     </div>
   )}
 }

@@ -14,13 +14,13 @@ class NewsPage extends Component {
   render() {
     return (
       <div>
+      <NewsList news={this.props.news} />
         <Switch>
           <Route path={`${this.props.match.url}/:newsItemPublishedAt`} component={NewsShow}/>
           <Route exact path={this.props.match.url} render={() => (
             <h3>Please select a news item from the list.</h3>
           )}/>
-        </Switch>
-        <NewsList news={this.props.news} />
+        </Switch>  
       </div>
     )
   }
