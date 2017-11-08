@@ -39,7 +39,7 @@ export function updateNote(noteId, name, description) {
     }), headers: { "Content-Type": "application/json" }
     })
       .then(response => response.json())
-      .then(payload => dispatch({ type: 'SHOW_NOTES', payload }))
+      .then(window.location = '/notes')
   }
 }
 
