@@ -160,5 +160,8 @@ DEPENDENCIES
   sprockets-es6
   tzinfo-data
 
+RUBY VERSION
+   ruby 2.3.3p222
+
 BUNDLED WITH
-   1.16.0.pre.3
+   1.16.0
