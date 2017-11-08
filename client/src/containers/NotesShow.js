@@ -29,6 +29,30 @@ class NotesShow extends Component {
       <div className="col-md-12">
         <h2>Name: {this.props.note.name}</h2>
         <p>Description: {this.props.note.description}</p>
+
+        <h2>Update Note</h2>
+        <form onSubmit={this.handleOnSubmit} >
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder={this.props.note.name}
+              name="name"
+              className="form-control"
+              onChange={this.handleOnChange} />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder={this.props.note.description}
+              name="description"
+              className="form-control"
+              onChange={this.handleOnChange} />
+          </div>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              >Add Note</button>
+        </form>
       </div>
     );
   }
