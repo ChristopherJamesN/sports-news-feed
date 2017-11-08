@@ -1,13 +1,6 @@
 import "isomorphic-fetch"
 import ESPNAPI from './URLs.js'
 
-export function addNote(note){
-  return {
-    type: 'ADD_NOTE',
-    note
-  };
-};
-
 export function getNotes() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NOTES' })
@@ -17,15 +10,6 @@ export function getNotes() {
         }).then(payload => dispatch({ type: 'SHOW_NOTES', payload }));
   };
 }
-
-/*
-function search(query) {
-  return fetch(`/api/food?q=${query}`, {
-    accept: 'application/json',
-  }).then(checkStatus)
-    .then(parseJSON);
-}
-*/
 
 export function persistNote(name, description) {
   const noteInfo = JSON.stringify({
