@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {updateNote} from '../actions';
 
-const NotesShow = ({ note }) =>
-
+class NotesShow extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -25,10 +24,15 @@ const NotesShow = ({ note }) =>
       });
     }
 
-  <div className="col-md-12">
-    <h2>Name: {note.name}</h2>
-    <p>Description: {note.description}</p>
-  </div>;
+  render() {
+    return (
+      <div className="col-md-12">
+        <h2>Name: {note.name}</h2>
+        <p>Description: {note.description}</p>
+      </div>
+    );
+  }
+};
 
 const mapStateToProps = (state, ownProps) => {
   const note = state.notes.notes.find(note => note.id == ownProps.match.params.noteId)
@@ -40,4 +44,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-export default connect(mapStateToProps)(NotesShow);
+export default connect(mapStateToProps, { updateNote })(NotesShow);
