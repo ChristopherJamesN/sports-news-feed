@@ -24,9 +24,10 @@ export function getNotes() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NOTES' })
     return fetch('/api/notes')
-      .then(response => response.json())
-      .then(payload => dispatch({ type: 'SHOW_NOTES', payload }))
-  }
+        .then(response => {
+          return response.json()
+        }).then(payload => dispatch({ type: 'SHOW_NOTES', payload }));
+  };
 }
 
 export function persistNote(name, description) {

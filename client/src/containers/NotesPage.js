@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import NotesList from '../components/NotesList';
 import NotesShow from './NotesShow';
 import NotesNew from './NotesNew';
-import * as actions from '../actions/index'
-import { bindActionCreators } from 'redux';
+import { getNotes } from '../actions'
+import { fetchNotes } from '../actions'
 
 class NotesPage extends Component {
 
-  componentDidMount = () => {
-    this.props.actions.getNotes();
+  componentDidMount() {
+    this.props.getNotes();
   }
 
   render() {
@@ -34,8 +34,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return { actions: bindActionCreators(actions, dispatch) }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(NotesPage);
+export default connect(mapStateToProps, {getNotes})(NotesPage);
