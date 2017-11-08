@@ -9,6 +9,6 @@ Specs:
 - [x] The Application must make use of react-router and proper RESTful routing (Yes react router used for all routing, news items and note items can be viewed by id.)
 - [x] Use Redux middleware to respond to and modify state change (Thunk is used to respond to and modify state change.)
 - [x] Make use of async actions to send data to and receive data from a server (Use async actions to send and receive data from external news api as well as internal rails API.)
-- [x] Your Rails API should handle the data persistence. You should be using fetch() within your actions to GET and POST data from your API - do not use jQuery methods. (Existing notes are fetch from the rails server and are persisted when a new note is created via a post request.)
-- [x] Your client-side application should handle the display of data with minimal data manipulation
+- [x] Your Rails API should handle the data persistence. You should be using fetch() within your actions to GET and POST data from your API - do not use jQuery methods. (Existing notes are fetch from the rails server and are persisted when a new note is created via a post request. Existing notes can also be updated via a put request to the server.)
+- [x] Your client-side application should handle the display of data with minimal data manipulation (Done)
 - [x] Your application should have some minimal styling: feel free to stick to a framework (like react-bootstrap), but if you want to write (additional) CSS yourself, go for it! (React-Bootstrap used for styling.)
