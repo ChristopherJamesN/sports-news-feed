@@ -30,7 +30,7 @@ class NotesShow extends Component {
         <h2>Name: {this.props.note.name}</h2>
         <p>Description: {this.props.note.description}</p>
 
-        <h2>Update Note</h2>
+        <h4>Update Note</h4>
         <form onSubmit={this.handleOnSubmit} >
           <div className="form-group">
             <input
@@ -51,7 +51,7 @@ class NotesShow extends Component {
             <button
               type="submit"
               className="btn btn-primary"
-              >Add Note</button>
+              >Update Note</button>
         </form>
       </div>
     );
