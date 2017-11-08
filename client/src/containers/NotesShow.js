@@ -8,7 +8,7 @@ const NotesShow = ({ note }) =>
   </div>;
 
 const mapStateToProps = (state, ownProps) => {
-  const note = state.notes.find(note => note.id == ownProps.match.params.noteId)
+  const note = state.notes.notes.find(note => note.id == ownProps.match.params.noteId)
 
   if (note) {
     return { note }
