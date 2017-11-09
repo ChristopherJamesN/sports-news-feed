@@ -18,7 +18,10 @@ const App = (props) =>
               <Route path="/news" component={NewsPage} />
             </h2>
             <h1>
-              <Route exact path="/" render={() => <h3>Welcome to the Sports News Feed App</h3> } />
+              <Route exact path="/" render={() =>
+                <h3>Welcome to the Sports News Feed App</h3>
+                <p>You can use this app to track the latest news and add create and update notes related to that news.</p> 
+              } />
             </h1>
           </Grid>
       </Jumbotron>
