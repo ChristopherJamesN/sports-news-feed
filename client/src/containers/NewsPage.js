@@ -3,12 +3,13 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NewsList from '../components/NewsList';
 import NewsShow from './NewsShow';
-import { fetchNews } from '../actions';
+import { fetchNews, fetchFoxSportsNews } from '../actions';
 
 class NewsPage extends Component {
 
   componentDidMount() {
     this.props.fetchNews();
+    this.props.fetchFoxSportsNews();
   }
 
   render() {
@@ -20,7 +21,7 @@ class NewsPage extends Component {
           <Route exact path={this.props.match.url} render={() => (
             <h3>Please select a news item from the list.</h3>
           )}/>
-        </Switch>  
+        </Switch>
       </div>
     )
   }
@@ -32,4 +33,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, {fetchNews})(NewsPage);
+export default connect(mapStateToProps, {fetchNews, fetchFoxSportsNews})(NewsPage);
