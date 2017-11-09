@@ -46,22 +46,22 @@ export function updateNote(noteId, name, description) {
 export function fetchNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
-    const ESPNNews = fetch(`https://newsapi.org/v1/articles?source=espn&apiKey=${APIKEY}`)
+
+/*
+    return fetch(`https://newsapi.org/v1/articles?source=fox-sports&sortBy=top&apiKey=${APIKEY}`)
       .then(response => {
         return response.json()})
         .then(responseJSON => {
         return responseJSON.articles
-      });
+      }).then(news => dispatch({type: 'FETCH_NEWS', news}));
+*/
 
-    const FOXSportsNews = fetch(`https://newsapi.org/v1/articles?source=fox-sports&sortBy=top&apiKey=${APIKEY}`)
-      .then(response => {
-        return response.json()})
-        .then(responseJSON => {
-        return responseJSON.articles
-      });
+    return fetch(`https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=${APIKEY}`)
+    .then(response => {
+      return response.json()})
+      .then(responseJSON => {
+      return responseJSON.articles
+    }).then(news => dispatch({type: 'FETCH_NEWS', news}));
 
-      const AllNews = ESPNNews + FOXSportsNews
-
-      AllNews.then(news => dispatch({ type: 'FETCH_NEWS', news }));
   };
 }
