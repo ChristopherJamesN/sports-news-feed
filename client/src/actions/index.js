@@ -1,6 +1,5 @@
 import "isomorphic-fetch"
-import ESPNAPI from './URLs.js'
-import FOXAPI from './URLs.js'
+import APIKEY from './URLs.js'
 
 export function getNotes() {
   return (dispatch) => {
@@ -47,18 +46,19 @@ export function updateNote(noteId, name, description) {
 export function fetchNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
-    return fetch(ESPNAPI)
+    return fetch(`https://newsapi.org/v1/articles?source=espn&apiKey=${APIKEY}`)
       .then(response => {
         return response.json()
       }).then(responseJSON => {
         return responseJSON.articles
       }).then(news => dispatch({ type: 'FETCH_NEWS', news }));
   };
+}
 
 export function fetchFoxSportsNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
-    return fetch(FOXAPI)
+    return fetch(`https://newsapi.org/v1/articles?source=fox-sports&sortBy=top&apiKey=${APIKEY}`)
       .then(response => {
         return response.json()
       }).then(responseJSON => {
