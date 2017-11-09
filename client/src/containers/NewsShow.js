@@ -6,8 +6,8 @@ import BackButton from '../components/BackButton'
 const NewsShow = ({ newsItem }) =>
   <div className="col-md-12">
     <BackButton />
-    <h2>Name: {newsItem.title}</h2>
-    <p>Description: {newsItem.description}</p>
+    <h2>{newsItem.title}</h2>
+    <p>{newsItem.description}</p>
     <a href={newsItem.url} target="_blank">Link to Full Story</a>
     <NotesNew></NotesNew>
   </div>;
