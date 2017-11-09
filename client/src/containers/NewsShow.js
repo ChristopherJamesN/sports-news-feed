@@ -9,7 +9,7 @@ const NewsShow = ({ newsItem }) =>
   </div>;
 
 const mapStateToProps = (state, ownProps) => {
-  const newsItem = state.news.find(newsItem => newsItem.publishedAt == ownProps.match.params.newsItemPublishedAt)
+  const newsItem = state.news.news.find(newsItem => newsItem.publishedAt == ownProps.match.params.newsItemPublishedAt)
 
   if (newsItem) {
     return { newsItem }
