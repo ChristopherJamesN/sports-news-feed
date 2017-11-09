@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {updateNote} from '../actions';
+import BackButton from '../components/BackButton'
 
 class NotesShow extends Component {
     constructor(props) {
@@ -27,6 +28,8 @@ class NotesShow extends Component {
   render() {
     return (
       <div className="col-md-12">
+        <BackButton />
+        
         <h2>Name: {this.props.note.name}</h2>
         <p>Description: {this.props.note.description}</p>
 
