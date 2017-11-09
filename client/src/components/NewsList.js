@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const NewsList = ({ news }) => {
 
-  const renderNews = news.map(newsItem =>
-    <Link style={{ marginRight: '12px' }} key={newsItem.publishedAt} to={`/news/${newsItem.publishedAt}`}>{newsItem.title}<br></br></Link>
+  const renderNews = news.map((newsItem, index) =>
+    <Link style={{ marginRight: '12px' }} key={newsItem.publishedAt} to={`/news/${newsItem.publishedAt}`}>{index+1}. {newsItem.title}<br></br></Link>
   );
 
   return (

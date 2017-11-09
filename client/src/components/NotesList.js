@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const NotesList = ({ notes }) => {
 
-  const renderNotes = notes.map(note =>
-    <Link style={{ marginRight: '12px' }} key={note.id} to={`/notes/${note.id}`}>{note.name}</Link>
+  const renderNotes = notes.map((note, index) =>
+    <Link style={{ marginRight: '12px' }} key={note.id} to={`/notes/${note.id}`}>{index+1}. {note.name}<br></br></Link>
   );
 
   return (
