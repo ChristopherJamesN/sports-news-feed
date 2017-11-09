@@ -4,7 +4,3 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
-
-task :start do
-  exec 'foreman start -p 3000 -f ./Procfile.dev'
-end
