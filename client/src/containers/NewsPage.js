@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import NewsList from '../components/NewsList';
 import NewsShow from './NewsShow';
 import { fetchNews } from '../actions';
+import { bindActionCreators } from 'redux';
 
 class NewsPage extends Component {
 
@@ -32,4 +33,8 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, {fetchNews})(NewsPage);
+const mapDispatchToProps = (dispatch) => {
+  return { fetchNews: bindActionCreators(fetchNews, dispatch) }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsPage);
