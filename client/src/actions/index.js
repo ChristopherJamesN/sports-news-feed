@@ -1,5 +1,6 @@
 import "isomorphic-fetch"
 import ESPNAPI from './URLs.js'
+import FOXAPI from './URLs.js'
 
 export function getNotes() {
   return (dispatch) => {
@@ -47,6 +48,17 @@ export function fetchNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
     return fetch(ESPNAPI)
+      .then(response => {
+        return response.json()
+      }).then(responseJSON => {
+        return responseJSON.articles
+      }).then(news => dispatch({ type: 'FETCH_NEWS', news }));
+  };
+
+export function fetchFoxSportsNews() {
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_NEWS' });
+    return fetch(FOXAPI)
       .then(response => {
         return response.json()
       }).then(responseJSON => {
