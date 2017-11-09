@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import NotesNew from './NotesNew'
+import NotesNew from './NotesNew';
 
 const NewsShow = ({ newsItem }) =>
   <div className="col-md-12">
