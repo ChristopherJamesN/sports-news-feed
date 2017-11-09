@@ -16,12 +16,14 @@ class NotesPage extends Component {
   render() {
     return (
     <div>
-    <NotesList notes={this.props.notes} />
       <Switch>
         <Route path={`${this.props.match.url}/new`} component={NotesNew} />
         <Route path={`${this.props.match.url}/:noteId`} component={NotesShow}/>
         <Route exact path={this.props.match.url} render={() => (
-          <h3>Please select a note from the list.</h3>
+          <div>
+            <NotesList notes={this.props.notes} />
+            <h3>Please select a note from the list.</h3>
+          </div>
         )}/>
       </Switch>
     </div>
