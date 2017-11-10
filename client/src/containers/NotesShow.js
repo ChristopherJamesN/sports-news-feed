@@ -9,13 +9,14 @@ class NotesShow extends Component {
       this.state = {
         name: this.props.note.name,
         description: this.props.note.description,
+        link: this.props.note.link,
       };
     }
 
     handleOnSubmit = event => {
       event.preventDefault();
       const { updateNote, history } = this.props
-      updateNote(this.props.note.id, this.state.name, this.state.description);
+      updateNote(this.props.note.id, this.state.name, this.state.description, this.state.link);
       history.push('/notes');
     }
 
@@ -29,9 +30,10 @@ class NotesShow extends Component {
     return (
       <div className="col-md-12">
         <BackButton />
-        
+
         <h2>Name: {this.props.note.name}</h2>
         <p>Description: {this.props.note.description}</p>
+        <p>Link: {this.props.note.link}</p>
 
         <h4>Update Note</h4>
         <form onSubmit={this.handleOnSubmit} >
@@ -48,6 +50,14 @@ class NotesShow extends Component {
               type="text"
               placeholder={this.props.note.description}
               name="description"
+              className="form-control"
+              onChange={this.handleOnChange} />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder={this.props.note.link}
+              name="link"
               className="form-control"
               onChange={this.handleOnChange} />
           </div>
