@@ -66,7 +66,7 @@ export function fetchFoxSports() {
         return response.json()})
         .then(responseJSON => {
         return responseJSON.articles
-      }).then(news => dispatch({type: 'FETCH_FOX_SPORTS', news}));
+      }).then(news => dispatch({type: 'ADD_FOX_SPORTS', news}));
 
   };
 }
