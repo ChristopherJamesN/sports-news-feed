@@ -8,7 +8,7 @@ class NotesNew extends Component {
     this.state = {
       name: '',
       description: '',
-      link: '',
+      link: this.props.link,
     };
   }
 
@@ -49,7 +49,7 @@ class NotesNew extends Component {
           <div className="form-group">
             <input
               type="text"
-              placeholder="Link to Associated Article"
+              value={this.props.link}
               name="link"
               className="form-control"
               onChange={this.handleOnChange} />

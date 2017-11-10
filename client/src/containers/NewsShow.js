@@ -9,7 +9,7 @@ const NewsShow = ({ newsItem }) =>
     <h2>{newsItem.title}</h2>
     <p>{newsItem.description}</p>
     <a href={newsItem.url} target="_blank">Link to Full Story</a>
-    <NotesNew></NotesNew>
+    <NotesNew link={newsItem.url}></NotesNew>
   </div>;
 
 const mapStateToProps = (state, ownProps) => {
