@@ -6,7 +6,7 @@ default: &default
 
 development:
   adapter: postgresql
-  database: volunteer_postgresql
+  database: christophernady
   pool: 5
   timeout: 5000
 
