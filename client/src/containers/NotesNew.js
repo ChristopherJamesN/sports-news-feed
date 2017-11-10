@@ -8,6 +8,7 @@ class NotesNew extends Component {
     this.state = {
       name: '',
       description: '',
+      link: '',
     };
   }
 
@@ -42,6 +43,14 @@ class NotesNew extends Component {
               type="text"
               placeholder="Description"
               name="description"
+              className="form-control"
+              onChange={this.handleOnChange} />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Link"
+              name="link"
               className="form-control"
               onChange={this.handleOnChange} />
           </div>
