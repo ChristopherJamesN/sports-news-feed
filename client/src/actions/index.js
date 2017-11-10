@@ -15,7 +15,7 @@ export function persistNote(name, description, link) {
   const noteInfo = JSON.stringify({
     note:{
       name: name,
-      description: description
+      description: description,
       link: link
     }
   });

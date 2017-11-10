@@ -15,7 +15,7 @@ class NotesNew extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
     const { persistNote /*, history*/ } = this.props
-    persistNote(this.state.name, this.state.description);
+    persistNote(this.state.name, this.state.description, this.state.link);
     //history.push('/notes');
   }
 
