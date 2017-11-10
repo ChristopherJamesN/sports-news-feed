@@ -11,11 +11,12 @@ export function getNotes() {
   };
 }
 
-export function persistNote(name, description) {
+export function persistNote(name, description, link) {
   const noteInfo = JSON.stringify({
     note:{
       name: name,
       description: description
+      link: link
     }
   });
   return (dispatch) => {
@@ -27,14 +28,15 @@ export function persistNote(name, description) {
   }
 }
 
-export function updateNote(noteId, name, description) {
+export function updateNote(noteId, name, description, link) {
   return (dispatch) => {
     dispatch({ type: 'UPDATING_NOTES' })
     return fetch(`/api/notes/${noteId}`, {
       method: "put", body: JSON.stringify({note:{
         id: noteId,
         name: name,
-        description: description
+        description: description,
+        link: link
       }
     }), headers: { "Content-Type": "application/json" }
     })
