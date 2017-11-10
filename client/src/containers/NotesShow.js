@@ -33,7 +33,7 @@ class NotesShow extends Component {
 
         <h2>Name: {this.props.note.name}</h2>
         <p>Description: {this.props.note.description}</p>
-        <p>Link: {this.props.note.link}</p>
+        <p>Link to Associated Article: {this.props.note.link}</p>
 
         <h4>Update Note</h4>
         <form onSubmit={this.handleOnSubmit} >

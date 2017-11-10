@@ -49,7 +49,7 @@ class NotesNew extends Component {
           <div className="form-group">
             <input
               type="text"
-              placeholder="Link"
+              placeholder="Link to Associated Article"
               name="link"
               className="form-control"
               onChange={this.handleOnChange} />
