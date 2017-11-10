@@ -70,3 +70,17 @@ export function fetchFoxSports() {
 
   };
 }
+
+export function fetchNFLNews() {
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_NEWS' });
+
+    return fetch(`https://newsapi.org/v1/articles?source=nfl-news&sortBy=top&apiKey=${APIKEY}`)
+      .then(response => {
+        return response.json()})
+        .then(responseJSON => {
+        return responseJSON.articles
+      }).then(news => dispatch({type: 'ADD_NFL_NEWS', news}));
+
+  };
+}

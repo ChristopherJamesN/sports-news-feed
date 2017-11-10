@@ -3,8 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NewsList from '../components/NewsList';
 import NewsShow from './NewsShow';
-import { fetchNews } from '../actions';
-import {fetchFoxSports} from '../actions';
+import { fetchNews, fetchFoxSports, fetchNFLNews } from '../actions';
 import { bindActionCreators } from 'redux';
 
 class NewsPage extends Component {
@@ -12,6 +11,7 @@ class NewsPage extends Component {
   componentDidMount() {
     this.props.fetchNews();
     this.props.fetchFoxSports();
+    this.props.fetchNFLNews();
   }
 
   render() {
@@ -40,7 +40,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchNews: bindActionCreators(fetchNews, dispatch),
-    fetchFoxSports: bindActionCreators(fetchFoxSports, dispatch)
+    fetchFoxSports: bindActionCreators(fetchFoxSports, dispatch),
+    fetchNFLNews: bindActionCreators(fetchNFLNews, dispatch)
    }
 };
 

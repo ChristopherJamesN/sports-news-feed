@@ -11,6 +11,8 @@ export default (state = initialState, action) => {
       return {...state, loading: false, news: action.news}
     case 'ADD_FOX_SPORTS':
       return Object.assign({}, state, {news: state.news.concat(action.news)});
+    case 'ADD_NFL_NEWS':
+      return Object.assign({}, state, {news: state.news.concat(action.news)});
     default:
       return state;
   }
