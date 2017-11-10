@@ -47,21 +47,26 @@ export function fetchNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
 
-/*
-    return fetch(`https://newsapi.org/v1/articles?source=fox-sports&sortBy=top&apiKey=${APIKEY}`)
-      .then(response => {
-        return response.json()})
-        .then(responseJSON => {
-        return responseJSON.articles
-      }).then(news => dispatch({type: 'FETCH_NEWS', news}));
-*/
-
     return fetch(`https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=${APIKEY}`)
     .then(response => {
       return response.json()})
       .then(responseJSON => {
       return responseJSON.articles
     }).then(news => dispatch({type: 'FETCH_NEWS', news}));
+
+  };
+}
+
+export function fetchFoxSports() {
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_NEWS' });
+
+    return fetch(`https://newsapi.org/v1/articles?source=fox-sports&sortBy=top&apiKey=${APIKEY}`)
+      .then(response => {
+        return response.json()})
+        .then(responseJSON => {
+        return responseJSON.articles
+      }).then(news => dispatch({type: 'FETCH_FOX_SPORTS', news}));
 
   };
 }
