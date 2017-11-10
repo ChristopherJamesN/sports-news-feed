@@ -18,7 +18,7 @@ const App = (props) =>
               <Route path="/news" component={NewsPage} />
             </h2>
             <h1>
-              <Route exact path="/" render={() => <div><h2>Welcome to the Sports News Feed App</h2><p>This app pulls NBA, and other sports news, from ESPN and Fox Sports. You can check a short description of the story and take notes as well. Links to the stories open in a new tab.</p></div>} />
+              <Route exact path="/" render={() => <div><h2>Welcome to the Sports News Feed App</h2><p>This app pulls NBA, NFL, and other sports news, from ESPN, Fox Sports, and NFL News via NewsAPI. You can check a short description of the story and take notes as well. Links to the stories open in a new tab.</p></div>} />
             </h1>
           </Grid>
       </Jumbotron>
