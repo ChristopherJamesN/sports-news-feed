@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 const NewsList = ({ news }) => {
 
   const renderNews = news.map((newsItem, index) =>
-    <Link style={{ marginRight: '12px' }} key={newsItem.publishedAt} to={`/news/${newsItem.publishedAt}`}>{index+1}. {newsItem.title}<br></br></Link>
+    <ListGroupItem><Link style={{ marginRight: '12px' }} key={newsItem.publishedAt} to={`/news/${newsItem.publishedAt}`}>{index+1}. {newsItem.title}<br></br></Link></ListGroupItem>
   );
 
   return (
     <div>
-      {renderNews}
+      <ListGroup>
+        {renderNews}
+      </ListGroup>
     </div>
   );
 };
