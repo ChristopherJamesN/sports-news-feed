@@ -2,14 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import NotesNew from './NotesNew';
 import BackButton from '../components/BackButton'
+import { Panel, ListGroup, ListGroupItem, Well } from 'react-bootstrap';
 
 const NewsShow = ({ newsItem }) =>
-  <div className="col-md-12">
+  <div>
     <BackButton />
-    <h2>{newsItem.title}</h2>
-    <p>{newsItem.description}</p>
-    <a href={newsItem.url} target="_blank">Link to Full Story</a>
-    <NotesNew link={newsItem.url}></NotesNew>
+    <Panel header={newsItem.title} bsStyle="primary">
+      <ListGroup fill>
+        <ListGroupItem>
+          <p>{newsItem.description}</p>
+        </ListGroupItem>
+        <ListGroupItem>
+          <a href={newsItem.url} target="_blank">Link to Full Story</a>
+        </ListGroupItem>
+      </ListGroup>
+    </Panel>
+    <Well>
+      <NotesNew link={newsItem.url}></NotesNew>
+    </Well>
   </div>;
 
 const mapStateToProps = (state, ownProps) => {
