@@ -30,7 +30,9 @@ class NotesShow extends Component {
   render() {
     return (
       <div>
-        <BackButton />
+        <Well>
+          <BackButton />
+        </Well>
         <Panel header={this.props.note.name} bsStyle="primary">
           <ListGroup fill>
             <ListGroupItem>

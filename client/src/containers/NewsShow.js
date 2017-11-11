@@ -6,7 +6,9 @@ import { Panel, ListGroup, ListGroupItem, Well } from 'react-bootstrap';
 
 const NewsShow = ({ newsItem }) =>
   <div>
-    <BackButton />
+    <Well>
+      <BackButton />
+    </Well>
     <Panel header={newsItem.title} bsStyle="primary">
       <ListGroup fill>
         <ListGroupItem>
