@@ -50,6 +50,7 @@ class NotesNew extends Component {
             <input
               type="text"
               value={this.props.link}
+              placeholder='Link to associated article'
               name="link"
               className="form-control"
               onChange={this.handleOnChange} />
