@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {updateNote} from '../actions';
 import BackButton from '../components/BackButton'
+import { Panel, ListGroup, ListGroupItem, Well } from 'react-bootstrap';
 
 class NotesShow extends Component {
     constructor(props) {
@@ -28,44 +29,52 @@ class NotesShow extends Component {
 
   render() {
     return (
-      <div className="col-md-12">
+      <div>
         <BackButton />
+        <Panel header={this.props.note.name} bsStyle="primary">
+          <ListGroup fill>
+            <ListGroupItem>
+              <p>Description: {this.props.note.description}</p>
+            </ListGroupItem>
+            <ListGroupItem>
+              <a href={this.props.note.link} target="_blank">Link to Associated Article</a>
+            </ListGroupItem>
+          </ListGroup>
+        </Panel>
 
-        <h2>Name: {this.props.note.name}</h2>
-        <p>Description: {this.props.note.description}</p>
-        <a href={this.props.note.link} target="_blank">Link to Associated Article</a>
-
-        <h4>Update Note</h4>
-        <form onSubmit={this.handleOnSubmit} >
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder={this.props.note.name}
-              name="name"
-              className="form-control"
-              onChange={this.handleOnChange} />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder={this.props.note.description}
-              name="description"
-              className="form-control"
-              onChange={this.handleOnChange} />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder={this.props.note.link}
-              name="link"
-              className="form-control"
-              onChange={this.handleOnChange} />
-          </div>
-            <button
-              type="submit"
-              className="btn btn-primary"
-              >Update Note</button>
-        </form>
+        <Well>
+          <h4>Update Note</h4>
+          <form onSubmit={this.handleOnSubmit} >
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder={this.props.note.name}
+                name="name"
+                className="form-control"
+                onChange={this.handleOnChange} />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder={this.props.note.description}
+                name="description"
+                className="form-control"
+                onChange={this.handleOnChange} />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder={this.props.note.link}
+                name="link"
+                className="form-control"
+                onChange={this.handleOnChange} />
+            </div>
+              <button
+                type="submit"
+                className="btn btn-primary"
+                >Update Note</button>
+          </form>
+        </Well>
       </div>
     );
   }
