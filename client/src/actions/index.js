@@ -33,7 +33,6 @@ export function updateNote(noteId, name, description, link) {
     dispatch({ type: 'UPDATING_NOTES' })
     return fetch(`/api/notes/${noteId}`, {
       method: "put", body: JSON.stringify({note:{
-        id: noteId,
         name: name,
         description: description,
         link: link
