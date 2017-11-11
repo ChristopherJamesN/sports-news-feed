@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 
 class BackButton extends Component {
   static contextTypes = {
@@ -7,11 +8,10 @@ class BackButton extends Component {
 
   render() {
     return (
-      <button
-        className="button icon-left"
+      <Button
         onClick={this.context.router.history.goBack}>
           Back
-      </button>
+      </Button>
     )
   }
 }
