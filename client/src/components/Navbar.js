@@ -1,20 +1,30 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Grid, Navbar } from 'react-bootstrap';
+import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap';
 
 const NavBar = props => {
   return (
-    <Navbar inverse fixedTop>
+    <Navbar inverse fixedTop collapseOnSelect>
         <Grid>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <NavLink style={{ marginRight: '10px' }} to="/news">See All News</NavLink>
-              <NavLink style={{ marginRight: '10px' }} to="/notes">See All Notes</NavLink>
-              <NavLink style={{ marginRight: '10px' }} to="/notes/new">Add a Note</NavLink>
-              <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
-            </Navbar.Brand>
+        <Navbar.Header>
+          <Navbar.Brand>
+            <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
+          </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav>
+              <NavItem>
+                <NavLink to="/news">See All News</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to="/notes">See All Notes</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to="/notes/new">Add a Note</NavLink>
+              </NavItem>
+            </Nav>
+          </Navbar.Collapse>
       </Grid>
     </Navbar>
   );
