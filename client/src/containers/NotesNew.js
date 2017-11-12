@@ -29,7 +29,7 @@ class NotesNew extends Component {
     this.close();
     const { persistNote , history } = this.props
     persistNote(this.state.name, this.state.description, this.state.link);
-    history.push('/notes');
+    history.push('/');
   }
 
   handleOnChange = event => {
