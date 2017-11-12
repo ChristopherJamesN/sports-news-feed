@@ -29,7 +29,7 @@ export function persistNote(name, description, link) {
 
 export function updateNote(noteId, name, description, link) {
   return (dispatch) => {
-    dispatch({ type: 'UPDATING_NOTES' })
+    dispatch({ type: 'SAVING_NOTES' })
     return fetch(`/api/notes/${noteId}`, {
       method: "put", body: JSON.stringify({note:{
         name: name,
