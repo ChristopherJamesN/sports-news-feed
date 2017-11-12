@@ -28,7 +28,7 @@ class NotesShow extends Component {
       event.preventDefault();
       const { updateNote, history } = this.props
       updateNote(this.props.note.id, this.state.name, this.state.description, this.state.link);
-      history.push('/');
+      history.push('/notechanges');
     }
 
     handleOnChange = event => {
