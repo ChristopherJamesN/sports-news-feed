@@ -5,7 +5,7 @@ import { ListGroup, ListGroupItem } from 'react-bootstrap';
 const NotesList = ({ notes }) => {
 
   const renderNotes = notes.map((note, index) =>
-    <ListGroupItem><Link style={{ marginRight: '12px' }} key={note.id} to={`/notes/${note.id}`}>{note.name}<br></br></Link></ListGroupItem>
+    <ListGroupItem key={note.id}><Link style={{ marginRight: '12px' }} key={note.id} to={`/notes/${note.id}`}>{note.name}<br></br></Link></ListGroupItem>
   );
 
   return (
