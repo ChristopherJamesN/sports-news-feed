@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 
 class BackButton extends Component {
   static contextTypes = {
-    router: () => true,
+    router: () => null,
   }
 
   render() {
