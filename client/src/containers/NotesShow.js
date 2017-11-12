@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {updateNote} from '../actions';
 import BackButton from '../components/BackButton'
 import { Panel, ListGroup, ListGroupItem, Well, Modal, Button } from 'react-bootstrap';
+import { bindActionCreators } from 'redux';
 
 class NotesShow extends Component {
     constructor(props) {
@@ -117,4 +118,10 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-export default connect(mapStateToProps, { updateNote })(NotesShow);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    updateNote: updateNote
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NotesShow);
