@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {persistNote} from '../actions';
 import { Modal, Button } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
 
 class NotesNew extends Component {
   constructor(props) {
@@ -90,4 +91,4 @@ class NotesNew extends Component {
   }
 };
 
-export default connect(null, { persistNote })(NotesNew);
+export default connect(null, { persistNote })(withRouter(NotesNew));
