@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {persistNote} from '../actions';
 import { Modal, Button } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 
 class NotesNew extends Component {
   constructor(props) {
@@ -92,4 +93,10 @@ class NotesNew extends Component {
   }
 };
 
-export default connect(null, { persistNote })(withRouter(NotesNew));
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    persistNote: persistNote
+  }, dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(withRouter(NotesNew));
