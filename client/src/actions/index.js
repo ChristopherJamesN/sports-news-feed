@@ -1,5 +1,6 @@
 import "isomorphic-fetch"
 import APIKEY from './URLs.js'
+import { Redirect } from 'react-router-dom'
 
 export function getNotes() {
   return (dispatch) => {
@@ -24,7 +25,6 @@ export function persistNote(name, description, link) {
     return fetch('/api/notes', {
       method: "post", body: noteInfo, headers: { "Content-Type": "application/json" }})
       .then(response => response.json())
-      .then(window.location = '/notes')
   }
 }
 
@@ -40,7 +40,6 @@ export function updateNote(noteId, name, description, link) {
     }), headers: { "Content-Type": "application/json" }
     })
       .then(response => response.json())
-      .then(window.location = '/notes')
   }
 }
 
