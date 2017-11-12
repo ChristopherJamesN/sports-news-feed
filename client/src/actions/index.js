@@ -23,9 +23,7 @@ export function persistNote(name, description, link) {
     dispatch({ type: 'SAVING_NOTE' })
     return fetch('/api/notes', {
       method: "post", body: noteInfo, headers: { "Content-Type": "application/json" }})
-      .then(response => {
-        return response.json()
-      }).then(payload => dispatch({ type: 'ADD_NOTES', payload }));
+      .then(response => response.json())
   }
 }
 
