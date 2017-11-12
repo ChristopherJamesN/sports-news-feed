@@ -39,6 +39,7 @@ export function updateNote(noteId, name, description, link) {
     }), headers: { "Content-Type": "application/json" }
     })
       .then(response => response.json())
+      .then(window.location='/notes')
   }
 }
 

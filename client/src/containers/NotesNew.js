@@ -27,7 +27,7 @@ class NotesNew extends Component {
     event.preventDefault();
     const { persistNote , history } = this.props
     persistNote(this.state.name, this.state.description, this.state.link);
-    history.push('/');
+    history.push('/notes');
   }
 
   handleOnChange = event => {
