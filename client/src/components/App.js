@@ -19,7 +19,7 @@ const App = (props) =>
               <Route path="/notechanges" render = {() => <Redirect to="/notes"/>} />
             </h2>
             <h1>
-              <Route exact path="/" render={() => <div><h2>Welcome to the Sports News Feed App</h2><p>This app pulls NBA, NFL, and other sports news, from ESPN, Fox Sports, and NFL News via NewsAPI. You can check a short description of the story and take notes as well. Links to the stories open in a new tab.</p><NavLink to="/news">See All News</NavLink></div>} />
+              <Route exact path="/" render={() => <div><h2>Welcome to the Sports News Feed App</h2><p>This app pulls NBA, NFL, and other sports news, from ESPN, Fox Sports, and NFL News via NewsAPI. You can check a short description of the story and take notes as well. Links to the stories open in a new tab.</p><p><NavLink to="/news">See All News</NavLink></p><p><NavLink to="/notes">See All Notes</NavLink></p></div>} />
             </h1>
           </Grid>
       </Jumbotron>
