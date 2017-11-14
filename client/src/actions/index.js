@@ -23,7 +23,7 @@ export function persistNote(name, description, link) {
     dispatch({ type: 'SAVING_NOTE' })
     return fetch('/api/notes', {
       method: "post", body: noteInfo, headers: { "Content-Type": "application/json" }})
-      .then(response => response.json())
+      .then(response => response.json()).then(payload => dispatch({ type: 'ADD_NOTES', payload }));
   }
 }
 
@@ -70,6 +70,11 @@ export function fetchFoxSports() {
 
   };
 }
+
+//Add a .env file to the root of the react project
+//REACT_APP_FOX_SPORTS_KEY=dsdsafdsfdsfdsfdsfdsfds
+
+//To access in app process.env.REACT_APP_FOX_SPORTS_KEY
 
 export function fetchNFLNews() {
   return (dispatch) => {
