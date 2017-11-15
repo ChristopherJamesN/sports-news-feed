@@ -21,14 +21,17 @@ class VoteButton extends Component {
   render() {
     return (
       <div>
-      <Button
-        onClick={this.handleUpvote}>
-          Upvote {this.state.count}
-      </Button>
-      <Button
-        onClick={this.handleDownvote}>
-          Downvote {this.state.count}
-      </Button>
+        <Button
+          onClick={this.handleUpvote}>
+            Upvote
+        </Button>
+        <Button
+          onClick={this.handleDownvote}>
+            Downvote
+        </Button>
+        <p>
+          Votes: {this.state.count}
+        </p>
       </div>
     )
   }
