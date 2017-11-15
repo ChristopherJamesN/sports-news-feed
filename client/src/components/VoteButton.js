@@ -14,26 +14,12 @@ class VoteButton extends Component {
     this.setState({count: this.state.count + 1})
   }
 
-  callApi = () => {
-    console.log('a')
-    fetch('/api/notes')
-        .then(response => {
-          console.log('b')
-          return response.json()
-        }).then(payload => console.log('c', payload))
-        console.log('d')
-  }
-
   render() {
     return (
       <div>
       <Button
         onClick={this.handleOnClick}>
           {this.state.count}
-      </Button>
-      <Button
-        onClick={this.callApi}>
-          Call Api
       </Button>
       </div>
     )
