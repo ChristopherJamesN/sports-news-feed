@@ -17,7 +17,6 @@ class NotesPage extends Component {
     return (
     <div>
       <Switch>
-        <Route path={`${this.props.match.url}/new`} component={NotesNew} />
         <Route path={`${this.props.match.url}/:noteId`} component={NotesShow}/>
         <Route exact path={this.props.match.url} render={() => (
           <div>

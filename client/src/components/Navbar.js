@@ -20,9 +20,6 @@ const NavBar = props => {
               <NavItem>
                 <NavLink to="/notes">See All Notes</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink to="/notes/new">Add a Note</NavLink>
-              </NavItem>
             </Nav>
           </Navbar.Collapse>
       </Grid>
