@@ -10,16 +10,24 @@ class VoteButton extends Component {
     };
   }
 
-  handleOnClick = () => {
+  handleUpvote = () => {
     this.setState({count: this.state.count + 1})
+  }
+
+  handleDownvote = () => {
+    this.setState({count: this.state.count - 1})
   }
 
   render() {
     return (
       <div>
       <Button
-        onClick={this.handleOnClick}>
-          {this.state.count}
+        onClick={this.handleUpvote}>
+          Upvote {this.state.count}
+      </Button>
+      <Button
+        onClick={this.handleDownvote}>
+          Downvote {this.state.count}
       </Button>
       </div>
     )
