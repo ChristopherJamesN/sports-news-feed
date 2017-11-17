@@ -1,5 +1,5 @@
 # react-redux-nba-news-feed
-A web application built with a React-Redux frontend and a Rails backend that can be used to view and take notes on NBA news.
+A web application built with a React-Redux frontend and a Rails backend that can be used to view and take notes on NBA news. Demo hosted on Heroku here: https://fierce-fortress-50451.herokuapp.com/.
 
 ## Installation
 To test out this application locally, fork and clone the repo.
