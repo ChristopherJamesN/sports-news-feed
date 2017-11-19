@@ -9,7 +9,7 @@ const NotesList = ({ notes }) => {
     return a.id - b.id;
   });
   const renderNotes = notes.map((note, index) =>
-    <ListGroupItem key={note.id}><Link style={{ marginRight: '12px' }} key={note.id} to={`/notes/${note.id}`}>{note.name}<br></br></Link><VoteButton /></ListGroupItem>
+    <ListGroupItem key={note.id}><Link style={{ marginRight: '12px' }} key={note.id} to={`/notes/${note.id}`}>{note.name}<br></br></Link></ListGroupItem>
   );
 
   return (
