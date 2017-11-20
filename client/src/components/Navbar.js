@@ -15,10 +15,10 @@ const NavBar = props => {
           <Navbar.Collapse>
             <Nav>
               <NavItem>
-                <NavLink to="/news">See All News</NavLink>
+                <NavLink to="/news">News Feed</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/notes">See All Notes</NavLink>
+                <NavLink to="/notes">Favorited Stories</NavLink>
               </NavItem>
             </Nav>
           </Navbar.Collapse>

@@ -72,8 +72,6 @@ export function fetchFoxSports() {
 }
 
 //Add a .env file to the root of the react project
-//REACT_APP_FOX_SPORTS_KEY=dsdsafdsfdsfdsfdsfdsfds
-
 //To access in app process.env.REACT_APP_FOX_SPORTS_KEY
 
 export function fetchNFLNews() {

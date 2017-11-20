@@ -16,10 +16,10 @@ const App = (props) =>
             <h2>
               <Route path="/notes" component={NotesPage} />
               <Route path="/news" component={NewsPage} />
-              
+
             </h2>
             <h1>
-              <Route exact path="/" render={() => <div><h2>Welcome to the Sports News Feed App</h2><p>This app pulls NBA, NFL, and other sports news, from ESPN, Fox Sports, and NFL News via NewsAPI. You can check a short description of the story and take notes as well. Links to the stories open in a new tab.</p><p><NavLink to="/news">See All News</NavLink></p><p><NavLink to="/notes">See All Notes</NavLink></p></div>} />
+              <Route exact path="/" render={() => <div><h2>Welcome to the Sports News Feed App</h2><p>This app pulls NBA, NFL, and other sports news, from ESPN, Fox Sports, and NFL News via NewsAPI. You can check a short description of the story and take notes as well. Links to the stories open in a new tab.</p><p><NavLink to="/news">News Feed</NavLink></p><p><NavLink to="/notes">Favorited Stories</NavLink></p></div>} />
             </h1>
           </Grid>
       </Jumbotron>
