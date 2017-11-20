@@ -20,7 +20,7 @@ const NewsShow = ({ newsItem }) =>
       </ListGroup>
     </Panel>
     <Well>
-      <NotesNew link={newsItem.url}></NotesNew>
+      <NotesNew link={newsItem.url} name={newsItem.title} description={newsItem.description}></NotesNew>
     </Well>
   </div>;
 

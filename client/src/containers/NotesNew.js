@@ -9,8 +9,8 @@ class NotesNew extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      description: '',
+      name: this.props.name,
+      description: this.props.description,
       link: this.props.link,
       showModal: false,
     };
@@ -59,6 +59,7 @@ class NotesNew extends Component {
               <div className="form-group">
                 <input
                   type="text"
+                  value={this.props.name}
                   placeholder="Name"
                   name="name"
                   className="form-control"
@@ -67,6 +68,7 @@ class NotesNew extends Component {
               <div className="form-group">
                 <input
                   type="text"
+                  value={this.props.description}
                   placeholder="Description"
                   name="description"
                   className="form-control"
