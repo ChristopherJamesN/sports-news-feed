@@ -18,7 +18,7 @@ const NavBar = props => {
                 <NavLink to="/news">News Feed</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/notes">Favorited Stories</NavLink>
+                <NavLink to="/notes">Favorited Stories and Notes</NavLink>
               </NavItem>
             </Nav>
           </Navbar.Collapse>
