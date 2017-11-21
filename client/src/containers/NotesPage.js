@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NotesList from '../components/NotesList';
 import NotesShow from './NotesShow';
-import NotesNew from './NotesNew';
+import AddNote from './AddNote';
 import { getNotes } from '../actions';
 import { bindActionCreators } from 'redux';
 
@@ -22,7 +22,7 @@ class NotesPage extends Component {
           <div>
             <h3>Please select a note from the list.</h3>
             <NotesList notes={this.props.notes} />
-            <NotesNew />
+            <AddNote />
           </div>
         )}/>
       </Switch>
