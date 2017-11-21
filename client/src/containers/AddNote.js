@@ -11,7 +11,7 @@ class AddNote extends Component {
     this.state = {
       name: '',
       description: '',
-      link: '',
+      link: this.props.link,
       showModal: false,
     };
   }
