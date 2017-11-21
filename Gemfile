@@ -16,6 +16,8 @@ gem 'rails_12factor'
 gem "sprockets"
 gem "sprockets-es6"
 
+gem 'devise'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
