@@ -47,7 +47,7 @@ class NotesNew extends Component {
           bsSize="large"
           onClick={this.open}
         >
-          Add a Note
+          Favorite Story
         </Button>
 
         <Modal show={this.state.showModal} onHide={this.close}>
@@ -86,7 +86,7 @@ class NotesNew extends Component {
                 <button
                   type="submit"
                   className="btn btn-primary"
-                  >Add Note</button>
+                  >Favorite Story</button>
             </form>
           </Modal.Body>
         </Modal>
