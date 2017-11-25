@@ -23,9 +23,6 @@ const NewsShow = ({ newsItem }) =>
     <Well>
       <NotesNew link={newsItem.url} name={newsItem.title} description={newsItem.description}></NotesNew>
     </Well>
-    <Well>
-      <AddNote link={newsItem.url}/>
-    </Well>
   </div>;
 
 const mapStateToProps = (state, ownProps) => {

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :provider
     devise_parameter_sanitizer.for(:sign_up) << :uid
   end
-  
+
    def fallback_index_html
      render :file => '../client/public/index.html'
    end

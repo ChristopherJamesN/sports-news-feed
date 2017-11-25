@@ -52,7 +52,7 @@ class NotesNew extends Component {
 
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>Add a Note</Modal.Title>
+            <Modal.Title>Favorite Story</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form onSubmit={this.handleOnSubmit} >
