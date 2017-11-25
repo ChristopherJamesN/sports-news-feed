@@ -60,7 +60,6 @@ class CommentsNew extends Component {
               <div className="form-group">
                 <input
                   type="text"
-                  placeholder={this.props.comments}
                   comment="comment"
                   className="form-control"
                   onChange={this.handleOnChange} />

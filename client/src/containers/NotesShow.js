@@ -59,66 +59,8 @@ class NotesShow extends Component {
             </ListGroupItem>
           </ListGroup>
         </Panel>
-
         <Well>
           <CommentsNew id={this.props.note.id} name={this.props.note.name} description={this.props.note.description} link={this.props.note.link} comments={this.props.note.comments}/>
-        </Well>
-
-        <Well>
-
-        <Button
-            bsStyle="primary"
-            bsSize="large"
-            onClick={this.open}
-          >
-            Update Story
-          </Button>
-
-          <Modal show={this.state.showModal} onHide={this.close}>
-            <Modal.Header closeButton>
-              <Modal.Title>Add a Note Here</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <form onSubmit={this.handleOnSubmit} >
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder={this.props.note.name}
-                    name="name"
-                    className="form-control"
-                    onChange={this.handleOnChange} />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder={this.props.note.description}
-                    name="description"
-                    className="form-control"
-                    onChange={this.handleOnChange} />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder={this.props.note.comments}
-                    name="comments"
-                    className="form-control"
-                    onChange={this.handleOnChange} />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder={this.props.note.link}
-                    name="link"
-                    className="form-control"
-                    onChange={this.handleOnChange} />
-                </div>
-                  <button
-                    type="submit"
-                    className="btn btn-primary"
-                    >Update Story</button>
-              </form>
-            </Modal.Body>
-          </Modal>
         </Well>
       </div>
     );
