@@ -11,12 +11,13 @@ export function getNotes() {
   };
 }
 
-export function persistNote(name, description, link) {
+export function persistNote(name, description, link, comments) {
   const noteInfo = JSON.stringify({
     note:{
       name: name,
       description: description,
-      link: link
+      link: link,
+      comments: comments
     }
   });
   return (dispatch) => {

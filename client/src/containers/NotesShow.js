@@ -13,6 +13,7 @@ class NotesShow extends Component {
         name: this.props.note.name,
         description: this.props.note.description,
         link: this.props.note.link,
+        comments: this.props.note.comments,
         showModal: false,
       };
     }
@@ -28,7 +29,7 @@ class NotesShow extends Component {
     handleOnSubmit = event => {
       event.preventDefault();
       const { updateNote, history } = this.props
-      updateNote(this.props.note.id, this.state.name, this.state.description, this.state.link);
+      updateNote(this.props.note.id, this.state.name, this.state.description, this.state.link, this.state.comments);
       history.push('/notechanges');
     }
 
@@ -87,6 +88,14 @@ class NotesShow extends Component {
                     type="text"
                     placeholder={this.props.note.description}
                     name="description"
+                    className="form-control"
+                    onChange={this.handleOnChange} />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    placeholder={this.props.note.comments}
+                    name="comments"
                     className="form-control"
                     onChange={this.handleOnChange} />
                 </div>
