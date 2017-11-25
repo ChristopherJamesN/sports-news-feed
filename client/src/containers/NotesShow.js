@@ -52,7 +52,7 @@ class NotesShow extends Component {
               <p>Description: {this.props.note.description}</p>
             </ListGroupItem>
             <ListGroupItem>
-              <p>Comments: {this.props.note.comments.map((comment, index) => <p>{comment}</p>)}</p>
+              <p>Comments: <br></br>{this.props.note.comments.map((comment, index) => <p>{comment}</p>)}</p>
             </ListGroupItem>
             <ListGroupItem>
               <a href={this.props.note.link} target="_blank">Link to Associated Article</a>
@@ -60,7 +60,7 @@ class NotesShow extends Component {
           </ListGroup>
         </Panel>
         <Well>
-          <CommentsNew id={this.props.note.id} name={this.props.note.name} description={this.props.note.description} link={this.props.note.link} comments={this.props.note.comments}/>
+          <CommentsNew id={this.props.note.id} name={this.props.note.name} description={this.props.note.description} link={this.props.note.link}/>
         </Well>
       </div>
     );

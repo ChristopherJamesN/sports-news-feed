@@ -9,10 +9,7 @@ class CommentsNew extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: this.props.comments,
-      description: this.props.description,
-      link: this.props.link,
-      comments: this.props.comments,
+      comments: '',
       showModal: false,
     };
   }
@@ -29,8 +26,8 @@ class CommentsNew extends Component {
     event.preventDefault();
     this.close();
     const { updateNote , history } = this.props
-    updateNote(this.props.id, this.state.name, this.state.description, this.state.link, this.state.comments);
-    history.push('/notes');
+    updateNote(this.props.id, this.props.name, this.props.description, this.props.link, this.state.comments);
+    history.push(`/notes/${this.props.id}`);
   }
 
   handleOnChange = event => {
@@ -60,7 +57,7 @@ class CommentsNew extends Component {
               <div className="form-group">
                 <input
                   type="text"
-                  comment="comment"
+                  name="comments"
                   className="form-control"
                   onChange={this.handleOnChange} />
               </div>
