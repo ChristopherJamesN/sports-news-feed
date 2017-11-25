@@ -15,29 +15,7 @@ class NotesShow extends Component {
         description: this.props.note.description,
         link: this.props.note.link,
         comments: this.props.note.comments,
-        showModal: false,
       };
-    }
-
-    close = () => {
-      this.setState({ showModal: false });
-    }
-
-    open = () => {
-      this.setState({ showModal: true });
-    }
-
-    handleOnSubmit = event => {
-      event.preventDefault();
-      const { updateNote, history } = this.props
-      updateNote(this.props.note.id, this.state.name, this.state.description, this.state.link, this.state.comments);
-      history.push('/notechanges');
-    }
-
-    handleOnChange = event => {
-      this.setState({
-        [event.target.name]: event.target.value
-      });
     }
 
   render() {
