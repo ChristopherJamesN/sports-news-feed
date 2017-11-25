@@ -28,14 +28,15 @@ export function persistNote(name, description, link, comments) {
   }
 }
 
-export function updateNote(noteId, name, description, link) {
+export function updateNote(noteId, name, description, link, comments) {
   return (dispatch) => {
     dispatch({ type: 'SAVING_NOTE' })
     return fetch(`/api/notes/${noteId}`, {
       method: "put", body: JSON.stringify({note:{
         name: name,
         description: description,
-        link: link
+        link: link,
+        comments: comments
       }
     }), headers: { "Content-Type": "application/json" }
     })

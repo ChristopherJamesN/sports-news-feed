@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {updateNote} from '../actions';
-import BackButton from '../components/BackButton'
+import BackButton from '../components/BackButton';
+import CommentsNew from './CommentsNew';
 import { Panel, ListGroup, ListGroupItem, Well, Modal, Button } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 
@@ -60,13 +61,17 @@ class NotesShow extends Component {
         </Panel>
 
         <Well>
+          <CommentsNew id={this.props.note.id} name={this.props.note.name} description={this.props.note.description} link={this.props.note.link} comments={this.props.note.comments}/>
+        </Well>
+
+        <Well>
 
         <Button
             bsStyle="primary"
             bsSize="large"
             onClick={this.open}
           >
-            Update Note
+            Update Story
           </Button>
 
           <Modal show={this.state.showModal} onHide={this.close}>
@@ -110,7 +115,7 @@ class NotesShow extends Component {
                   <button
                     type="submit"
                     className="btn btn-primary"
-                    >Update Note</button>
+                    >Update Story</button>
               </form>
             </Modal.Body>
           </Modal>

@@ -22,7 +22,6 @@ class NotesPage extends Component {
           <div>
             <h3>Please select a story from the list.</h3>
             <NotesList notes={this.props.notes} />
-            <AddNote />
           </div>
         )}/>
       </Switch>
