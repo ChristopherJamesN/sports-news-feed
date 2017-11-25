@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
-import VoteButton from './VoteButton';
+import VoteButton from '../containers/VoteButton';
 
 const NotesList = ({ notes }) => {
 
