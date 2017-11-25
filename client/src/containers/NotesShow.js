@@ -6,6 +6,7 @@ import { Panel, ListGroup, ListGroupItem, Well, Modal, Button } from 'react-boot
 import { bindActionCreators } from 'redux';
 
 class NotesShow extends Component {
+
     constructor(props) {
       super(props);
       this.state = {
@@ -47,6 +48,9 @@ class NotesShow extends Component {
           <ListGroup fill>
             <ListGroupItem>
               <p>Description: {this.props.note.description}</p>
+            </ListGroupItem>
+            <ListGroupItem>
+              <p>Comments: {this.props.note.comments.map((comment, index) => <p>{comment}</p>)}</p>
             </ListGroupItem>
             <ListGroupItem>
               <a href={this.props.note.link} target="_blank">Link to Associated Article</a>
