@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, NavLink, Redirect } from 'react-router-dom';
-import NotesPage from '../containers/NotesPage';
-import NewsPage from '../containers/NewsPage';
+import NotesPage from './NotesPage';
+import NewsPage from './NewsPage';
 import { Grid, Jumbotron } from 'react-bootstrap';
-import NavBar from './Navbar';
-import Footer from './Footer';
+import NavBar from '../components/Navbar';
+import Footer from '../components/Footer';
 import $ from 'jquery';
 
 class App extends Component {
