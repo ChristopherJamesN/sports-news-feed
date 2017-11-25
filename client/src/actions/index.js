@@ -40,8 +40,7 @@ export function updateNote(noteId, name, description, link, comments) {
       }
     }), headers: { "Content-Type": "application/json" }
     })
-      .then(response => response.json())
-      .then(window.location='/notes')
+      .then(response => response.json()).then(payload => dispatch({ type: 'SAVING_NOTE' }));
   }
 }
 

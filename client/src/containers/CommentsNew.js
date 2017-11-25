@@ -27,7 +27,7 @@ class CommentsNew extends Component {
     this.close();
     const { updateNote , history } = this.props
     updateNote(this.props.id, this.props.name, this.props.description, this.props.link, this.state.comments);
-    //history.push(`/notes/${this.props.id}`);
+    history.push('/notes');
   }
 
   handleOnChange = event => {
