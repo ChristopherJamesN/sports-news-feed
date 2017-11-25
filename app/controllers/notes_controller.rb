@@ -13,7 +13,7 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find(params[:id])
-    @note.update(note_params)
+    @note.update(comments: @note.comments.push(params.require(:note).permit(:comments)))
     @note.save
     render json: @note
   end

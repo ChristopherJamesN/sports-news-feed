@@ -35,7 +35,7 @@ class CommentsNew extends Component {
 
   handleOnChange = event => {
     this.setState({
-      [event.target.name]: event.target.value
+      comments: event.target.value
     });
   }
 
@@ -53,7 +53,7 @@ class CommentsNew extends Component {
 
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>Favorite Story</Modal.Title>
+            <Modal.Title>{this.props.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form onSubmit={this.handleOnSubmit} >
