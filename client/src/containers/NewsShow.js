@@ -7,9 +7,9 @@ import { Panel, ListGroup, ListGroupItem, Well } from 'react-bootstrap';
 
 const NewsShow = ({ newsItem }) =>
   <div>
-    <Well>
+    <p>
       <BackButton />
-    </Well>
+    </p>
     <Panel header={newsItem.title} bsStyle="primary">
       <ListGroup fill>
         <ListGroupItem>
@@ -20,9 +20,9 @@ const NewsShow = ({ newsItem }) =>
         </ListGroupItem>
       </ListGroup>
     </Panel>
-    <Well>
+    <p>
       <NotesNew link={newsItem.url} name={newsItem.title} description={newsItem.description}></NotesNew>
-    </Well>
+    </p>
   </div>;
 
 const mapStateToProps = (state, ownProps) => {

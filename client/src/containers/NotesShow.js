@@ -21,9 +21,9 @@ class NotesShow extends Component {
   render() {
     return (
       <div>
-        <Well>
+        <p>
           <BackButton />
-        </Well>
+        </p>
         <Panel header={this.props.note.name} bsStyle="primary">
           <ListGroup fill>
             <ListGroupItem>
@@ -37,9 +37,9 @@ class NotesShow extends Component {
             </ListGroupItem>
           </ListGroup>
         </Panel>
-        <Well>
+        <p>
           <CommentsNew id={this.props.note.id} name={this.props.note.name} description={this.props.note.description} link={this.props.note.link}/>
-        </Well>
+        </p>
       </div>
     );
   }
