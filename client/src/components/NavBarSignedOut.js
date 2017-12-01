@@ -1,9 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap';
-import SignOutLink from './auth/SignOutLink'
 
-const NavBar = props => {
+const NavBarSignedOut = props => {
   return (
     <Navbar inverse fixedTop collapseOnSelect>
         <Grid>
@@ -19,10 +18,10 @@ const NavBar = props => {
                 <NavLink to="/news">News Feed</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/notes">Favorited Stories and Notes</NavLink>
+                <NavLink to="/signin">Sign In</NavLink>
               </NavItem>
               <NavItem>
-                <SignOutLink />
+                <NavLink to="/signup">Sign Up</NavLink>
               </NavItem>
             </Nav>
           </Navbar.Collapse>
@@ -31,4 +30,4 @@ const NavBar = props => {
   );
 }
 
-export default NavBar;
+export default NavBarSignedOut;

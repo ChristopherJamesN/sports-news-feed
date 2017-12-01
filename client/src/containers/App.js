@@ -8,6 +8,7 @@ import SignInForm from '../components/auth/SignInForm'
 import SignUpForm from '../components/auth/SignUpForm'
 import { Grid, Jumbotron } from 'react-bootstrap';
 import NavBar from '../components/Navbar';
+import NavBarSignedOut from '../components/NavBarSignedOut';
 import Footer from '../components/Footer';
 import PrivateRoute from '../components/PrivateRoute';
 import $ from 'jquery';
@@ -35,7 +36,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-        <NavBar />
+        {this.state.loggedIn} ? (
+          <NavBar /> : <NavBarSignedOut /> )
           <Jumbotron>
               <Grid>
                 <h2>
