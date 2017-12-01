@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, NavLink, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import NotesPage from './NotesPage';
 import NewsPage from './NewsPage';
 import SignOutLink from '../components/auth/SignOutLink'

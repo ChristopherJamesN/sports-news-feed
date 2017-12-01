@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NotesList from '../components/NotesList';
 import NotesShow from './NotesShow';
-import AddNote from './AddNote';
 import { getNotes } from '../actions';
 import { bindActionCreators } from 'redux';
 

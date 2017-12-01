@@ -48,7 +48,7 @@ class SignInForm extends Component {
     })
     .done(function(data){
       window.reload();
-    }.bind(this));
+    });
   }
 
   render() {

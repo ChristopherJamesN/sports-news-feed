@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {updateNote} from '../actions';
 import BackButton from '../components/BackButton';
 import CommentsNew from './CommentsNew';
-import { Panel, ListGroup, ListGroupItem, Well, Modal, Button } from 'react-bootstrap';
+import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 
 class NotesShow extends Component {
