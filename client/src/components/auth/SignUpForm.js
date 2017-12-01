@@ -61,30 +61,48 @@ class SignUpForm extends Component {
     return (
       <div>
         <form>
+          <div className="form-group">
             <input type='text'
               name='name'
-              placeholder='name'
+              placeholder='Name'
+              className="form-control"
               value={this.state.name}
               onChange={this._handleInputChange} />
+          </div>
 
+          <div className="form-group">
             <input type='email'
               name='email'
-              placeholder='email'
+              placeholder='Email'
+              className="form-control"
               value={this.state.email}
               onChange={this._handleInputChange} />
+           </div>
 
+           <div className="form-group">
             <input type='password'
               name='password'
-              placeholder='password'
+              placeholder='Password'
+              className="form-control"
               value={this.state.password}
               onChange={this._handleInputChange} />
+            </div>
 
+          <div className="form-group">
             <input type='password'
               name='password_confirmation'
-              placeholder='re-type password'
+              placeholder='Confirm password'
+              className="form-control"
               value={this.state.password_confirmation}
               onChange={this.handleInputChange} />
-          <input onClick={this._handleRegistrationClick} defaultValue="sign up"/>
+           </div>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={this._handleRegistrationClick}
+            >
+            Sign Up
+          </button>
         </form>
       </div>
     );
