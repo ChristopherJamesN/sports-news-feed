@@ -28,8 +28,6 @@ class SignOutLink extends Component {
       data: {
         authenticity_token: this.getMetaContent("csrf-token")
       }
-    }).done(function(){
-      window.reload();
     });
   }
 

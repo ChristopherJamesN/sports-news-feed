@@ -55,17 +55,29 @@ class SignInForm extends Component {
     return (
       <div>
         <form>
+          <div className="form-group">
             <input type='email'
               name='email'
-              placeholder='email'
+              placeholder='Email'
+              className="form-control"
               value={this.state.email}
               onChange={this._handleInputChange} />
+           </div>
+           <div className="form-group">
             <input type='password'
               name='password'
-              placeholder='password'
+              placeholder='Password'
+              className="form-control"
               value={this.state.password}
               onChange={this._handleInputChange} />
-            <input type='submit' onClick={this._handleSignInClick} defaultValue='login' />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={this._handleSignInClick}
+              >
+              Login
+            </button>
         </form>
       </div>
     );
