@@ -46,7 +46,6 @@ class SignUpForm extends Component {
           uid: this.state.email,
           password: this.state.password,
           password_confirmation: this.state.password_confirmation,
-          provider: "email"
         },
         authenticity_token: this.getMetaContent("csrf-token")
       }
