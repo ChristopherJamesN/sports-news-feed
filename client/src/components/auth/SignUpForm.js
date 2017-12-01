@@ -46,7 +46,6 @@ class SignUpForm extends Component {
           uid: this.state.email,
           password: this.state.password,
           password_confirmation: this.state.password_confirmation,
-          name: this.state.name,
           provider: "email"
         },
         authenticity_token: this.getMetaContent("csrf-token")
@@ -61,15 +60,6 @@ class SignUpForm extends Component {
     return (
       <div>
         <form>
-          <div className="form-group">
-            <input type='text'
-              name='name'
-              placeholder='Name'
-              className="form-control"
-              value={this.state.name}
-              onChange={this._handleInputChange} />
-          </div>
-
           <div className="form-group">
             <input type='email'
               name='email'
