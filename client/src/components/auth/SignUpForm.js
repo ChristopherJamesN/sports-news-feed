@@ -9,7 +9,6 @@ class SignUpForm extends Component {
       email: '',
       password: '',
       password_confirmation: '',
-      name: '',
     };
   }
 
@@ -43,7 +42,6 @@ class SignUpForm extends Component {
       data: {
         user: {
           email: this.state.email,
-          uid: this.state.email,
           password: this.state.password,
           password_confirmation: this.state.password_confirmation,
         },

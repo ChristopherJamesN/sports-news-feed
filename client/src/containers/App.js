@@ -9,6 +9,7 @@ import SignUpForm from '../components/auth/SignUpForm'
 import { Grid, Jumbotron } from 'react-bootstrap';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
+import PrivateRoute from '../components/PrivateRoute';
 import $ from 'jquery';
 
 class App extends Component {
