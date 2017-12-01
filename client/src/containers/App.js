@@ -33,15 +33,15 @@ class App extends Component {
 
   render() {
     return (
-      <Router signedIn={this.state.signedIn}>
+      <Router>
         <div>
         <NavBar />
           <Jumbotron>
               <Grid>
                 <h2>
-                  <Route path="/notes" component={NotesPage} />
+                  <PrivateRoute path="/notes" component={NotesPage} redirectTo="/" loggedIn={this.state.loggedIn} />
                   <Route path="/news" component={NewsPage} />
-                  <Route path="/signout" component={SignOutLink} />
+                  <PrivateRoute path="/signout" component={SignOutLink} redirectTo="/"  loggedIn={this.state.loggedIn}/>
                   <Route path="/signin" component={SignInForm} />
                   <Route path="/signup" component={SignUpForm} />
                 </h2>
