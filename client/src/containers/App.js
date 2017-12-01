@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, NavLink, Redirect } from 'react-router-
 import NotesPage from './NotesPage';
 import NewsPage from './NewsPage';
 import SignOutLink from '../components/auth/SignOutLink'
+import SignInForm from '../components/auth/SignInForm'
+import SignUpForm from '../components/auth/SignUpForm'
 import { Grid, Jumbotron } from 'react-bootstrap';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';

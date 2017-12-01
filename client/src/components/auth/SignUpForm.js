@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import $ from 'jquery';
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -48,44 +49,43 @@ class SignUpForm extends Component {
           name: this.state.name,
           provider: "email"
         },
-        authenticity_token: Functions.getMetaContent("csrf-token")
+        authenticity_token: this.getMetaContent("csrf-token")
       }
     })
     .done(function(data){
-      location.reload();
+      window.reload();
     }.bind(this));
-  },
+  }
 
   render() {
     return (
       <div>
-      <form>
-          <input type='text'
-            name='name'
-            placeholder='name'
-            value={this.state.name}
-            onChange={this._handleInputChange} />
+        <form>
+            <input type='text'
+              name='name'
+              placeholder='name'
+              value={this.state.name}
+              onChange={this._handleInputChange} />
 
-          <input type='email'
-            name='email'
-            placeholder='email'
-            value={this.state.email}
-            onChange={this._handleInputChange} />
+            <input type='email'
+              name='email'
+              placeholder='email'
+              value={this.state.email}
+              onChange={this._handleInputChange} />
 
-          <input type='password'
-            name='password'
-            placeholder='password'
-            value={this.state.password}
-            onChange={this._handleInputChange} />
+            <input type='password'
+              name='password'
+              placeholder='password'
+              value={this.state.password}
+              onChange={this._handleInputChange} />
 
-          <input type='password'
-            name='password_confirmation'
-            placeholder='re-type password'
-            value={this.state.password_confirmation}
-            onChange={this.handleInputChange} />
-        </div>
-        <input onClick={this._handleRegistrationClick} defaultValue="sign up"/>
-      </form>
+            <input type='password'
+              name='password_confirmation'
+              placeholder='re-type password'
+              value={this.state.password_confirmation}
+              onChange={this.handleInputChange} />
+          <input onClick={this._handleRegistrationClick} defaultValue="sign up"/>
+        </form>
       </div>
     );
   }
