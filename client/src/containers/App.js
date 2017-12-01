@@ -41,7 +41,8 @@ class App extends Component {
                   <Route path="/notes" component={NotesPage} />
                   <Route path="/news" component={NewsPage} />
                   <Route path="/signout" component={SignOutLink} />
-
+                  <Route path="/signin" component={SignInForm} />
+                  <Route path="/signup" component={SignUpForm} />
                 </h2>
                 <h1>
                   <Route exact path="/" render={() => <div><h2>Welcome to the Sports News Feed App</h2><p>This app pulls NBA, NFL, and other sports news, from ESPN, Fox Sports, and NFL News via NewsAPI. You can read a short description, favorite, and comment on stories. Links to the stories open in a new tab.</p><p><NavLink to="/news">News Feed</NavLink></p><p><NavLink to="/notes">Favorited Stories</NavLink></p></div>} />

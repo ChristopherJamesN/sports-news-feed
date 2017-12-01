@@ -20,6 +20,15 @@ const NavBar = props => {
               <NavItem>
                 <NavLink to="/notes">Favorited Stories and Notes</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink to="/signin">Sign In</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to="/signup">Sign Up</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to="/signout">Sign Out</NavLink>
+              </NavItem>
             </Nav>
           </Navbar.Collapse>
       </Grid>
