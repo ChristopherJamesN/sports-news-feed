@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, NavLink, Redirect } from 'react-router-dom';
 import NotesPage from './NotesPage';
 import NewsPage from './NewsPage';
+import SignOutLink from '../components/auth/SignOutLink'
 import { Grid, Jumbotron } from 'react-bootstrap';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -37,6 +38,7 @@ class App extends Component {
                 <h2>
                   <Route path="/notes" component={NotesPage} />
                   <Route path="/news" component={NewsPage} />
+                  <Route path="/signout" component={SignOutLink} />
 
                 </h2>
                 <h1>
