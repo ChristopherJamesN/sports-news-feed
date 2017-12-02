@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { signIn } from '../../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 
 class SignInForm extends Component {
   constructor(props) {
@@ -13,18 +12,13 @@ class SignInForm extends Component {
     };
   }
 
-  _handleInputChange = (event) => {
-    // Get a deep clone of the component's state before the input change.
-    var nextState = _.cloneDeep(this.state);
-
-    //Update the state of the component
-    nextState[event.target.name] = event.target.value;
-
-    // Update the component's state with the new state
-    this.setState(nextState);
+  handleInputChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   }
 
-  _handleSignInClick = () => {
+  handleSignInClick = () => {
     this.props.signIn(this.state.email, this.state.password)
   }
 
@@ -38,7 +32,7 @@ class SignInForm extends Component {
               placeholder='Email'
               className="form-control"
               value={this.state.email}
-              onChange={this._handleInputChange} />
+              onChange={this.handleInputChange} />
            </div>
            <div className="form-group">
             <input type='password'
@@ -46,12 +40,12 @@ class SignInForm extends Component {
               placeholder='Password'
               className="form-control"
               value={this.state.password}
-              onChange={this._handleInputChange} />
+              onChange={this.handleInputChange} />
             </div>
             <button
               type="submit"
               className="btn btn-primary"
-              onClick={this._handleSignInClick}
+              onClick={this.handleSignInClick}
               >
               Login
             </button>

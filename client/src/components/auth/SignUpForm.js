@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { signUp } from '../../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -15,14 +14,9 @@ class SignUpForm extends Component {
   }
 
   handleInputChange = (event) => {
-    // Get a deep clone of the component's state before the input change.
-    var nextState = _.cloneDeep(this.state);
-
-    //Update the state of the component
-    nextState[event.target.name] = event.target.value;
-
-    // Update the component's state with the new state
-    this.setState(nextState);
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   }
 
   handleRegistrationClick = () => {
