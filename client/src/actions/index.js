@@ -114,6 +114,22 @@ export function signIn(email, password) {
   }
 }
 
+export function signUp(email, password, password_confirmation) {
+  const userInfo = JSON.stringify({
+    user:{
+      email: email,
+      password: password,
+      password_confirmation: password_confirmation
+    }
+  });
+  return (dispatch) => {
+    dispatch({ type: 'SAVING_USER' })
+    return fetch('/users', {
+      method: "post", body: userInfo, headers: { "Content-Type": "application/json" }})
+      .then(response => response.json()).then(payload => dispatch({ type: 'SHOW_USER', payload }));
+  }
+}
+
 export function signOut(currentUser) {
   const userInfo = JSON.stringify({
     user:{

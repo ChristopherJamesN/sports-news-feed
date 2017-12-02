@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { signUp } from '../../actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import _ from 'lodash';
-import $ from 'jquery';
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -12,19 +14,7 @@ class SignUpForm extends Component {
     };
   }
 
-  getMetaContent = (name) => {
-    var metas = document.getElementsByTagName('meta');
-
-    for (var i=0; i<metas.length; i++) {
-      if (metas[i].getAttribute("name") == name) {
-        return metas[i].getAttribute("content");
-      }
-    }
-
-    return "";
-  }
-
-  _handleInputChange = (event) => {
+  handleInputChange = (event) => {
     // Get a deep clone of the component's state before the input change.
     var nextState = _.cloneDeep(this.state);
 
@@ -35,22 +25,8 @@ class SignUpForm extends Component {
     this.setState(nextState);
   }
 
-  _handleRegistrationClick = () => {
-    $.ajax({
-      method: "POST",
-      url: "/users.json",
-      data: {
-        user: {
-          email: this.state.email,
-          password: this.state.password,
-          password_confirmation: this.state.password_confirmation,
-        },
-        authenticity_token: this.getMetaContent("csrf-token")
-      }
-    })
-    .done(function(data){
-      window.reload();
-    });
+  handleRegistrationClick = () => {
+    this.props.signUp();
   }
 
   render() {
@@ -63,7 +39,7 @@ class SignUpForm extends Component {
               placeholder='Email'
               className="form-control"
               value={this.state.email}
-              onChange={this._handleInputChange} />
+              onChange={this.handleInputChange} />
            </div>
 
            <div className="form-group">
@@ -72,7 +48,7 @@ class SignUpForm extends Component {
               placeholder='Password'
               className="form-control"
               value={this.state.password}
-              onChange={this._handleInputChange} />
+              onChange={this.handleInputChange} />
             </div>
 
           <div className="form-group">
@@ -81,12 +57,12 @@ class SignUpForm extends Component {
               placeholder='Confirm password'
               className="form-control"
               value={this.state.password_confirmation}
-              onChange={this._handleInputChange} />
+              onChange={this.handleInputChange} />
            </div>
           <button
             type="submit"
             className="btn btn-primary"
-            onClick={this._handleRegistrationClick}
+            onClick={this.handleRegistrationClick}
             >
             Sign Up
           </button>
@@ -96,4 +72,16 @@ class SignUpForm extends Component {
   }
 };
 
-export default SignUpForm;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: bindActionCreators(signUp, dispatch),
+   }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
