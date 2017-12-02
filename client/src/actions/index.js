@@ -88,3 +88,21 @@ export function fetchNFLNews() {
 
   };
 }
+
+export function getUser() {
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_USER' })
+    return fetch('/auth/is_signed_in')
+        .then(response => {
+          return response.json()
+        }).then(payload => dispatch({ type: 'SHOW_USER', payload }));
+  };
+}
+
+$.ajax({
+  method: "GET",
+  url: "/auth/is_signed_in.json"
+})
+.done(function(data){
+  this.setState({ signedIn: data.signed_in });
+}.bind(this));
