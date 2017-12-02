@@ -9,8 +9,8 @@ export default (state = initialState, action) => {
       return {...state, loading: true}
     case 'SHOW_USER':
       return {...state, loading: false, user: action.user}
-    case 'ADD_USER':
-      return state;
+    case 'SAVING_USER':
+      return {...state, loading: true}
     case 'SIGN_OUT':
       return state;
     default:
