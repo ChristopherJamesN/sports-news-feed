@@ -35,7 +35,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <NavBar />
+          <NavBar loggedIn={this.state.loggedIn} />
           <Jumbotron>
               <Grid>
                 <h2>
