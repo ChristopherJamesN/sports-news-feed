@@ -98,3 +98,18 @@ export function getUser() {
         }).then(payload => dispatch({ type: 'SHOW_USER', payload }));
   };
 }
+
+export function signIn(email, password) {
+  const userInfo = JSON.stringify({
+    user:{
+      email: email,
+      password: password
+    }
+  });
+  return (dispatch) => {
+    dispatch({ type: 'SAVING_USER' })
+    return fetch('/users/sign_in', {
+      method: "post", body: userInfo, headers: { "Content-Type": "application/json" }})
+      .then(response => response.json()).then(payload => dispatch({ type: 'SHOW_USER', payload }));
+  }
+}
