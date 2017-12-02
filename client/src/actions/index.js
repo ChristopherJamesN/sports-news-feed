@@ -113,3 +113,17 @@ export function signIn(email, password) {
       .then(response => response.json()).then(payload => dispatch({ type: 'SHOW_USER', payload }));
   }
 }
+
+export function signOut(currentUser) {
+  const userInfo = JSON.stringify({
+    user:{
+      currentUser: currentUser
+    }
+  });
+  return (dispatch) => {
+    dispatch({ type: 'SIGN_OUT' })
+    return fetch('/users/sign_out', {
+      method: "delete", body: userInfo, headers: { "Content-Type": "application/json" }})
+      .then(response => response.json()).then(payload => dispatch({ type: 'SHOW_USER', payload }));
+  }
+}
