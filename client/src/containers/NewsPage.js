@@ -11,6 +11,7 @@ class NewsPage extends Component {
   componentDidMount() {
     this.props.fetchNews();
     this.props.fetchNFLNews();
+    this.props.fetchFoxSports();
   }
 
   render() {

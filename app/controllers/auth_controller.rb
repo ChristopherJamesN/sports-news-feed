@@ -5,6 +5,5 @@ class AuthController < ApplicationController
     else
       render :json => {"signed_in" => false}.to_json()
     end
-
   end
 end
