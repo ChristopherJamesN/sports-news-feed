@@ -13,18 +13,6 @@ class SignInForm extends Component {
     };
   }
 
-  getMetaContent = (name) => {
-    var metas = document.getElementsByTagName('meta');
-
-    for (var i=0; i<metas.length; i++) {
-      if (metas[i].getAttribute("name") == name) {
-        return metas[i].getAttribute("content");
-      }
-    }
-
-    return "";
-  }
-
   _handleInputChange = (event) => {
     // Get a deep clone of the component's state before the input change.
     var nextState = _.cloneDeep(this.state);
