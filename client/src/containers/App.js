@@ -16,13 +16,6 @@ import { connect } from 'react-redux';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      signedIn: null,
-    };
-  }
-
   componentWillMount() {
     this.props.getUser();
   }
@@ -31,13 +24,13 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <NavBar loggedIn={this.state.loggedIn} />
+          <NavBar loggedIn={this.props.user} />
           <Jumbotron>
               <Grid>
                 <h2>
-                  <PrivateRoute path="/notes" component={NotesPage} redirectTo="/" loggedIn={this.state.loggedIn} />
+                  <PrivateRoute path="/notes" component={NotesPage} redirectTo="/" loggedIn={this.props.user} />
                   <Route path="/news" component={NewsPage} />
-                  <PrivateRoute path="/signout" component={SignOutLink} redirectTo="/"  loggedIn={this.state.loggedIn}/>
+                  <PrivateRoute path="/signout" component={SignOutLink} redirectTo="/"  loggedIn={this.props.user}/>
                   <Route path="/signin" component={SignInForm} />
                   <Route path="/signup" component={SignUpForm} />
                 </h2>
