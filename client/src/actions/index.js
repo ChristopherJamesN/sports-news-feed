@@ -98,11 +98,3 @@ export function getUser() {
         }).then(payload => dispatch({ type: 'SHOW_USER', payload }));
   };
 }
-
-$.ajax({
-  method: "GET",
-  url: "/auth/is_signed_in.json"
-})
-.done(function(data){
-  this.setState({ signedIn: data.signed_in });
-}.bind(this));
