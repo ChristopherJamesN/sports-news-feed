@@ -112,6 +112,7 @@ export function signIn(email, password) {
       method: "post", body: userInfo, headers: { "Content-Type": "application/json" }})
       .then(response => response.json()).then(payload => dispatch({ type: 'SHOW_USER', payload }));
   }
+
 }
 
 export function signUp(email, password, password_confirmation) {
