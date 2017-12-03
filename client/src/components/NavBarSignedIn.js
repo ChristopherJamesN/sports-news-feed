@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap';
 import SignOutLink from './auth/SignOutLink'
+import { LinkContainer } from 'react-router-bootstrap';
 
 const NavBarSignedIn = props => {
   return (
@@ -15,15 +16,15 @@ const NavBarSignedIn = props => {
         </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavItem>
-                <NavLink to="/news">News Feed</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/notes">Favorited Stories and Notes</NavLink>
-              </NavItem>
-              <NavItem>
-                <SignOutLink />
-              </NavItem>
+              <LinkContainer to="/news">
+                  <NavItem eventKey={1}>News Feed</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/notes">
+                  <NavItem eventKey={2}>Favorited Stories and Notes</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/signup">
+                  <SignOutLink />
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
       </Grid>
