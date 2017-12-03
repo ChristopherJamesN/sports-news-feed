@@ -9,20 +9,22 @@ const NavBarSignedIn = props => {
         <Grid>
         <Navbar.Header>
           <Navbar.Brand>
-            <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
+            <LinkContainer to="/">
+              <NavItem eventKey={1}>Home</NavItem>
+            </LinkContainer>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
               <LinkContainer to="/news">
-                  <NavItem eventKey={1}>News Feed</NavItem>
+                  <NavItem eventKey={2}>News Feed</NavItem>
               </LinkContainer>
               <LinkContainer to="/notes">
-                  <NavItem eventKey={2}>Favorited Stories and Notes</NavItem>
+                  <NavItem eventKey={3}>Favorited Stories and Notes</NavItem>
               </LinkContainer>
               <LinkContainer to="/signout">
-                  <NavItem>Sign Out</NavItem>
+                  <NavItem eventKey={4}>Sign Out</NavItem>
               </LinkContainer>
             </Nav>
           </Navbar.Collapse>
