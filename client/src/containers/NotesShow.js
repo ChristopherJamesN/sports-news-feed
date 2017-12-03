@@ -24,6 +24,7 @@ class NotesShow extends Component {
         <div>
           <BackButton />
         </div>
+        <br></br>
         <Panel header={this.props.note.name} bsStyle="primary">
           <ListGroup fill>
             <ListGroupItem>
