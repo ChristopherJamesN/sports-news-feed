@@ -29,9 +29,9 @@ class VoteButton extends Component {
           onClick={this.handleDownvote}>
             Downvote
         </Button>
-        <p>
+        <div>
           Votes: {this.state.count}
-        </p>
+        </div>
       </div>
     )
   }

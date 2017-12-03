@@ -108,7 +108,7 @@ export function signIn(email, password) {
   });
   return (dispatch) => {
     dispatch({ type: 'SAVING_USER' })
-    return fetch('api/users/sign_in', {
+    return fetch('/api/users/sign_in', {
       method: "post", body: userInfo, headers: { "Content-Type": "application/json" }})
       .then(response => response.json()).then(payload => dispatch({ type: 'SHOW_USER', payload }));
   }
