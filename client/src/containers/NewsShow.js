@@ -9,6 +9,7 @@ const NewsShow = ({ newsItem }) =>
     <div>
       <BackButton />
     </div>
+    <br></br>
     <Panel header={newsItem.title} bsStyle="primary">
       <ListGroup fill>
         <ListGroupItem>
