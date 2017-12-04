@@ -16,7 +16,7 @@ gem 'rails_12factor'
 gem "sprockets"
 gem "sprockets-es6"
 
-gem 'devise'
+gem 'knock'
 
 gem 'rack-cors', :require => 'rack/cors'
 
@@ -27,7 +27,7 @@ gem 'puma', '~> 3.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
 
 # Use Capistrano for deployment
