@@ -4,8 +4,8 @@ import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 const NewsList = ({ news }) => {
 
-  const renderNews = news.map((newsItem, index) =>
-    <ListGroupItem key={index}><Link style={{ marginRight: '12px' }} key={index} to={`/news/${newsItem.publishedAt}`}>{newsItem.title}</Link></ListGroupItem>
+  const renderNews = news.filter(newsItem => newsItem.title).map((newsItem, index) =>
+      <ListGroupItem key={index}><Link style={{ marginRight: '12px' }} key={index} to={`/news/${newsItem.publishedAt}`}>{newsItem.title || "Story not found"}</Link></ListGroupItem>
   );
 
   return (
