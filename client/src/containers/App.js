@@ -10,6 +10,7 @@ import { Grid, Jumbotron } from 'react-bootstrap';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PrivateRoute from '../components/PrivateRoute';
+import { connect } from 'react-redux';
 
 class App extends Component {
 
@@ -38,4 +39,10 @@ class App extends Component {
   )}
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user.isLoggedIn
+  };
+}
+
+export default connect(mapStateToProps)(App);
