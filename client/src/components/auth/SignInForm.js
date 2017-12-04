@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { jwt } from '../../actions';
 
 class SignInForm extends Component {
   constructor(props) {
@@ -7,6 +9,7 @@ class SignInForm extends Component {
     this.state = {
       email: '',
       password: '',
+      loading: false
     };
   }
 
@@ -17,20 +20,11 @@ class SignInForm extends Component {
   }
 
   handleSignInClick = () => {
-    const email = this.state.email
-    const password = this.state.password
-    const request = {"auth": {"email": email, "password": password}}
-    console.log(request)
-    $.ajax({
-      url: "http://localhost:3000/api/user_token",
-      type: "POST",
-      data: request,
-      dataType: "json",
-      success: function (result) {
-        console.log(result)
-        localStorage.setItem("jwt", result.jwt)
-      }
-    })
+    this.setState({
+      loading: true
+    });
+    const data = `{"auth":{"email":"${this.state.email}","password":"${this.state.password}"}}`
+    this.props.jwt(data, this.props.history);
   }
 
   render() {
@@ -66,4 +60,8 @@ class SignInForm extends Component {
   }
 };
 
-export default SignInForm;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ jwt }, dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(SignInForm);

@@ -120,7 +120,7 @@ export function jwt(data, routerHistory) {
   }
 }
 
-export function signup(data, routerHistory) {
+export function signUp(data, routerHistory) {
   return (dispatch) => {
     dispatch({ type: 'LOADING' });
     return fetch('/api/users', {
@@ -152,7 +152,7 @@ export function signup(data, routerHistory) {
   }
 }
 
-export function logout() {
+export function signOut() {
   return (dispatch) => {
     dispatch({ type: 'LOGGED_OUT' })
     window.location.replace('/login');
