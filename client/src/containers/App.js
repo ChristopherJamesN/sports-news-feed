@@ -18,13 +18,13 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <NavBar loggedIn={this.props.user} />
+          <NavBar loggedIn={this.props.user.isLoggedIn} />
           <Jumbotron>
               <Grid>
                 <h2>
-                  <PrivateRoute path="/notes" component={NotesPage} redirectTo="/" loggedIn={this.props.user} />
+                  <PrivateRoute path="/notes" component={NotesPage} redirectTo="/" loggedIn={this.props.user.isLoggedIn} />
                   <Route path="/news" component={NewsPage} />
-                  <PrivateRoute path="/signout" component={SignOutLink} redirectTo="/"  loggedIn={this.props.user}/>
+                  <PrivateRoute path="/signout" component={SignOutLink} redirectTo="/"  loggedIn={this.props.user.isLoggedIn}/>
                   <Route path="/signin" component={SignInForm} />
                   <Route path="/signup" component={SignUpForm} />
                 </h2>
@@ -41,7 +41,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user.isLoggedIn
+    user: state.user
   };
 }
 
