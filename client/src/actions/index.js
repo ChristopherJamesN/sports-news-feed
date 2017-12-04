@@ -89,58 +89,72 @@ export function fetchNFLNews() {
   };
 }
 
-export function getUser() {
+export function jwt(data, routerHistory) {
   return (dispatch) => {
-    dispatch({ type: 'LOADING_USER' })
-    return fetch('/auth/is_signed_in')
-        .then(response => {
-          return response.json()
-        }).then(payload => dispatch({ type: 'SHOW_USER', payload }));
-  };
-}
-
-export function signIn(email, password) {
-  const userInfo = JSON.stringify({
-    user:{
-      email: email,
-      password: password
-    }
-  });
-  return (dispatch) => {
-    dispatch({ type: 'SAVING_USER' })
-    return fetch('/users/sign_in', {
-      method: "post", body: userInfo, headers: { "Content-Type": "application/json" }})
-      .then(response => response.json()).then(payload => dispatch({ type: 'SHOW_USER', payload }));
-  }
-
-}
-
-export function signUp(email, password, password_confirmation) {
-  const userInfo = JSON.stringify({
-    user:{
-      email: email,
-      password: password,
-      password_confirmation: password_confirmation
-    }
-  });
-  return (dispatch) => {
-    dispatch({ type: 'SAVING_USER' })
-    return fetch('/users', {
-      method: "post", body: userInfo, headers: { "Content-Type": "application/json" }})
-      .then(response => response.json()).then(payload => dispatch({ type: 'SHOW_USER', payload }));
+    dispatch({ type: 'LOADING' });
+    return fetch('/api/user_token', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json'
+      },
+      body: data
+    })
+    .then(response => response.json())
+    .then(data => {
+      localStorage.setItem('jwt', data.jwt)
+      dispatch({ type: 'RETURN_JWT'});
+      dispatch({ type: 'LOADING' });
+      return fetch('http://localhost:3001/api/v1/users/:id', {
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('jwt')
+        }
+      }).then(response => response.json())
+      .then(data => {
+        localStorage.setItem('user', JSON.stringify(data))
+        dispatch({ type: 'CURRENT_USER', payload: data });
+        routerHistory.replace('/');
+      });
+    });
   }
 }
 
-export function signOut(currentUser) {
-  const userInfo = JSON.stringify({
-    user:{
-      currentUser: currentUser
-    }
-  });
+export function signup(data, routerHistory) {
   return (dispatch) => {
-    dispatch({ type: 'SIGN_OUT' })
-    return fetch('/users/sign_out', {
-      method: "delete", body: userInfo, headers: { "Content-Type": "application/json" }})
-      .then(response => response.json()).then(payload => dispatch({ type: 'SHOW_USER', payload }));
+    dispatch({ type: 'LOADING' });
+    return fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json'
+      },
+      body: data
+    })
+    .then(response => response.json())
+    .then(data => {
+      localStorage.setItem('jwt', data.jwt)
+      dispatch({ type: 'RETURN_JWT' });
+      dispatch({ type: 'LOADING' });
+      return fetch('api/users/:id', {
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('jwt')
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        localStorage.setItem('user', JSON.stringify(data))
+        dispatch({ type: 'CURRENT_USER', payload: data });
+        routerHistory.replace('/');
+      })
+    })
+  }
+}
+
+export function logout() {
+  return (dispatch) => {
+    dispatch({ type: 'LOGGED_OUT' })
+    window.location.replace('/login');
   }
 }

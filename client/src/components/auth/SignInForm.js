@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { signIn } from '../../actions';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import $ from 'jquery';
 
 class SignInForm extends Component {
   constructor(props) {
@@ -19,7 +17,20 @@ class SignInForm extends Component {
   }
 
   handleSignInClick = () => {
-    this.props.signIn(this.state.email, this.state.password)
+    const email = this.state.email
+    const password = this.state.password
+    const request = {"auth": {"email": email, "password": password}}
+    console.log(request)
+    $.ajax({
+      url: "http://localhost:3000/api/user_token",
+      type: "POST",
+      data: request,
+      dataType: "json",
+      success: function (result) {
+        console.log(result)
+        localStorage.setItem("jwt", result.jwt)
+      }
+    })
   }
 
   render() {
@@ -55,16 +66,4 @@ class SignInForm extends Component {
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    signIn: bindActionCreators(signIn, dispatch),
-   }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignInForm);
+export default SignInForm;

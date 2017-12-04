@@ -10,15 +10,8 @@ import { Grid, Jumbotron } from 'react-bootstrap';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PrivateRoute from '../components/PrivateRoute';
-import { getUser } from '../actions';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
 class App extends Component {
-
-  componentWillMount() {
-    this.props.getUser();
-  }
 
   render() {
     return (
@@ -45,17 +38,4 @@ class App extends Component {
   )}
 }
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-    signed_in: state.user.signed_in
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getUser: bindActionCreators(getUser, dispatch),
-   }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
