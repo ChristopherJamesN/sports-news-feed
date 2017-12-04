@@ -18,16 +18,10 @@ class SignOutLink extends Component {
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user
-  };
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
     signOut: bindActionCreators(signOut, dispatch),
    }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignOutLink);
+export default connect(null, mapDispatchToProps)(SignOutLink);
