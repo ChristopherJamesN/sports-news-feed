@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-
-  resources :users
   scope '/api' do
     resources :notes, only: [:index, :create, :update]
+    post 'user_token' => 'user_token#create'
   end
 
   scope :auth do
