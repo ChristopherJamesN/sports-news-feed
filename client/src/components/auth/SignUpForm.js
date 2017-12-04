@@ -71,16 +71,10 @@ class SignUpForm extends Component {
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user
-  };
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
     signUp: bindActionCreators(signUp, dispatch),
    }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
+export default connect(null, mapDispatchToProps)(SignUpForm);
