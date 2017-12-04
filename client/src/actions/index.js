@@ -123,7 +123,7 @@ export function jwt(data, routerHistory) {
 export function signUp(data, routerHistory) {
   return (dispatch) => {
     dispatch({ type: 'LOADING' });
-    return fetch('/api/users', {
+    return fetch('/api/register', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

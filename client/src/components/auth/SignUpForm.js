@@ -10,6 +10,7 @@ class SignUpForm extends Component {
       email: '',
       password: '',
       password_confirmation: '',
+      loading: false
     };
   }
 
@@ -20,7 +21,11 @@ class SignUpForm extends Component {
   }
 
   handleRegistrationClick = () => {
-    this.props.signUp();
+    this.setState({
+      loading: true
+    });
+    const data = `{"user":{"email":"${this.state.email}","password":"${this.state.password}","password_confirmation":"${this.state.password_confirmation}"}}`
+    this.props.signUp(data, this.props.history);
   }
 
   render() {
