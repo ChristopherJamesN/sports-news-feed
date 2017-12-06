@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
-import NotesPage from './NotesPage';
-import NewsPage from './NewsPage';
-import SignOutLink from '../components/auth/SignOutLink'
-import SignInForm from '../components/auth/SignInForm'
-import SignUpForm from '../components/auth/SignUpForm'
+import NotesPage from './containers/NotesPage';
+import NewsPage from './containers/NewsPage';
+import SignOutLink from './components/auth/SignOutLink'
+import SignInForm from './components/auth/SignInForm'
+import SignUpForm from './components/auth/SignUpForm'
 import { Grid, Jumbotron } from 'react-bootstrap';
-import NavBar from '../components/Navbar';
-import Footer from '../components/Footer';
-import PrivateRoute from '../components/PrivateRoute';
-import { connect } from 'react-redux';
-import { jwt } from '../actions'
-import { bindActionCreators } from 'redux';
+import NavBar from './components/Navbar';
+import Footer from './components/Footer';
 
 class App extends Component {
 
@@ -24,9 +20,9 @@ class App extends Component {
           <Jumbotron>
               <Grid>
                 <h2>
-                  <PrivateRoute path="/notes" component={NotesPage} redirectTo="/" loggedIn={this.props.user.isLoggedIn} />
+                  <Route path="/notes" component={NotesPage} />
                   <Route path="/news" component={NewsPage} />
-                  <PrivateRoute path="/signout" component={SignOutLink} redirectTo="/"  loggedIn={this.props.user.isLoggedIn}/>
+                  <Route path="/signout" component={SignOutLink} />
                   <Route path="/signin" component={SignInForm} />
                   <Route path="/signup" component={SignUpForm} />
                 </h2>
@@ -41,16 +37,4 @@ class App extends Component {
   )}
 }
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    jwt: bindActionCreators(jwt, dispatch),
-   }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
