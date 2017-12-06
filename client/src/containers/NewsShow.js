@@ -27,7 +27,7 @@ const NewsShow = ({ newsItem }) =>
 
 const mapStateToProps = (state, ownProps) => {
   // eslint-disable-next-line
-  const newsItem = state.news.news.find(newsItem => newsItem.publishedAt == ownProps.match.params.newsItemPublishedAt)
+  const newsItem = state.newsReducer.news.find(newsItem => newsItem.publishedAt == ownProps.match.params.newsItemPublishedAt)
 
   if (newsItem) {
     return { newsItem }

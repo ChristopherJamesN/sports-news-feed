@@ -33,7 +33,7 @@ class NewsPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    news: state.news.news
+    news: state.newsReducer.news
   };
 }
 
