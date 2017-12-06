@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import NotesNew from './NotesNew';
 import BackButton from '../components/BackButton'
-import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 
 const NewsShow = ({ newsItem }) =>
   <div>
@@ -10,8 +10,10 @@ const NewsShow = ({ newsItem }) =>
       <BackButton />
     </div>
     <br></br>
-    <Panel header={newsItem.title} bsStyle="primary">
       <ListGroup fill>
+        <ListGroupItem>
+          <h3> {newsItem.title} </h3>
+        </ListGroupItem>
         <ListGroupItem>
           <p>{newsItem.description}</p>
         </ListGroupItem>
@@ -19,7 +21,7 @@ const NewsShow = ({ newsItem }) =>
           <a href={newsItem.url} target="_blank">Link to Full Story</a>
         </ListGroupItem>
       </ListGroup>
-    </Panel>
+      <br></br>
     <div>
       <NotesNew link={newsItem.url} name={newsItem.title} description={newsItem.description}></NotesNew>
     </div>

@@ -17,12 +17,14 @@ class App extends Component {
       <Router>
         <div className = "App">
           <Navigation />
+          <br></br>
           <Route path="/notes" component={NotesPage} />
           <Route path="/news" component={NewsPage} />
           <Route path="/signout" component={SignOutLink} />
           <Route path="/signin" component={SignInForm} />
           <Route path="/signup" component={SignUpForm} />
-          <Route path="/" component={Homepage} />
+          <Route exact path="/" component={Homepage} />
+          <br></br>
           <Footer />
         </div>
       </Router>
