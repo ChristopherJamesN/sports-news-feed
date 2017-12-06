@@ -16,13 +16,6 @@ import { bindActionCreators } from 'redux';
 
 class App extends Component {
 
-  componentWillMount() {
-    if (this.props.user.isLoggedIn) {
-      const data = `{"auth":{"email":"${this.props.user.email}","password":"${this.props.user.password}"}}`
-      this.props.jwt(data, this.props.history)
-    }
-  }
-
   render() {
     return (
       <Router>
