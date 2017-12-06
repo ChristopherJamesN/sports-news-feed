@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <NavBar loggedIn={this.props.user.isLoggedIn} />
+          <NavBar />
           <Jumbotron>
               <Grid>
                 <h2>

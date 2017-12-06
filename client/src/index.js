@@ -2,32 +2,18 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
-import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux'
-import rootReducer from './reducers/index'
-import thunk from 'redux-thunk';
-import { loadState, saveState } from './localStorage';
+import store from './store';
 
-registerServiceWorker();
-const persistedState = loadState();
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-
-const store = createStore(rootReducer, persistedState, composeEnhancers(applyMiddleware(thunk)))
-
-store.subscribe(() => {
-  saveState({
-    notes: store.getState().notesReducer,
-    loginStatus: store.getState().userReducer,
-  });
-});
-
-render(
+ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')
 )
+
+registerServiceWorker();
