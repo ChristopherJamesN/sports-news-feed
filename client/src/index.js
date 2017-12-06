@@ -10,10 +10,19 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './reducers/index'
 import thunk from 'redux-thunk';
+import { loadState, saveState } from './localStorage';
 
 registerServiceWorker();
+const persistedState = loadState();
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, persistedState, applyMiddleware(thunk))
+
+store.subscribe(() => {
+  saveState({
+    notes: store.getState().notesReducer,
+    loginStatus: store.getState().userReducer,
+  });
+});
 
 render(
   <Provider store={store}>
