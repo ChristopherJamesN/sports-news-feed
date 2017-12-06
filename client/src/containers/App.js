@@ -11,8 +11,17 @@ import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PrivateRoute from '../components/PrivateRoute';
 import { connect } from 'react-redux';
+import { jwt } from '../actions'
+import { bindActionCreators } from 'redux';
 
 class App extends Component {
+
+  componentWillMount() {
+    if (this.props.user.isLoggedIn) {
+      const data = `{"auth":{"email":"${this.props.user.email}","password":"${this.props.user.password}"}}`
+      this.props.jwt(data, this.props.history)
+    }
+  }
 
   render() {
     return (
@@ -45,4 +54,10 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    jwt: bindActionCreators(jwt, dispatch),
+   }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
