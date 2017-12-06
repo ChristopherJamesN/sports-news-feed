@@ -92,7 +92,7 @@ export function fetchNFLNews() {
 export function jwt(data, routerHistory) {
   return (dispatch) => {
     dispatch({ type: 'LOADING' });
-    return fetch('/api/user_token', {
+    return fetch('/user_token', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -105,7 +105,7 @@ export function jwt(data, routerHistory) {
       localStorage.setItem('jwt', data.jwt)
       dispatch({ type: 'RETURN_JWT'});
       dispatch({ type: 'LOADING' });
-      return fetch('http://localhost:3001/api/v1/users/:id', {
+      return fetch('/api/users/:id', {
         method: 'GET',
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('jwt')
@@ -136,7 +136,7 @@ export function signUp(data, routerHistory) {
       localStorage.setItem('jwt', data.jwt)
       dispatch({ type: 'RETURN_JWT' });
       dispatch({ type: 'LOADING' });
-      return fetch('api/users/:id', {
+      return fetch('/api/users/:id', {
         method: 'GET',
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('jwt')

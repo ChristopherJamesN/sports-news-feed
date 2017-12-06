@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  post '/user_token' => 'user_token#create'
+
   scope '/api' do
     resources :notes, only: [:index, :create, :update]
-    post 'user_token' => 'user_token#create'
     post '/register' => 'users#create'
     resources :users
     mount Knock::Engine => '/knock'
