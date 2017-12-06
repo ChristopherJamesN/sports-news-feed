@@ -8,7 +8,6 @@ class Navigation extends Component {
   render() {
     return (
       <Navbar className='sticky-top d-flex flex-row' color='faded' light>
-        <NavbarBrand className='mr-auto' href='/'>Home</NavbarBrand>
         <Nav className='d-inline-flex flex-row' navbar>
           <NavItem className='mr-5 mt-2'>
             <NavLink className='d-inline align-bottom' href='/news'>News Feed</NavLink>
@@ -17,7 +16,7 @@ class Navigation extends Component {
             {!this.props.isLoggedIn ? (
               <NavLink className='d-inline text-bottom' href='/login'>Login</NavLink>
              ) : (
-              <UserLinkOptions className='mt-0'  />
+              <UserDropdown className='mt-0'  />
              )}
           </NavItem>
         </Nav>

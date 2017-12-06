@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { logout } from '../actions'
+import { signOut } from '../actions'
 
 class UserDropdown extends React.Component {
   constructor(props) {
@@ -51,7 +51,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ logout }, dispatch);
+  return bindActionCreators({ signOut }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserLinkDropdown);
+export default connect(mapStateToProps, mapDispatchToProps)(UserDropdown);
