@@ -27,10 +27,10 @@ class NotesShow extends Component {
         <br></br>
           <ListGroup fill="true">
             <ListGroupItem>
-              <h1>{this.props.note.name}</h1>
+              <h3>{this.props.note.name}</h3>
             </ListGroupItem>
               <ListGroupItem>
-                <h2>Description: {this.props.note.description}</h2>
+                <p>{this.props.note.description}</p>
               </ListGroupItem>
               <ListGroupItem>
                 {this.props.note.comments.map((comment, index) => <p key={index}>{comment}</p>)}
