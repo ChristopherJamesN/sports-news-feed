@@ -38,6 +38,7 @@ class NotesShow extends Component {
             </ListGroupItem>
           </ListGroup>
         </Panel>
+        <br></br>
         <div>
           <CommentsNew id={this.props.note.id} name={this.props.note.name} description={this.props.note.description} link={this.props.note.link}/>
         </div>
