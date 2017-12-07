@@ -10,7 +10,7 @@ const NewsShow = ({ newsItem }) =>
       <BackButton />
     </div>
     <br></br>
-      <ListGroup fill>
+      <ListGroup fill="true">
         <ListGroupItem>
           <h3> {newsItem.title} </h3>
         </ListGroupItem>

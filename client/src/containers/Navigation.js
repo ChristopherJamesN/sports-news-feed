@@ -14,7 +14,7 @@ class Navigation extends Component {
         <NavItem>
           <NavLink href='/news'>News Feed</NavLink>
         </NavItem>
-        <UncontrolledDropdown nav inNavbar>
+        <UncontrolledDropdown nav innavbar="true">
             <DropdownToggle nav caret>
               Options
             </DropdownToggle>
