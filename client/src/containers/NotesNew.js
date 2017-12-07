@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {persistNote} from '../actions';
-import { Modal, Button } from 'react-bootstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
@@ -12,21 +12,19 @@ class NotesNew extends Component {
       name: this.props.name,
       description: this.props.description,
       link: this.props.link,
-      showModal: false,
+      modal: false,
     };
+    this.toggle = this.toggle.bind(this);
   }
 
-  close = () => {
-    this.setState({ showModal: false });
-  }
-
-  open = () => {
-    this.setState({ showModal: true });
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   handleOnSubmit = event => {
     event.preventDefault();
-    this.close();
     const { persistNote , history } = this.props
     persistNote(this.state.name, this.state.description, this.state.link);
     history.push('/notes');
@@ -41,20 +39,10 @@ class NotesNew extends Component {
   render() {
     return (
       <div>
-
-      <Button
-          bsStyle="primary"
-          bsSize="large"
-          onClick={this.open}
-        >
-          Favorite Story
-        </Button>
-
-        <Modal show={this.state.showModal} onHide={this.close}>
-          <Modal.Header closeButton>
-            <Modal.Title>Favorite Story</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
+      <Button color="primary" onClick={this.toggle}>Favorite Story</Button>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} >
+          <ModalHeader toggle={this.toggle}>Favorite Story</ModalHeader>
+          <ModalBody>
             <form onSubmit={this.handleOnSubmit} >
               <div className="form-group">
                 <input
@@ -88,7 +76,10 @@ class NotesNew extends Component {
                   className="btn btn-primary"
                   >Favorite Story</button>
             </form>
-          </Modal.Body>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+          </ModalFooter>
         </Modal>
       </div>
     );

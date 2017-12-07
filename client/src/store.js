@@ -29,9 +29,9 @@ const store = createStore(
 
 store.subscribe(() => {
   saveState({
-    user: store.getState().userReducer,
-    notes: store.getState().notesReducer,
-    news: store.getState().newsReducer
+    userReducer: store.getState().userReducer,
+    notesReducer: store.getState().notesReducer,
+    newsReducer: store.getState().newsReducer
   });
 });
 export default store;
