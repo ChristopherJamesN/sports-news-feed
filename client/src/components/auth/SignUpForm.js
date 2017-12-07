@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Form, Input } from 'reactstrap';
 import { signUp } from '../../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -20,20 +21,21 @@ class SignUpForm extends Component {
     });
   }
 
-  handleRegistrationClick = () => {
+  handleRegistrationClick = (event) => {
     this.setState({
       loading: true
     });
     const data = `{"user":{"email":"${this.state.email}","password":"${this.state.password}","password_confirmation":"${this.state.password_confirmation}"}}`
+    event.preventDefault();
     this.props.signUp(data, this.props.history);
   }
 
   render() {
     return (
       <div>
-        <form>
+        <Form>
           <div className="form-group">
-            <input type='email'
+            <Input type='email'
               name='email'
               placeholder='Email'
               className="form-control"
@@ -42,7 +44,7 @@ class SignUpForm extends Component {
            </div>
 
            <div className="form-group">
-            <input type='password'
+            <Input type='password'
               name='password'
               placeholder='Password'
               className="form-control"
@@ -51,21 +53,21 @@ class SignUpForm extends Component {
             </div>
 
           <div className="form-group">
-            <input type='password'
+            <Input type='password'
               name='password_confirmation'
               placeholder='Confirm password'
               className="form-control"
               value={this.state.password_confirmation}
               onChange={this.handleInputChange} />
            </div>
-          <button
+          <Button
             type="submit"
             className="btn btn-primary"
             onClick={this.handleRegistrationClick}
             >
             Sign Up
-          </button>
-        </form>
+          </Button>
+        </Form>
       </div>
     );
   }

@@ -25,7 +25,7 @@ class NotesShow extends Component {
           <BackButton />
         </div>
         <br></br>
-          <ListGroup fill>
+          <ListGroup fill="true">
             <ListGroupItem>
               <h1>{this.props.note.name}</h1>
             </ListGroupItem>
