@@ -6,7 +6,7 @@ const NotesList = ({ notes }) => {
 
   let renderNotes = notes.errors
 
-  if (notes.errors === '') {
+  if (notes.errors) {
     notes.sort(function(a,b) {
       return a.id - b.id;
     });

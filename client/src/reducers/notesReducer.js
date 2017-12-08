@@ -1,7 +1,6 @@
 const initialState = {
   loading: '',
-  notes: [],
-  errors: ''
+  notes: []
 }
 
 export default (state = initialState, action) => {
