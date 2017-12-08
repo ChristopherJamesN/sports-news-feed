@@ -23,7 +23,7 @@ export function persistNote(name, description, link, comments) {
   return (dispatch) => {
     dispatch({ type: 'SAVING_NOTE' })
     return fetch('/api/notes', {
-      method: "post", body: noteInfo, headers: { "Content-Type": "application/json" }})
+      method: "post", body: noteInfo, headers: { "Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }})
       .then(response => response.json()).then(payload => dispatch({ type: 'ADD_NOTES', payload }));
   }
 }
@@ -38,7 +38,7 @@ export function updateNote(noteId, name, description, link, comments) {
         link: link,
         comments: comments
       }
-    }), headers: { "Content-Type": "application/json" }
+    }), headers: { "Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
     })
       .then(response => response.json()).then(payload => dispatch({ type: 'SAVING_NOTE' }));
   }
