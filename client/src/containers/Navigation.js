@@ -34,7 +34,7 @@ class Navigation extends Component {
                     <NavLink href='/notes'>Saved Stories</NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                    <NavItem><SignOutLink /></NavItem>
+                    <NavLink><SignOutLink /></NavLink>
                   </DropdownItem>
                 </DropdownMenu>
               )}
