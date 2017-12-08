@@ -4,7 +4,8 @@ import APIKEY from './URLs.js'
 export function getNotes() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NOTES' })
-    return fetch('/api/notes')
+    return fetch('/api/notes', {
+    method: "get", headers: { "Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }})
         .then(response => {
           return response.json()
         }).then(payload => dispatch({ type: 'SHOW_NOTES', payload }));
