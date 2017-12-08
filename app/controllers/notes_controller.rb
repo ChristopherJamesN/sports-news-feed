@@ -2,17 +2,16 @@ class NotesController < ApplicationController
 
   def index
     if current_user
-      user = User.find_by(:id => params[:user_id].to_i)
-      @notes = user.notes.all
+      @notes = Note.where(user_id: current_user.id)
       render json: @notes, status: 200
     else
-      redirect_to "/login"
-      render json: { errors: @notes.errors.full_messages }, status: 500
+      render json: {errors: "You must be signed in to save stories."}, status: 500
     end
   end
 
   def create
     @note = Note.new(note_params)
+    @note.user_id = current_user.id
     if @note.save
       render json: @note, status: 201
     else

@@ -39,6 +39,7 @@ class NotesNew extends Component {
   render() {
     return (
       <div>
+
         <Button color="primary" onClick={this.toggle}>Favorite Story</Button>
           <Modal isOpen={this.state.modal} toggle={this.toggle} >
             <ModalHeader toggle={this.toggle}>Favorite Story</ModalHeader>
