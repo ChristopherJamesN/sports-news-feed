@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { connect } from 'react-redux';
+import SignOutLink from '../components/auth/SignOutLink';
 
 class Navigation extends Component {
 
@@ -33,7 +34,7 @@ class Navigation extends Component {
                     <NavLink href='/notes'>Saved Stories</NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                    <NavLink href='/signout'>Sign Out</NavLink>
+                    <NavItem><SignOutLink /></NavItem>
                   </DropdownItem>
                 </DropdownMenu>
               )}
