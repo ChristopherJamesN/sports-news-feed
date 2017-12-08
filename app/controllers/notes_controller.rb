@@ -3,8 +3,7 @@ class NotesController < ApplicationController
 
   def index
     if current_user && Note.where(user_id: current_user.id)
-      #@notes = Note.where(user_id: current_user.id)
-      @notes = Note.all
+      @notes = Note.where(user_id: current_user.id)
       render json: @notes, status: 200
     else
       render json: {errors: "You do not have any saved stories."}, status: 500
