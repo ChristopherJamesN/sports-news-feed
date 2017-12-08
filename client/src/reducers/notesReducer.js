@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
     case 'SAVING_NOTE':
       return { ...state, loading: false }
     case 'ADD_NOTES':
-      return{...state, loading: false, notes: action.payload};
+      return{...state, loading: false, notes: state.notes.concat(action.payload)};
     default:
       return state;
   }
