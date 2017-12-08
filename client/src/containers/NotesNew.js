@@ -39,52 +39,58 @@ class NotesNew extends Component {
   render() {
     return (
       <div>
-      <Button color="primary" onClick={this.toggle}>Favorite Story</Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} >
-          <ModalHeader toggle={this.toggle}>Favorite Story</ModalHeader>
-          <ModalBody>
-            <form onSubmit={this.handleOnSubmit} >
-              <div className="form-group">
-                <input
-                  type="text"
-                  value={this.props.name}
-                  placeholder="Name"
-                  name="name"
-                  className="form-control"
-                  onChange={this.handleOnChange} />
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  value={this.props.description}
-                  placeholder="Description"
-                  name="description"
-                  className="form-control"
-                  onChange={this.handleOnChange} />
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  value={this.props.link}
-                  placeholder='Link to associated article'
-                  name="link"
-                  className="form-control"
-                  onChange={this.handleOnChange} />
-              </div>
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  >Favorite Story</button>
-            </form>
-          </ModalBody>
-          <ModalFooter>
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-          </ModalFooter>
-        </Modal>
+        <Button color="primary" onClick={this.toggle}>Favorite Story</Button>
+          <Modal isOpen={this.state.modal} toggle={this.toggle} >
+            <ModalHeader toggle={this.toggle}>Favorite Story</ModalHeader>
+            <ModalBody>
+              <form onSubmit={this.handleOnSubmit} >
+                <div className="form-group">
+                  <input
+                    type="text"
+                    value={this.props.name}
+                    placeholder="Name"
+                    name="name"
+                    className="form-control"
+                    onChange={this.handleOnChange} />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    value={this.props.description}
+                    placeholder="Description"
+                    name="description"
+                    className="form-control"
+                    onChange={this.handleOnChange} />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    value={this.props.link}
+                    placeholder='Link to associated article'
+                    name="link"
+                    className="form-control"
+                    onChange={this.handleOnChange} />
+                </div>
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    >Favorite Story</button>
+              </form>
+            </ModalBody>
+            <ModalFooter>
+              <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+            </ModalFooter>
+          </Modal>
       </div>
     );
   }
 };
+
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.userReducer.isLoggedIn
+  };
+}
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
@@ -92,4 +98,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 };
 
-export default connect(null, mapDispatchToProps)(withRouter(NotesNew));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NotesNew));

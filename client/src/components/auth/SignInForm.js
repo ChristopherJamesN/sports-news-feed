@@ -51,7 +51,7 @@ class SignInForm extends Component {
             </div>
             <Button
               type="submit"
-              className="btn btn-primary"
+              color="primary"
               onClick={this.handleSignInClick}
               >
               Login
