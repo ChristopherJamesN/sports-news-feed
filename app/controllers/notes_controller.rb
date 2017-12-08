@@ -1,11 +1,12 @@
 class NotesController < ApplicationController
+  before_action :authenticate_user, only: [:index, :create, :update]
 
   def index
-    if current_user
+    if current_user && Note.where(user_id: current_user.id)
       @notes = Note.where(user_id: current_user.id)
       render json: @notes, status: 200
     else
-      render json: {errors: "You must be signed in to save stories."}, status: 500
+      render json: {errors: "You do not have any saved stories."}, status: 500
     end
   end
 
@@ -15,7 +16,7 @@ class NotesController < ApplicationController
     if @note.save
       render json: @note, status: 201
     else
-      render json: { errors: @note.errors.full_messages }, status: 500
+      render json: { errors: note.errors.full_messages }, status: 500
     end
   end
 
@@ -27,7 +28,7 @@ class NotesController < ApplicationController
       render json: @note
     else
       redirect "/login"
-      render json: { errors: @notes.errors.full_messages }, status: 500
+      render json: { errors: note.errors.full_messages }, status: 500
     end
   end
 
