@@ -30,8 +30,7 @@ class NotesPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    notes: state.notesReducer.notes,
-    errors: state.notesReducer.errors
+    notes: state.notesReducer.notes
   };
 }
 

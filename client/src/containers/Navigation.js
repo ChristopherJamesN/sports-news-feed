@@ -33,8 +33,8 @@ class Navigation extends Component {
                   <DropdownItem>
                     <NavLink href='/notes'>Saved Stories</NavLink>
                   </DropdownItem>
-                  <DropdownItem>
-                    <NavLink><SignOutLink /></NavLink>
+                  <DropdownItem className="mx-auto">
+                    <NavItem><SignOutLink /></NavItem>
                   </DropdownItem>
                 </DropdownMenu>
               )}
