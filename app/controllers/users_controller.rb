@@ -12,7 +12,11 @@ class UsersController < ApplicationController
     end
 
     def show
-      render json: current_user, only: [:id, :email]
+      if current_user
+        render json: current_user, only: [:id, :email]
+      else
+        render json: "Those credentials are not correct.", status: 500
+      end
     end
 
 
