@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { signOut } from '../../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Button } from 'reactstrap';
 
 class SignOutLink extends Component {
 
@@ -12,7 +13,7 @@ class SignOutLink extends Component {
   render() {
     return (
       <div>
-        <a href="/" onClick={this.signOut}>Sign out</a>
+        <Button href="/" onClick={this.signOut}>Sign out</Button>
       </div>
     );
   }

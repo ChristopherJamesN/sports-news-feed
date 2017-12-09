@@ -23,13 +23,13 @@ class SignUpForm extends Component {
 
   handleRegistrationClick = (event) => {
 
-    if (this.state.password == '') {
+    if (this.state.password === '') {
       return 'Password must be valid.'
     }
-    else if (this.state.email == '') {
+    else if (this.state.email === '') {
       return 'Email must be valid.'
     }
-    else if (this.state.password_confirmation == '') {
+    else if (this.state.password_confirmation === '') {
       return 'Password confirmation must be filled in.'
     }
     else {
