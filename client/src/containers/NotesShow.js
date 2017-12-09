@@ -25,20 +25,11 @@ class NotesShow extends Component {
           <BackButton />
         </div>
         <br></br>
-          <ListGroup fill="true">
-            <ListGroupItem>
-              <h3>{this.props.note.name}</h3>
-            </ListGroupItem>
-              <ListGroupItem>
-                <p>{this.props.note.description}</p>
-              </ListGroupItem>
-              <ListGroupItem>
-                {this.props.note.comments.map((comment, index) => <p key={index}>{comment}</p>)}
-              </ListGroupItem>
-              <ListGroupItem>
-                <a href={this.props.note.link} target="_blank">Link to Associated Article</a>
-              </ListGroupItem>
-          </ListGroup>
+          <h3>{this.props.note.name}</h3>
+          <p>{this.props.note.description}</p>
+          {this.props.note.comments.map((comment, index) => <p key={index}>{comment}</p>)}
+          <a href={this.props.note.link} target="_blank">Link to Associated Article</a>
+        <br></br>
         <br></br>
         <div>
           <CommentsNew id={this.props.note.id} name={this.props.note.name} description={this.props.note.description} link={this.props.note.link}/>

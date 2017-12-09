@@ -10,18 +10,11 @@ const NewsShow = ({ newsItem }) =>
       <BackButton />
     </div>
     <br></br>
-      <ListGroup fill="true">
-        <ListGroupItem>
-          <h3> {newsItem.title} </h3>
-        </ListGroupItem>
-        <ListGroupItem>
-          <p>{newsItem.description}</p>
-        </ListGroupItem>
-        <ListGroupItem>
-          <a href={newsItem.url} target="_blank">Link to Full Story</a>
-        </ListGroupItem>
-      </ListGroup>
-      <br></br>
+      <h3> {newsItem.title} </h3>
+      <p>{newsItem.description}</p>
+      <a href={newsItem.url} target="_blank">Link to Full Story</a>
+    <br></br>
+    <br></br>
     <div>
       <NotesNew link={newsItem.url} name={newsItem.title} description={newsItem.description}></NotesNew>
     </div>
