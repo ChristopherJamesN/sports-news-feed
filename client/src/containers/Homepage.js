@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from 'reactstrap';
 import IntroText from '../components/IntroText'
 
 const Homepage = (props) => {
