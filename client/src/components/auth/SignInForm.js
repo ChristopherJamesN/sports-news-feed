@@ -21,12 +21,20 @@ class SignInForm extends Component {
   }
 
   handleSignInClick = (event) => {
-    this.setState({
-      loading: true
-    });
-    const data = `{"auth":{"email":"${this.state.email}","password":"${this.state.password}"}}`
-    event.preventDefault();
-    this.props.jwt(data, this.props.history);
+    if (this.state.password == '') {
+      return 'Password must be valid.'
+    }
+    else if (this.state.email == '') {
+      return 'Email must be valid.'
+    }
+    else {
+      this.setState({
+        loading: true
+      });
+      const data = `{"auth":{"email":"${this.state.email}","password":"${this.state.password}"}}`
+      event.preventDefault();
+      this.props.jwt(data, this.props.history);
+    }
   }
 
   render() {
