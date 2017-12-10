@@ -16,23 +16,23 @@ class Navigation extends Component {
         </NavItem>
 
         {!this.props.isLoggedIn ? (
-          <div>
+          <Nav>
             <NavItem>
               <NavLink href='/signin'>Login</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href='/signup'>Sign Up</NavLink>
             </NavItem>
-          </div>
+          </Nav>
           ) : (
-          <div>
+          <Nav>
             <NavItem>
               <NavLink href='/notes'>Saved Stories</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href='/signout'>Sign Out</NavLink>
             </NavItem>
-          </div>
+          </Nav>
           )}
 
         </Nav>
