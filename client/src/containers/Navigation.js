@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Navbar, Nav, NavItem, NavLink } from 'reactstrap';
 import { connect } from 'react-redux';
 
 class Navigation extends Component {
@@ -14,31 +14,27 @@ class Navigation extends Component {
         <NavItem>
           <NavLink href='/news'>News Feed</NavLink>
         </NavItem>
-        <UncontrolledDropdown nav innavbar="true">
-            <DropdownToggle nav caret>
-              Options
-            </DropdownToggle>
 
-            {!this.props.isLoggedIn ? (
-              <DropdownMenu >
-                <DropdownItem>
-                  <NavLink href='/signin'>Login</NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink href='/signup'>Sign Up</NavLink>
-                </DropdownItem>
-              </DropdownMenu> ) : (
-                <DropdownMenu >
-                  <DropdownItem>
-                    <NavLink href='/notes'>Saved Stories</NavLink>
-                  </DropdownItem>
-                  <DropdownItem className="mx-auto">
-                    <NavLink href='/signout'>Sign Out</NavLink>
-                  </DropdownItem>
-                </DropdownMenu>
-              )}
+        {!this.props.isLoggedIn ? (
+          <div>
+            <NavItem>
+              <NavLink href='/signin'>Login</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href='/signup'>Sign Up</NavLink>
+            </NavItem>
+          </div>
+          ) : (
+          <div>
+            <NavItem>
+              <NavLink href='/notes'>Saved Stories</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href='/signout'>Sign Out</NavLink>
+            </NavItem>
+          </div>
+          )}
 
-          </UncontrolledDropdown>
         </Nav>
       </Navbar>
     );
