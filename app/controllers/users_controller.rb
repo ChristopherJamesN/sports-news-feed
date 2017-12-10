@@ -19,6 +19,23 @@ class UsersController < ApplicationController
       end
     end
 
+    def self.from_token_request request
+      email = request.params["auth"] && request.params["auth"]["email"]
+      if self.find_by email: email
+        self.find_by email: email
+      else
+        render json: "Those credentials are not correct.", status: 500
+      end
+    end
+
+    def self.from_token_payload payload
+      self.find payload["sub"]
+    end
+
+    def to_token_payload
+      {sub: id}
+    end
+
 
     private
 
