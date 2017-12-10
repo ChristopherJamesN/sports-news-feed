@@ -141,24 +141,33 @@ export function signUp(data, routerHistory) {
       },
       body: data
     })
-    .then(response => response.json())
-    .then(data => {
-      localStorage.setItem('jwt', data.jwt)
-      dispatch({ type: 'RETURN_JWT' });
-      dispatch({ type: 'LOADING' });
-      return fetch('/api/users/:id', {
-        method: 'GET',
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('jwt')
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-        localStorage.setItem('user', JSON.stringify(data))
-        dispatch({ type: 'CURRENT_USER', payload: data });
-        routerHistory.replace('/');
-      })
+    .then(response => {
+      if (response.status >= 200 && response.status < 300) {
+       response.json()
+        .then(data => {
+          localStorage.setItem('jwt', data.jwt)
+          dispatch({ type: 'RETURN_JWT' });
+          dispatch({ type: 'LOADING' });
+          return fetch('/api/users/:id', {
+            method: 'GET',
+            headers: {
+              Authorization: 'Bearer ' + localStorage.getItem('jwt')
+            }
+          })
+          .then(response => response.json())
+          .then(data => {
+            localStorage.setItem('user', JSON.stringify(data))
+            dispatch({ type: 'CURRENT_USER', payload: data });
+            routerHistory.replace('/');
+          })
+        })
+      } else {
+        throw new Error('Network response was not ok.');
+      }
     })
+    .catch(function(error) {
+      return ('There has been a problem with your fetch operation: ', error.message);
+    });
   }
 }
 
