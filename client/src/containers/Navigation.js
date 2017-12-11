@@ -10,28 +10,28 @@ class Navigation extends Component {
       <Navbar className='sticky-top d-flex flex-row' color='dark' light>
         <Nav>
         <li>
-          <NavLink to='/'>&nbsp; Home &nbsp;</NavLink>
+          <NavLink to='/' style={{ textDecoration: 'none' }}>&nbsp; Home &nbsp;</NavLink>
         </li>
         <NavItem>
-          <NavLink to='/news'>&nbsp; News Feed &nbsp;</NavLink>
+          <NavLink to='/news' style={{ textDecoration: 'none' }}>&nbsp; News Feed &nbsp;</NavLink>
         </NavItem>
 
         {!this.props.isLoggedIn ? (
           <Nav>
             <NavItem>
-              <NavLink to='/signin'>&nbsp; Login &nbsp;</NavLink>
+              <NavLink to='/signin' style={{ textDecoration: 'none' }}>&nbsp; Login &nbsp;</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to='/signup'>&nbsp; Sign Up &nbsp;</NavLink>
+              <NavLink to='/signup' style={{ textDecoration: 'none' }}>&nbsp; Sign Up &nbsp;</NavLink>
             </NavItem>
           </Nav>
           ) : (
           <Nav>
             <NavItem>
-              <NavLink to='/notes'>&nbsp; Saved Stories &nbsp;</NavLink>
+              <NavLink to='/notes' style={{ textDecoration: 'none' }}>&nbsp; Saved Stories &nbsp;</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to='/signout'>&nbsp; Sign Out &nbsp;</NavLink>
+              <NavLink to='/signout' style={{ textDecoration: 'none' }}>&nbsp; Sign Out &nbsp;</NavLink>
             </NavItem>
           </Nav>
           )}
