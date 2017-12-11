@@ -125,7 +125,7 @@ export function jwt(data, routerHistory) {
       }
     })
     .catch(function(error) {
-      return ('There has been a problem with your fetch operation: ', error.message);
+      console.log('There has been a problem with your fetch operation: ', error.message);
     });
   }
 }
@@ -166,7 +166,7 @@ export function signUp(data, routerHistory) {
       }
     })
     .catch(function(error) {
-      return ('There has been a problem with your fetch operation: ', error.message);
+      console.log('There has been a problem with your fetch operation: ', error.message);
     });
   }
 }
