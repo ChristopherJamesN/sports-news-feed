@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, Input } from 'reactstrap';
+import { Button, Form, Input, Alert } from 'reactstrap';
 import { signUp } from '../../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -11,8 +11,15 @@ class SignUpForm extends Component {
       email: '',
       password: '',
       password_confirmation: '',
-      loading: false
+      loading: false,
+      visible: true
     };
+
+    this.onDismiss = this.onDismiss.bind(this);
+  }
+
+  onDismiss() {
+    this.setState({ visible: false });
   }
 
   handleInputChange = (event) => {
@@ -24,13 +31,13 @@ class SignUpForm extends Component {
   handleRegistrationClick = (event) => {
 
     if (this.state.password === '') {
-      return 'Password must be valid.'
+      this.setState({ visible: true });
     }
     else if (this.state.email === '') {
-      return 'Email must be valid.'
+      this.setState({ visible: true });
     }
     else if (this.state.password_confirmation === '') {
-      return 'Password confirmation must be filled in.'
+      this.setState({ visible: true });
     }
     else {
       this.setState({
@@ -45,6 +52,7 @@ class SignUpForm extends Component {
   render() {
     return (
       <div>
+      <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>All fields must be filled in.</Alert>
         <Form>
           <div className="form-group">
             <Input type='email'

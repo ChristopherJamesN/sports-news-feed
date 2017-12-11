@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, Input } from 'reactstrap';
+import { Button, Form, Input, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { jwt } from '../../actions';
@@ -10,8 +10,15 @@ class SignInForm extends Component {
     this.state = {
       email: '',
       password: '',
-      loading: false
+      loading: false,
+      visible: true
     };
+
+    this.onDismiss = this.onDismiss.bind(this);
+  }
+
+  onDismiss() {
+    this.setState({ visible: false });
   }
 
   handleInputChange = (event) => {
@@ -22,10 +29,10 @@ class SignInForm extends Component {
 
   handleSignInClick = (event) => {
     if (this.state.password === '') {
-      return 'Password must be valid.'
+      this.setState({ visible: true });
     }
     else if (this.state.email ==='') {
-      return 'Email must be valid.'
+      this.setState({ visible: true });
     }
     else {
       this.setState({
@@ -40,6 +47,7 @@ class SignInForm extends Component {
   render() {
     return (
       <div>
+      <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>All fields must be filled in.</Alert>
         <Form>
           <div className="form-group">
             <Input type='email'
