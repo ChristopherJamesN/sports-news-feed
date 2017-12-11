@@ -49,7 +49,7 @@ export function fetchNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
 
-    return fetch(`https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=${APIKEY}`)
+    return fetch(`https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=${process.env.APIKEY}`)
     .then(response => {
       return response.json()})
       .then(responseJSON => {
@@ -63,7 +63,7 @@ export function fetchFoxSports() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
 
-    return fetch(`https://newsapi.org/v1/articles?source=fox-sports&sortBy=top&apiKey=${APIKEY}`)
+    return fetch(`https://newsapi.org/v1/articles?source=fox-sports&sortBy=top&apiKey=${process.env.APIKEY}`)
       .then(response => {
         return response.json()})
         .then(responseJSON => {
@@ -80,7 +80,7 @@ export function fetchNFLNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
 
-    return fetch(`https://newsapi.org/v1/articles?source=nfl-news&sortBy=top&apiKey=${APIKEY}`)
+    return fetch(`https://newsapi.org/v1/articles?source=nfl-news&sortBy=top&apiKey=${process.env.APIKEY}`)
       .then(response => {
         return response.json()})
         .then(responseJSON => {
