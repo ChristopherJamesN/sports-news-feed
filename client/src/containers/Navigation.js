@@ -9,29 +9,29 @@ class Navigation extends Component {
     return (
       <Navbar className='sticky-top d-flex flex-row' color='dark' light>
         <Nav>
+        <li>
+          <NavLink to='/'>&nbsp; Home &nbsp;</NavLink>
+        </li>
         <NavItem>
-          <NavLink to='/'>Home</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink to='/news'>News Feed</NavLink>
+          <NavLink to='/news'>&nbsp; News Feed &nbsp;</NavLink>
         </NavItem>
 
         {!this.props.isLoggedIn ? (
           <Nav>
             <NavItem>
-              <NavLink to='/signin'>Login</NavLink>
+              <NavLink to='/signin'>&nbsp; Login &nbsp;</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to='/signup'>Sign Up</NavLink>
+              <NavLink to='/signup'>&nbsp; Sign Up &nbsp;</NavLink>
             </NavItem>
           </Nav>
           ) : (
           <Nav>
             <NavItem>
-              <NavLink to='/notes'>Saved Stories</NavLink>
+              <NavLink to='/notes'>&nbsp; Saved Stories &nbsp;</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to='/signout'>Sign Out</NavLink>
+              <NavLink to='/signout'>&nbsp; Sign Out &nbsp;</NavLink>
             </NavItem>
           </Nav>
           )}
