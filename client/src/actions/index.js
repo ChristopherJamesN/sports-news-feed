@@ -126,6 +126,7 @@ export function jwt(data, routerHistory) {
     })
     .catch(function(error) {
       console.log('There has been a problem with your fetch operation: ', error.message);
+      dispatch({ type: 'INVALID_SIGNIN' })
     });
   }
 }
@@ -167,6 +168,7 @@ export function signUp(data, routerHistory) {
     })
     .catch(function(error) {
       console.log('There has been a problem with your fetch operation: ', error.message);
+      dispatch({ type: 'INVALID_SIGNUP' })
     });
   }
 }

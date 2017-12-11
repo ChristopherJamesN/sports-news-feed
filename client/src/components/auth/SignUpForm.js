@@ -11,8 +11,7 @@ class SignUpForm extends Component {
       email: '',
       password: '',
       password_confirmation: '',
-      loading: false,
-      visible: true
+      loading: false
     };
 
     this.onDismiss = this.onDismiss.bind(this);
@@ -52,7 +51,7 @@ class SignUpForm extends Component {
   render() {
     return (
       <div>
-      <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>All fields must be filled in.</Alert>
+      <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>Invalid credentials.</Alert>
         <Form>
           <div className="form-group">
             <Input type='email'
@@ -93,10 +92,16 @@ class SignUpForm extends Component {
   }
 };
 
+const mapStateToProps = (state) => {
+  return {
+    visible: state.userReducer.signupError
+  };
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     signUp: bindActionCreators(signUp, dispatch),
    }
 };
 
-export default connect(null, mapDispatchToProps)(SignUpForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
