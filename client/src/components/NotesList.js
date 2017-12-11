@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 const NotesList = ({ notes }) => {
 
@@ -8,14 +8,12 @@ const NotesList = ({ notes }) => {
       return a.id - b.id;
     });
     const renderNotes = notes.map((note, index) =>
-      <ListGroupItem key={note.id}><Link style={{ marginRight: '12px' }} key={note.id} to={`/notes/${note.id}`}>{note.name}</Link></ListGroupItem>
+      <Breadcrumb><BreadcrumbItem key={note.id}><Link style={{ marginRight: '12px' }} key={note.id} to={`/notes/${note.id}`}>{note.name}</Link></BreadcrumbItem></Breadcrumb>
     );
 
   return (
     <div>
-      <ListGroup>
-        {renderNotes}
-      </ListGroup>
+      {renderNotes}
     </div>
   );
 };
