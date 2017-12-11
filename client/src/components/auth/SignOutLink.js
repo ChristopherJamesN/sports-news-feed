@@ -13,7 +13,7 @@ class SignOutLink extends Component {
   render() {
     return (
       <div>
-        <Button href="/" onClick={this.signOut}>Sign out</Button>
+        <Button href="/" color="primary" onClick={this.signOut}>Sign out</Button>
       </div>
     );
   }
