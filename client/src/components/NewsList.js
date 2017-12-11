@@ -5,7 +5,7 @@ import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 const NewsList = ({ news }) => {
 
   const renderNews = news.filter(newsItem => newsItem.title).map((newsItem, index) =>
-      <Breadcrumb><BreadcrumbItem key={index}><Link style={{ marginRight: '12px' }} key={index} to={`/news/${newsItem.publishedAt}`}>{newsItem.title || "Story not found"}</Link></BreadcrumbItem></Breadcrumb>
+      <Breadcrumb key={index}><BreadcrumbItem key={index}><Link style={{ marginRight: '12px' }} key={index} to={`/news/${newsItem.publishedAt}`}>{newsItem.title || "Story not found"}</Link></BreadcrumbItem></Breadcrumb>
   );
 
   return (

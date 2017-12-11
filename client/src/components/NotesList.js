@@ -8,7 +8,7 @@ const NotesList = ({ notes }) => {
       return a.id - b.id;
     });
     const renderNotes = notes.map((note, index) =>
-      <Breadcrumb><BreadcrumbItem key={note.id}><Link style={{ marginRight: '12px' }} key={note.id} to={`/notes/${note.id}`}>{note.name}</Link></BreadcrumbItem></Breadcrumb>
+      <Breadcrumb key={note.id}><BreadcrumbItem key={note.id}><Link style={{ marginRight: '12px' }} key={note.id} to={`/notes/${note.id}`}>{note.name}</Link></BreadcrumbItem></Breadcrumb>
     );
 
   return (
