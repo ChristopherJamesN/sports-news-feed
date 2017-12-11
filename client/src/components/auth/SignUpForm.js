@@ -13,12 +13,6 @@ class SignUpForm extends Component {
       password_confirmation: '',
       loading: false
     };
-
-    this.onDismiss = this.onDismiss.bind(this);
-  }
-
-  onDismiss() {
-    this.setState({ visible: false });
   }
 
   handleInputChange = (event) => {
@@ -28,30 +22,16 @@ class SignUpForm extends Component {
   }
 
   handleRegistrationClick = (event) => {
-
-    if (this.state.password === '') {
-      this.setState({ visible: true });
-    }
-    else if (this.state.email === '') {
-      this.setState({ visible: true });
-    }
-    else if (this.state.password_confirmation === '') {
-      this.setState({ visible: true });
-    }
-    else {
-      this.setState({
-        loading: true
-      });
+      this.setState({ loading: true });
       const data = `{"user":{"email":"${this.state.email}","password":"${this.state.password}","password_confirmation":"${this.state.password_confirmation}"}}`
       event.preventDefault();
       this.props.signUp(data, this.props.history);
-    }
   }
 
   render() {
     return (
       <div>
-      <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>Invalid credentials.</Alert>
+      <Alert color="danger" isOpen={this.props.visible}>Invalid credentials.</Alert>
         <Form>
           <div className="form-group">
             <Input type='email'

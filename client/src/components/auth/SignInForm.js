@@ -12,12 +12,6 @@ class SignInForm extends Component {
       password: '',
       loading: false
     };
-
-    this.onDismiss = this.onDismiss.bind(this);
-  }
-
-  onDismiss() {
-    this.setState({ visible: false });
   }
 
   handleInputChange = (event) => {
@@ -27,26 +21,16 @@ class SignInForm extends Component {
   }
 
   handleSignInClick = (event) => {
-    if (this.state.password === '') {
-      this.setState({ visible: true });
-    }
-    else if (this.state.email ==='') {
-      this.setState({ visible: true });
-    }
-    else {
-      this.setState({
-        loading: true
-      });
+      this.setState({ loading: true });
       const data = `{"auth":{"email":"${this.state.email}","password":"${this.state.password}"}}`
       event.preventDefault();
       this.props.jwt(data, this.props.history);
-    }
   }
 
   render() {
     return (
       <div>
-      <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>Invalid credentials.</Alert>
+      <Alert color="danger" isOpen={this.props.visible} >Invalid credentials.</Alert>
         <Form>
           <div className="form-group">
             <Input type='email'
