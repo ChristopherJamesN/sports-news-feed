@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {updateNote} from '../actions';
 import BackButton from '../components/BackButton';
+import DeleteButton from '../components/DeleteButton';
 import CommentsNew from './CommentsNew';
 import { bindActionCreators } from 'redux';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
@@ -22,7 +23,8 @@ class NotesShow extends Component {
     return (
       <div>
         <div>
-          <BackButton />
+          <BackButton /> &nbsp;
+          <DeleteButton />
         </div>
         <br></br>
         <Breadcrumb>
