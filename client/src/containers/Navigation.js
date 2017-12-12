@@ -7,7 +7,7 @@ class Navigation extends Component {
 
   render() {
     return (
-      <Navbar className='sticky-top d-flex flex-row' color='dark' light>
+      <Navbar color='faded' light expand="md">
         <Nav>
         <li>
           <NavLink to='/' style={{ textDecoration: 'none' }}>&nbsp; Home &nbsp;</NavLink>
