@@ -51,6 +51,14 @@ export function deleteNote(noteId) {
     return fetch(`/api/notes/${noteId}`, {
       method: "delete",
        headers: { "Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
+    })
+    .then(payload => {
+    dispatch({ type: 'LOADING_NOTES' })
+    return fetch('/api/notes', {
+    method: "get", headers: { "Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }})
+        .then(response => {
+          return response.json()
+        }).then(payload => dispatch({ type: 'SHOW_NOTES', payload }))
     });
   }
 }
