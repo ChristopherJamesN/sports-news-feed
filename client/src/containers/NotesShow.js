@@ -24,7 +24,7 @@ class NotesShow extends Component {
       <div>
         <div>
           <BackButton /> &nbsp;
-          <DeleteButton />
+          <DeleteButton noteId={this.props.note.id} />
         </div>
         <br></br>
         <Breadcrumb>

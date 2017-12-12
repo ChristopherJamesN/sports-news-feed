@@ -12,7 +12,7 @@ class DeleteButton extends Component {
 
   handleClick = () => {
     const { deleteNote , history } = this.props
-    deleteNote(4);
+    deleteNote(this.props.noteId);
     history.push('/notes');
   }
 
