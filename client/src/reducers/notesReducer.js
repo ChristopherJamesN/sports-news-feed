@@ -11,6 +11,8 @@ export default (state = initialState, action) => {
       return {...state, loading: false, notes: action.payload};
     case 'SAVING_NOTE':
       return { ...state, loading: false }
+    case 'DELETING_NOTE':
+      return { ...state, loading: false }
     case 'ADD_NOTES':
       return{...state, loading: false, notes: state.notes.concat(action.payload)};
     default:
