@@ -25,7 +25,8 @@ class CommentsNew extends Component {
     event.preventDefault();
     const { updateNote , history } = this.props
     updateNote(this.props.id, this.props.name, this.props.description, this.props.link, this.state.comments);
-    history.push('/notes');
+    history.push('/notes/' + this.props.id);
+    this.toggle()
   }
 
   handleOnChange = event => {
