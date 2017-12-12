@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :authenticate_user, only: [:index, :create, :update]
+  before_action :authenticate_user, only: [:index, :create, :update, :destroy]
 
   def index
     if current_user && Note.where(user_id: current_user.id)
@@ -32,7 +32,19 @@ class NotesController < ApplicationController
     end
   end
 
-
+  def destroy
+    @note = Note.find(params[:id])
+    if @note.user_id == current_user.id
+      @note.destroy
+      respond_to do |format|
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.json { head :no_content }
+      end
+    end
+  end
 
   private
   def note_params

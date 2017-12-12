@@ -9,7 +9,7 @@ class DeleteButton extends Component {
   render() {
     return (
       <Button
-        color="danger"
+        color="primary"
         onClick={this.context.router.history.goBack}>
           Delete Story
       </Button>

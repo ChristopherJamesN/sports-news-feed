@@ -45,6 +45,17 @@ export function updateNote(noteId, name, description, link, comments) {
   }
 }
 
+export function deleteNote(noteId) {
+  return (dispatch) => {
+    dispatch({ type: 'DELETING_NOTE' })
+    return fetch(`/api/notes/${noteId}`, {
+      method: "delete",
+       headers: { "Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
+    })
+      .then(response => response.json()).then(payload => dispatch({ type: 'DELETING_NOTE' }));
+  }
+}
+
 export function fetchNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
