@@ -15,17 +15,18 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <Navigation />
-          <br></br>
-          <Route path="/notes" component={NotesPage} />
-          <Route path="/news" component={NewsPage} />
-          <Route path="/signout" component={SignOutLink} />
-          <Route path="/signin" component={SignInForm} />
-          <Route path="/signup" component={SignUpForm} />
-          <Route exact path="/" component={Homepage} />
-          <br></br>
-          <Footer />
+        <div className="Nav-home">
+        <Navigation />
+          <div className="App">
+            <Route path="/notes" component={NotesPage} />
+            <Route path="/news" component={NewsPage} />
+            <Route path="/signout" component={SignOutLink} />
+            <Route path="/signin" component={SignInForm} />
+            <Route path="/signup" component={SignUpForm} />
+            <Route exact path="/" component={Homepage} />
+            <br></br>
+            <Footer />
+          </div>
         </div>
       </Router>
   )}
