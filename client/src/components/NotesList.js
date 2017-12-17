@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ListGroup } from 'reactstrap';
 
 const NotesList = ({ notes }) => {
@@ -7,7 +8,7 @@ const NotesList = ({ notes }) => {
       return a.id - b.id;
     });
     const renderNotes = notes.map((note, index) =>
-      <ListGroup key={note.id}><a key={note.id} className="list-group-item list-group-item-action" href={`/notes/${note.id}`}>{note.name}</a></ListGroup>
+      <ListGroup key={note.id}><Link key={note.id} className="list-group-item list-group-item-action" to={`/notes/${note.id}`}>{note.name}</Link></ListGroup>
     );
 
   return (
