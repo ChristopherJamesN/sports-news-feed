@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { ListGroup } from 'reactstrap';
 
 const NotesList = ({ notes }) => {
 
@@ -8,7 +7,7 @@ const NotesList = ({ notes }) => {
       return a.id - b.id;
     });
     const renderNotes = notes.map((note, index) =>
-      <Breadcrumb key={note.id}><BreadcrumbItem key={note.id}><Link style={{ marginRight: '12px' }} key={note.id} to={`/notes/${note.id}`}>{note.name}</Link></BreadcrumbItem></Breadcrumb>
+      <ListGroup key={note.id}><a key={note.id} className="list-group-item list-group-item-action" href={`/notes/${note.id}`}>{note.name}</a></ListGroup>
     );
 
   return (
