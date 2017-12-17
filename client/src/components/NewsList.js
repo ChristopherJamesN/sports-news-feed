@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 
 const NewsList = ({ news }) => {
 
   const renderNews = news.filter(newsItem => newsItem.title).map((newsItem, index) =>
-      <Breadcrumb key={index}><BreadcrumbItem key={index}><Link style={{ marginRight: '12px' }} key={index} to={`/news/${newsItem.publishedAt}`}>{newsItem.title || "Story not found"}</Link></BreadcrumbItem></Breadcrumb>
+      <ListGroup key={index}><a key={index} className='list-group-item list-group-item-action' href={`/news/${newsItem.publishedAt}`}>{newsItem.title || "Story not found"}</a></ListGroup>
   );
 
   return (
