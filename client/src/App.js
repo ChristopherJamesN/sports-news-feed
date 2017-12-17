@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className = "App">
+        <div>
           <Navigation />
           <br></br>
           <Route path="/notes" component={NotesPage} />
