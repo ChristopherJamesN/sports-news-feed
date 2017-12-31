@@ -27,27 +27,33 @@ class Navigation extends Component {
       <NavbarBrand href="/">Home</NavbarBrand>
       <Collapse isOpen={this.state.isOpen} navbar>
         <Nav className="ml-auto" navbar>
+        <br></br>
         <NavItem>
           <NavLink to='/news' style={{ textDecoration: 'none' }} onClick={this.toggle}>&nbsp; News Feed &nbsp;</NavLink>
         </NavItem>
+        <br></br>
 
         {!this.props.isLoggedIn ? (
           <Nav navbar>
             <NavItem>
               <NavLink to='/signin' style={{ textDecoration: 'none' }} onClick={this.toggle}>&nbsp; Login &nbsp;</NavLink>
             </NavItem>
+            <br></br>
             <NavItem>
               <NavLink to='/signup' style={{ textDecoration: 'none' }} onClick={this.toggle}>&nbsp; Sign Up &nbsp;</NavLink>
             </NavItem>
+            <br></br>
           </Nav>
           ) : (
           <Nav navbar>
             <NavItem>
               <NavLink to='/notes' style={{ textDecoration: 'none' }} onClick={this.toggle}>&nbsp; Saved Stories &nbsp;</NavLink>
             </NavItem>
+            <br></br>
             <NavItem>
               <NavLink to='/signout' style={{ textDecoration: 'none' }} onClick={this.toggle}>&nbsp; Sign Out &nbsp;</NavLink>
             </NavItem>
+            <br></br>
           </Nav>
           )}
 
