@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Collapse, Navbar, Nav, NavItem, NavbarToggler } from 'reactstrap';
+import { Collapse, Navbar, Nav, NavItem, NavbarToggler, NavbarBrand } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -24,31 +24,29 @@ class Navigation extends Component {
     return (
       <Navbar color='light' light expand="md" className="sticky-top">
       <NavbarToggler onClick={this.toggle} />
+      <NavbarBrand href="/">Home</NavbarBrand>
       <Collapse isOpen={this.state.isOpen} navbar>
-        <Nav>
-        <li>
-          <NavLink to='/' style={{ textDecoration: 'none' }}>&nbsp; Home &nbsp;</NavLink>
-        </li>
+        <Nav className="ml-auto" navbar>
         <NavItem>
-          <NavLink to='/news' style={{ textDecoration: 'none' }}>&nbsp; News Feed &nbsp;</NavLink>
+          <NavLink to='/news' style={{ textDecoration: 'none' }} onClick={this.toggle}>&nbsp; News Feed &nbsp;</NavLink>
         </NavItem>
 
         {!this.props.isLoggedIn ? (
-          <Nav>
+          <Nav navbar>
             <NavItem>
-              <NavLink to='/signin' style={{ textDecoration: 'none' }}>&nbsp; Login &nbsp;</NavLink>
+              <NavLink to='/signin' style={{ textDecoration: 'none' }} onClick={this.toggle}>&nbsp; Login &nbsp;</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to='/signup' style={{ textDecoration: 'none' }}>&nbsp; Sign Up &nbsp;</NavLink>
+              <NavLink to='/signup' style={{ textDecoration: 'none' }} onClick={this.toggle}>&nbsp; Sign Up &nbsp;</NavLink>
             </NavItem>
           </Nav>
           ) : (
-          <Nav>
+          <Nav navbar>
             <NavItem>
-              <NavLink to='/notes' style={{ textDecoration: 'none' }}>&nbsp; Saved Stories &nbsp;</NavLink>
+              <NavLink to='/notes' style={{ textDecoration: 'none' }} onClick={this.toggle}>&nbsp; Saved Stories &nbsp;</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to='/signout' style={{ textDecoration: 'none' }}>&nbsp; Sign Out &nbsp;</NavLink>
+              <NavLink to='/signout' style={{ textDecoration: 'none' }} onClick={this.toggle}>&nbsp; Sign Out &nbsp;</NavLink>
             </NavItem>
           </Nav>
           )}
