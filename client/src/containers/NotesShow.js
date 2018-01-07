@@ -33,9 +33,15 @@ class NotesShow extends Component {
         <ListGroup>
             <ListGroupItem><p>{this.props.note.description}</p></ListGroupItem>
         </ListGroup>
+        {this.props.note.comments.length > 0 ? (
         <ListGroup>
             <ListGroupItem>{this.props.note.comments.map((comment, index) => <p key={index}>{comment}</p>)}</ListGroupItem>
         </ListGroup>
+        ): (
+          <ListGroup>
+              <ListGroupItem>No comments yet.</ListGroupItem>
+          </ListGroup>
+        )}
         <ListGroup>
             <ListGroupItem><a href={this.props.note.link} target="_blank">Link to Associated Article</a></ListGroupItem>
         </ListGroup>
