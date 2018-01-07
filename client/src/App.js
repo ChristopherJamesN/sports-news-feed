@@ -9,6 +9,7 @@ import SignUpForm from './components/auth/SignUpForm';
 import Homepage from './containers/Homepage';
 import Navigation from './containers/Navigation';
 import Footer from './components/Footer';
+import PrivateRoute from './containers/PrivateRoute';
 
 class App extends Component {
 
