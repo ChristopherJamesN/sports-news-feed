@@ -3,17 +3,19 @@ import { Button } from 'reactstrap';
 
 class BackButton extends Component {
   static contextTypes = {
-    router: () => null,
-  }
+    router: () => null
+  };
+
+  goBack = () => {
+    window.history.back();
+  };
 
   render() {
     return (
-      <Button
-        color="primary"
-        onClick={this.context.router.history.goBack}>
-          Back
+      <Button color="primary" onClick={this.goBack}>
+        Back
       </Button>
-    )
+    );
   }
 }
 
