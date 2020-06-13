@@ -36,7 +36,7 @@ class NotesShow extends Component {
             <p>{this.props.note.description}</p>
           </ListGroupItem>
         </ListGroup>
-        {this.props.note.comments.length > 0 ? (
+        {this.props.note.comments && this.props.note.comments.length > 0 ? (
           <ListGroup>
             <ListGroupItem>
               {this.props.note.comments.map((comment, index) => (
