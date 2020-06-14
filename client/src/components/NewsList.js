@@ -16,7 +16,7 @@ const NewsList = ({ news }) => {
   );
   if (news) {
     renderNews = news
-      .filter((newsItem) => newsItem.title)
+      .filter((newsItem) => newsItem && newsItem.title)
       .map((newsItem, index) => (
         <ListGroup key={index}>
           <Link
