@@ -118,9 +118,7 @@ export function fetchNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
 
-    return fetch(
-      `https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=${APIKEY}`
-    )
+    return fetch('/retrieve_espn_news')
       .then((response) => {
         return response.json();
       })
@@ -135,9 +133,7 @@ export function fetchFoxSports() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
 
-    return fetch(
-      `https://newsapi.org/v1/articles?source=fox-sports&sortBy=top&apiKey=${APIKEY}`
-    )
+    return fetch('/retrieve_fox_sports_news')
       .then((response) => {
         return response.json();
       })

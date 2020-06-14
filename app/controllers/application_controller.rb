@@ -11,4 +11,14 @@ class ApplicationController < ActionController::Base
     res = Net::HTTP.get(URI.parse("https://newsapi.org/v1/articles?source=nfl-news&sortBy=top&apiKey=#{ENV['APIKEY']}"))
     render json: res, status: 200
    end
+
+   def retrieve_espn_news
+    res = Net::HTTP.get(URI.parse("https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=#{ENV['APIKEY']}"))
+    render json: res, status: 200
+   end
+
+   def retrieve_fox_sports_news
+    res = Net::HTTP.get(URI.parse("https://newsapi.org/v1/articles?source=fox-sports&sortBy=top&apiKey=#{ENV['APIKEY']}"))
+    render json: res, status: 200
+   end
 end
