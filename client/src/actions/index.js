@@ -104,15 +104,6 @@ export function deleteNote(noteId) {
   };
 }
 
-// Getting this response on deployed version for these requests:
-/*
-{status: "error", code: "corsNotAllowed",…}
-code: "corsNotAllowed"
-message: "Requests from the browser are not allowed on the Developer plan, except from localhost."
-status: "error"
-*/
-// Either need to upgrade to a paid plan or switch to a different API.
-
 export function fetchNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
@@ -142,9 +133,6 @@ export function fetchFoxSports() {
       .then((news) => dispatch({ type: 'ADD_FOX_SPORTS', news }));
   };
 }
-
-//Add a .env file to the root of the react project
-//To access in app process.env.REACT_APP_FOX_SPORTS_KEY
 
 export function fetchNFLNews() {
   return (dispatch) => {
