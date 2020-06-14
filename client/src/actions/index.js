@@ -1,87 +1,133 @@
-import "isomorphic-fetch"
-import APIKEY from './URLs.js'
+import 'isomorphic-fetch';
+import APIKEY from './URLs.js';
 
 export function getNotes() {
   return (dispatch) => {
-    dispatch({ type: 'LOADING_NOTES' })
+    dispatch({ type: 'LOADING_NOTES' });
     return fetch('/api/notes', {
-    method: "get", headers: { "Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }})
-        .then(response => {
-          return response.json()
-        }).then(payload => dispatch({ type: 'SHOW_NOTES', payload }));
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((payload) => dispatch({ type: 'SHOW_NOTES', payload }));
   };
 }
 
 export function persistNote(name, description, link, comments) {
   const noteInfo = JSON.stringify({
-    note:{
+    note: {
       name: name,
       description: description,
       link: link,
-      comments: comments
-    }
+      comments: comments,
+    },
   });
   return (dispatch) => {
-    dispatch({ type: 'SAVING_NOTE' })
+    dispatch({ type: 'SAVING_NOTE' });
     return fetch('/api/notes', {
-      method: "post", body: noteInfo, headers: { "Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }})
-      .then(response => response.json()).then(payload => dispatch({ type: 'ADD_NOTES', payload }));
-  }
+      method: 'post',
+      body: noteInfo,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+      },
+    })
+      .then((response) => response.json())
+      .then((payload) => dispatch({ type: 'ADD_NOTES', payload }));
+  };
 }
 
 export function updateNote(noteId, name, description, link, comments) {
   return (dispatch) => {
-    dispatch({ type: 'SAVING_NOTE' })
+    dispatch({ type: 'SAVING_NOTE' });
     return fetch(`/api/notes/${noteId}`, {
-      method: "put", body: JSON.stringify({note:{
-        name: name,
-        description: description,
-        link: link,
-        comments: comments
-      }
-    }), headers: { "Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
+      method: 'put',
+      body: JSON.stringify({
+        note: {
+          name: name,
+          description: description,
+          link: link,
+          comments: comments,
+        },
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+      },
     })
-      .then(response => response.json()).then(payload => dispatch({ type: 'SAVING_NOTE' }))
-      .then(payload => {
-      dispatch({ type: 'LOADING_NOTES' })
-      return fetch('/api/notes', {
-      method: "get", headers: { "Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }})
-          .then(response => {
-            return response.json()
-          }).then(payload => dispatch({ type: 'SHOW_NOTES', payload }))
+      .then((response) => response.json())
+      .then((payload) => dispatch({ type: 'SAVING_NOTE' }))
+      .then((payload) => {
+        dispatch({ type: 'LOADING_NOTES' });
+        return fetch('/api/notes', {
+          method: 'get',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+          },
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((payload) => dispatch({ type: 'SHOW_NOTES', payload }));
       });
-  }
+  };
 }
 
 export function deleteNote(noteId) {
   return (dispatch) => {
-    dispatch({ type: 'DELETING_NOTE' })
+    dispatch({ type: 'DELETING_NOTE' });
     return fetch(`/api/notes/${noteId}`, {
-      method: "delete",
-       headers: { "Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }
-    })
-    .then(payload => {
-    dispatch({ type: 'LOADING_NOTES' })
-    return fetch('/api/notes', {
-    method: "get", headers: { "Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem('jwt') }})
-        .then(response => {
-          return response.json()
-        }).then(payload => dispatch({ type: 'SHOW_NOTES', payload }))
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+      },
+    }).then((payload) => {
+      dispatch({ type: 'LOADING_NOTES' });
+      return fetch('/api/notes', {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+        },
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((payload) => dispatch({ type: 'SHOW_NOTES', payload }));
     });
-  }
+  };
 }
+
+// Getting this response on deployed version for these requests:
+/*
+{status: "error", code: "corsNotAllowed",…}
+code: "corsNotAllowed"
+message: "Requests from the browser are not allowed on the Developer plan, except from localhost."
+status: "error"
+*/
+// Either need to upgrade to a paid plan or switch to a different API.
 
 export function fetchNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
 
-    return fetch(`https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=${APIKEY}`)
-    .then(response => {
-      return response.json()})
-      .then(responseJSON => {
-      return responseJSON.articles
-    }).then(news => dispatch({type: 'FETCH_NEWS', news}));
-
+    return fetch(
+      `https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=${APIKEY}`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((responseJSON) => {
+        return responseJSON.articles;
+      })
+      .then((news) => dispatch({ type: 'FETCH_NEWS', news }));
   };
 }
 
@@ -89,13 +135,16 @@ export function fetchFoxSports() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
 
-    return fetch(`https://newsapi.org/v1/articles?source=fox-sports&sortBy=top&apiKey=${APIKEY}`)
-      .then(response => {
-        return response.json()})
-        .then(responseJSON => {
-        return responseJSON.articles
-      }).then(news => dispatch({type: 'ADD_FOX_SPORTS', news}));
-
+    return fetch(
+      `https://newsapi.org/v1/articles?source=fox-sports&sortBy=top&apiKey=${APIKEY}`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((responseJSON) => {
+        return responseJSON.articles;
+      })
+      .then((news) => dispatch({ type: 'ADD_FOX_SPORTS', news }));
   };
 }
 
@@ -106,13 +155,16 @@ export function fetchNFLNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
 
-    return fetch(`https://newsapi.org/v1/articles?source=nfl-news&sortBy=top&apiKey=${APIKEY}`)
-      .then(response => {
-        return response.json()})
-        .then(responseJSON => {
-        return responseJSON.articles
-      }).then(news => dispatch({type: 'ADD_NFL_NEWS', news}));
-
+    return fetch(
+      `https://newsapi.org/v1/articles?source=nfl-news&sortBy=top&apiKey=${APIKEY}`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((responseJSON) => {
+        return responseJSON.articles;
+      })
+      .then((news) => dispatch({ type: 'ADD_NFL_NEWS', news }));
   };
 }
 
@@ -122,39 +174,42 @@ export function jwt(data, routerHistory) {
     return fetch('/user_token', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json'
+        Accept: 'application/json',
+        'Content-type': 'application/json',
       },
-      body: data
+      body: data,
     })
-    .then(response => {
-      if (response.status >= 200 && response.status < 300) {
-        response.json()
-        .then(data => {
-          localStorage.setItem('jwt', data.jwt)
-          dispatch({ type: 'RETURN_JWT'});
-          dispatch({ type: 'LOADING' });
-          return fetch('/api/users/:id', {
-            method: 'GET',
-            headers: {
-              Authorization: 'Bearer ' + localStorage.getItem('jwt')
-            }
-          }).then(response => response.json())
-          .then(data => {
-            localStorage.setItem('user', JSON.stringify(data))
-            dispatch({ type: 'CURRENT_USER', payload: data });
-            routerHistory.replace('/');
+      .then((response) => {
+        if (response.status >= 200 && response.status < 300) {
+          response.json().then((data) => {
+            localStorage.setItem('jwt', data.jwt);
+            dispatch({ type: 'RETURN_JWT' });
+            dispatch({ type: 'LOADING' });
+            return fetch('/api/users/:id', {
+              method: 'GET',
+              headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+              },
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                localStorage.setItem('user', JSON.stringify(data));
+                dispatch({ type: 'CURRENT_USER', payload: data });
+                routerHistory.replace('/');
+              });
           });
-        });
-      } else {
-        throw new Error('Network response was not ok.');
-      }
-    })
-    .catch(function(error) {
-      console.log('There has been a problem with your fetch operation: ', error.message);
-      dispatch({ type: 'INVALID_SIGNIN' })
-    });
-  }
+        } else {
+          throw new Error('Network response was not ok.');
+        }
+      })
+      .catch(function (error) {
+        console.log(
+          'There has been a problem with your fetch operation: ',
+          error.message
+        );
+        dispatch({ type: 'INVALID_SIGNIN' });
+      });
+  };
 }
 
 export function signUp(data, routerHistory) {
@@ -163,45 +218,47 @@ export function signUp(data, routerHistory) {
     return fetch('/api/register', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json'
+        Accept: 'application/json',
+        'Content-type': 'application/json',
       },
-      body: data
+      body: data,
     })
-    .then(response => {
-      if (response.status >= 200 && response.status < 300) {
-       response.json()
-        .then(data => {
-          localStorage.setItem('jwt', data.jwt)
-          dispatch({ type: 'RETURN_JWT' });
-          dispatch({ type: 'LOADING' });
-          return fetch('/api/users/:id', {
-            method: 'GET',
-            headers: {
-              Authorization: 'Bearer ' + localStorage.getItem('jwt')
-            }
-          })
-          .then(response => response.json())
-          .then(data => {
-            localStorage.setItem('user', JSON.stringify(data))
-            dispatch({ type: 'CURRENT_USER', payload: data });
-            routerHistory.replace('/');
-          })
-        })
-      } else {
-        throw new Error('Network response was not ok.');
-      }
-    })
-    .catch(function(error) {
-      console.log('There has been a problem with your fetch operation: ', error.message);
-      dispatch({ type: 'INVALID_SIGNUP' })
-    });
-  }
+      .then((response) => {
+        if (response.status >= 200 && response.status < 300) {
+          response.json().then((data) => {
+            localStorage.setItem('jwt', data.jwt);
+            dispatch({ type: 'RETURN_JWT' });
+            dispatch({ type: 'LOADING' });
+            return fetch('/api/users/:id', {
+              method: 'GET',
+              headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+              },
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                localStorage.setItem('user', JSON.stringify(data));
+                dispatch({ type: 'CURRENT_USER', payload: data });
+                routerHistory.replace('/');
+              });
+          });
+        } else {
+          throw new Error('Network response was not ok.');
+        }
+      })
+      .catch(function (error) {
+        console.log(
+          'There has been a problem with your fetch operation: ',
+          error.message
+        );
+        dispatch({ type: 'INVALID_SIGNUP' });
+      });
+  };
 }
 
 export function signOut() {
   return (dispatch) => {
-    dispatch({ type: 'LOGGED_OUT' })
+    dispatch({ type: 'LOGGED_OUT' });
     window.location.replace('/login');
-  }
+  };
 }
