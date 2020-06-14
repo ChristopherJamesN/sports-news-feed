@@ -1,5 +1,4 @@
 import 'isomorphic-fetch';
-import APIKEY from './URLs.js';
 
 export function getNotes() {
   return (dispatch) => {
