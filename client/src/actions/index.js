@@ -155,9 +155,7 @@ export function fetchNFLNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
 
-    return fetch(
-      `https://newsapi.org/v1/articles?source=nfl-news&sortBy=top&apiKey=${APIKEY}`
-    )
+    return fetch('/retrieve_nfl_news')
       .then((response) => {
         return response.json();
       })
