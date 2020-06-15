@@ -13,7 +13,7 @@ Run `bundle install`, `npm install` and `rake start`. You should be automaticall
 
 ## Deployment
 
-Application is deployed on on Heroku. Make sure that static assests have been built and added to public directory before deploying.
+Application is deployed on on Heroku.
 Using the Heroku CLI run `git push heroku master` to deploy the latest commit.
 
 ## Contributing
