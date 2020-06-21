@@ -22,7 +22,12 @@ const NewsShow = ({ newsItem }) => (
     </ListGroup>
     <ListGroup>
       <ListGroupItem>
-        <a href={newsItem.url} rget="_blank"ta rel="noopener noreferrer">
+        <p>{'Source: ' + newsItem.source}</p>
+      </ListGroupItem>
+    </ListGroup>
+    <ListGroup>
+      <ListGroupItem>
+        <a href={newsItem.url} rget="_blank" ta rel="noopener noreferrer">
           Link to Full Story
         </a>
       </ListGroupItem>

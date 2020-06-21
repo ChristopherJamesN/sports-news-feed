@@ -24,10 +24,8 @@ const NewsList = ({ news }) => {
           to={`/news/${newsItem.publishedAt}`}
         >
           <ListGroup key={index}>
-            <ListGroupItem>{newsItem.title || 'Story not found'}</ListGroupItem>
-            <ListGroupItem>
-              {'Source: ' + (newsItem.source || '')}
-            </ListGroupItem>
+            <div>{newsItem.title || 'Story not found'}</div>
+            <div>{'Source: ' + (newsItem.source || '')}</div>
           </ListGroup>
         </Link>
       ));
