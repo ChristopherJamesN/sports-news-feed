@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ListGroup } from 'reactstrap';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 
 const NewsList = ({ news }) => {
   let renderNews = (
@@ -18,15 +18,18 @@ const NewsList = ({ news }) => {
     renderNews = news
       .filter((newsItem) => newsItem && newsItem.title)
       .map((newsItem, index) => (
-        <ListGroup key={index}>
-          <Link
-            key={index}
-            className="list-group-item list-group-item-action"
-            to={`/news/${newsItem.publishedAt}`}
-          >
-            {newsItem.title || 'Story not found'}
-          </Link>
-        </ListGroup>
+        <Link
+          key={index}
+          className="list-group-item list-group-item-action"
+          to={`/news/${newsItem.publishedAt}`}
+        >
+          <ListGroup key={index}>
+            <ListGroupItem>{newsItem.title || 'Story not found'}</ListGroupItem>
+            <ListGroupItem>
+              {'Source: ' + (newsItem.source || '')}
+            </ListGroupItem>
+          </ListGroup>
+        </Link>
       ));
   }
   return <div>{renderNews}</div>;

@@ -113,7 +113,11 @@ export function fetchNews() {
         return response.json();
       })
       .then((responseJSON) => {
-        return responseJSON.articles;
+        const espnNewsResponse = responseJSON.articles;
+        espnNewsResponse.forEach((article) => {
+          article.source = 'ESPN';
+        });
+        return espnNewsResponse;
       })
       .then((news) => dispatch({ type: 'FETCH_NEWS', news }));
   };
@@ -128,7 +132,11 @@ export function fetchFoxSports() {
         return response.json();
       })
       .then((responseJSON) => {
-        return responseJSON.articles;
+        const foxSportsNewsResponse = responseJSON.articles;
+        foxSportsNewsResponse.forEach((article) => {
+          article.source = 'Fox Sports';
+        });
+        return foxSportsNewsResponse;
       })
       .then((news) => dispatch({ type: 'ADD_FOX_SPORTS', news }));
   };
@@ -143,7 +151,11 @@ export function fetchNFLNews() {
         return response.json();
       })
       .then((responseJSON) => {
-        return responseJSON.articles;
+        const NFLNetworkNewsResponse = responseJSON.articles;
+        NFLNetworkNewsResponse.forEach((article) => {
+          article.source = 'NFL Network';
+        });
+        return NFLNetworkNewsResponse;
       })
       .then((news) => dispatch({ type: 'ADD_NFL_NEWS', news }));
   };
