@@ -13,7 +13,14 @@ export function getNotes() {
       .then((response) => {
         return response.json();
       })
-      .then((payload) => dispatch({ type: 'SHOW_NOTES', payload }));
+      .then((payload) => dispatch({ type: 'SHOW_NOTES', payload }))
+      .catch(function (error) {
+        console.log(
+          'There has been a problem with your fetch operation: ',
+          error.message
+        );
+        dispatch({ type: 'INVALID_SIGNUP' });
+      });
   };
 }
 
@@ -37,7 +44,14 @@ export function persistNote(name, description, link, comments) {
       },
     })
       .then((response) => response.json())
-      .then((payload) => dispatch({ type: 'ADD_NOTES', payload }));
+      .then((payload) => dispatch({ type: 'ADD_NOTES', payload }))
+      .catch(function (error) {
+        console.log(
+          'There has been a problem with your fetch operation: ',
+          error.message
+        );
+        dispatch({ type: 'INVALID_SIGNUP' });
+      });
   };
 }
 
@@ -74,6 +88,13 @@ export function updateNote(noteId, name, description, link, comments) {
             return response.json();
           })
           .then((payload) => dispatch({ type: 'SHOW_NOTES', payload }));
+      })
+      .catch(function (error) {
+        console.log(
+          'There has been a problem with your fetch operation: ',
+          error.message
+        );
+        dispatch({ type: 'INVALID_SIGNUP' });
       });
   };
 }
@@ -99,7 +120,14 @@ export function deleteNote(noteId) {
         .then((response) => {
           return response.json();
         })
-        .then((payload) => dispatch({ type: 'SHOW_NOTES', payload }));
+        .then((payload) => dispatch({ type: 'SHOW_NOTES', payload }))
+        .catch(function (error) {
+          console.log(
+            'There has been a problem with your fetch operation: ',
+            error.message
+          );
+          dispatch({ type: 'INVALID_SIGNUP' });
+        });
     });
   };
 }
