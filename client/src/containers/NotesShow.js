@@ -76,9 +76,12 @@ class NotesShow extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   // eslint-disable-next-line
-  const note = state.notesReducer.notes.find(
-    (note) => note.id === ownProps.match.params.noteId
-  );
+  let note = {};
+  state.notesReducer.notes.forEach((currentNote) => {
+    if (currentNote.id.toString() === ownProps.match.params.noteId.toString()) {
+      note = currentNote;
+    }
+  });
 
   if (note) {
     return { note };
