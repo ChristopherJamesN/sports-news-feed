@@ -5,24 +5,29 @@ import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
 
 class SignOutLink extends Component {
-
   signOut = () => {
-    this.props.signOut()
+    this.props.signOut();
+  };
+
+  componentDidMount() {
+    this.props.signOut();
   }
 
   render() {
     return (
       <div>
-        <Button href="/" color="primary" onClick={this.signOut}>Sign out</Button>
+        <Button href="/" color="primary" onClick={this.signOut}>
+          Sign out
+        </Button>
       </div>
     );
   }
-};
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
     signOut: bindActionCreators(signOut, dispatch),
-   }
+  };
 };
 
 export default connect(null, mapDispatchToProps)(SignOutLink);
