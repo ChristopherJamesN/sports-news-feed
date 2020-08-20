@@ -277,9 +277,9 @@ export function signUp(data, routerHistory) {
   };
 }
 
-export function signOut() {
+export function signOut(routerHistory) {
   return (dispatch) => {
     dispatch({ type: 'LOGGED_OUT' });
-    window.location.replace('/login');
+    routerHistory.replace('/login');
   };
 }

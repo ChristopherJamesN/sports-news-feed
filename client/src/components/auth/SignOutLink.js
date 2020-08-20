@@ -5,12 +5,8 @@ import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
 
 class SignOutLink extends Component {
-  signOut = () => {
-    this.props.signOut();
-  };
-
   componentDidMount() {
-    this.props.signOut();
+    this.props.signOut(this.props.history);
   }
 
   render() {
