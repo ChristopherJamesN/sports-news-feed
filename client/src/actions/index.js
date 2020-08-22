@@ -132,63 +132,6 @@ export function deleteNote(noteId) {
   };
 }
 
-export function fetchNews() {
-  return (dispatch) => {
-    dispatch({ type: 'LOADING_NEWS' });
-
-    return fetch('/retrieve_espn_news')
-      .then((response) => {
-        return response.json();
-      })
-      .then((responseJSON) => {
-        const espnNewsResponse = responseJSON.articles;
-        espnNewsResponse.forEach((article) => {
-          article.source = 'ESPN';
-        });
-        return espnNewsResponse;
-      })
-      .then((news) => dispatch({ type: 'FETCH_NEWS', news }));
-  };
-}
-
-export function fetchFoxSports() {
-  return (dispatch) => {
-    dispatch({ type: 'LOADING_NEWS' });
-
-    return fetch('/retrieve_fox_sports_news')
-      .then((response) => {
-        return response.json();
-      })
-      .then((responseJSON) => {
-        const foxSportsNewsResponse = responseJSON.articles;
-        foxSportsNewsResponse.forEach((article) => {
-          article.source = 'Fox Sports';
-        });
-        return foxSportsNewsResponse;
-      })
-      .then((news) => dispatch({ type: 'ADD_FOX_SPORTS', news }));
-  };
-}
-
-export function fetchNFLNews() {
-  return (dispatch) => {
-    dispatch({ type: 'LOADING_NEWS' });
-
-    return fetch('/retrieve_nfl_news')
-      .then((response) => {
-        return response.json();
-      })
-      .then((responseJSON) => {
-        const NFLNetworkNewsResponse = responseJSON.articles;
-        NFLNetworkNewsResponse.forEach((article) => {
-          article.source = 'NFL Network';
-        });
-        return NFLNetworkNewsResponse;
-      })
-      .then((news) => dispatch({ type: 'ADD_NFL_NEWS', news }));
-  };
-}
-
 export function fetchSportsNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
