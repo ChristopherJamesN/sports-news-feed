@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import {persistNote} from '../actions';
-import { Modal, Button } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
+import { persistNote } from '../actions';
 
 class AddNote extends Component {
   constructor(props) {
@@ -18,35 +18,30 @@ class AddNote extends Component {
 
   close = () => {
     this.setState({ showModal: false });
-  }
+  };
 
   open = () => {
     this.setState({ showModal: true });
-  }
+  };
 
-  handleOnSubmit = event => {
+  handleOnSubmit = (event) => {
     event.preventDefault();
     this.close();
-    const { persistNote , history } = this.props
+    const { persistNote, history } = this.props;
     persistNote(this.state.name, this.state.description, this.state.link);
     history.push('/notes');
-  }
+  };
 
-  handleOnChange = event => {
+  handleOnChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
-  }
+  };
 
   render() {
     return (
       <div>
-
-      <Button
-          bsStyle="primary"
-          bsSize="large"
-          onClick={this.open}
-        >
+        <Button bsStyle="primary" bsSize="large" onClick={this.open}>
           Add Note
         </Button>
 
@@ -55,7 +50,7 @@ class AddNote extends Component {
             <Modal.Title>Add a Note</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form onSubmit={this.handleOnSubmit} >
+            <form onSubmit={this.handleOnSubmit}>
               <div className="form-group">
                 <input
                   type="text"
@@ -63,7 +58,8 @@ class AddNote extends Component {
                   placeholder="Name"
                   name="name"
                   className="form-control"
-                  onChange={this.handleOnChange} />
+                  onChange={this.handleOnChange}
+                />
               </div>
               <div className="form-group">
                 <input
@@ -72,33 +68,37 @@ class AddNote extends Component {
                   placeholder="Description"
                   name="description"
                   className="form-control"
-                  onChange={this.handleOnChange} />
+                  onChange={this.handleOnChange}
+                />
               </div>
               <div className="form-group">
                 <input
                   type="text"
                   value={this.props.link}
-                  placeholder='Link to associated article'
+                  placeholder="Link to associated article"
                   name="link"
                   className="form-control"
-                  onChange={this.handleOnChange} />
+                  onChange={this.handleOnChange}
+                />
               </div>
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  >Add Note</button>
+              <button type="submit" className="btn btn-primary">
+                Add Note
+              </button>
             </form>
           </Modal.Body>
         </Modal>
       </div>
     );
   }
-};
+}
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    persistNote: persistNote
-  }, dispatch);
+  return bindActionCreators(
+    {
+      persistNote: persistNote,
+    },
+    dispatch
+  );
 };
 
 export default connect(null, mapDispatchToProps)(withRouter(AddNote));
