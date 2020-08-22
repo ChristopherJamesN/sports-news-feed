@@ -189,6 +189,25 @@ export function fetchNFLNews() {
   };
 }
 
+export function fetchSportsNews() {
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_NEWS' });
+
+    return fetch('/retrieve_sports_news')
+      .then((response) => {
+        return response.json();
+      })
+      .then((responseJSON) => {
+        const sportsNewsResponse = responseJSON.articles;
+        sportsNewsResponse.forEach((article) => {
+          article.source = article.source.name;
+        });
+        return sportsNewsResponse;
+      })
+      .then((news) => dispatch({ type: 'ADD_SPORTS_NEWS', news }));
+  };
+}
+
 export function jwt(data, routerHistory) {
   return (dispatch) => {
     dispatch({ type: 'LOADING' });
