@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { ListGroup } from 'reactstrap';
 
 const NewsList = ({ news }) => {
   let renderNews = (
