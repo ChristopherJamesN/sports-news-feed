@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
    def fetch_sports_news_from_cache_or_api
     Rails.cache.fetch("/retrieve_sports_news", expires_in: 6.hours) do
-      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/top-headlines?sources=fox-sports,espn,nfl-news?&apiKey=#{ENV['APIKEY']}"))
+      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=#{ENV['APIKEY']}"))
     end
    end
 end
