@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import NotesNew from './NotesNew';
-import BackButton from '../components/BackButton';
 import { ListGroup, ListGroupItem } from 'reactstrap';
+import BackButton from '../components/BackButton';
+import NotesNew from './NotesNew';
 
 const NewsShow = ({ newsItem }) => (
   <div>
