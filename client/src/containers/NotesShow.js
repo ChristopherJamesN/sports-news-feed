@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { ListGroup, ListGroupItem } from 'reactstrap';
+import { bindActionCreators } from 'redux';
 import { updateNote } from '../actions';
 import BackButton from '../components/BackButton';
 import DeleteButton from '../components/DeleteButton';
 import CommentsNew from './CommentsNew';
-import { bindActionCreators } from 'redux';
-import { ListGroup, ListGroupItem } from 'reactstrap';
 
 class NotesShow extends Component {
   constructor(props) {
