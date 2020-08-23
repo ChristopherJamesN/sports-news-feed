@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { fetchSportsNews } from '../actions';
 import NewsList from '../components/NewsList';
 import NewsShow from './NewsShow';
-import { fetchSportsNews } from '../actions';
-import { bindActionCreators } from 'redux';
 
 class NewsPage extends Component {
   componentDidMount() {
