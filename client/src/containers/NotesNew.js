@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {persistNote} from '../actions';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { bindActionCreators } from 'redux';
+import { persistNote } from '../actions';
 
 class NotesNew extends Component {
   constructor(props) {
@@ -19,93 +19,106 @@ class NotesNew extends Component {
 
   toggle() {
     this.setState({
-      modal: !this.state.modal
+      modal: !this.state.modal,
     });
   }
 
-  handleOnSubmit = event => {
+  handleOnSubmit = (event) => {
     event.preventDefault();
-    const { persistNote , history } = this.props
+    const { persistNote, history } = this.props;
     persistNote(this.state.name, this.state.description, this.state.link);
     history.push('/notes');
-  }
+  };
 
-  handleOnChange = event => {
+  handleOnChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
-  }
+  };
 
   render() {
     if (this.props.isLoggedIn) {
       return (
         <div>
-          <Button color="primary" onClick={this.toggle}>Favorite Story</Button>
-            <Modal isOpen={this.state.modal} toggle={this.toggle} >
-              <ModalHeader toggle={this.toggle}>Favorite Story</ModalHeader>
-              <ModalBody>
-                <form onSubmit={this.handleOnSubmit} >
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      value={this.props.name}
-                      placeholder="Name"
-                      name="name"
-                      className="form-control"
-                      disabled="true"
-                      onChange={this.handleOnChange} />
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      value={this.props.description}
-                      placeholder="Description"
-                      name="description"
-                      className="form-control"
-                      disabled="true"
-                      onChange={this.handleOnChange} />
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      value={this.props.link}
-                      placeholder='Link to associated article'
-                      name="link"
-                      className="form-control"
-                      disabled="true"
-                      onChange={this.handleOnChange} />
-                  </div>
-                    <button
-                      type="submit"
-                      className="btn btn-primary"
-                      >Favorite Story</button>
-                </form>
-              </ModalBody>
-              <ModalFooter>
-                <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-              </ModalFooter>
-            </Modal>
-        </div>     );
-      } else {
-        return (
-          <div>
-            <p>Log in or sign up to favorite stories.</p>
-          </div>
-        );
-      }
+          <Button color="primary" onClick={this.toggle}>
+            Favorite Story
+          </Button>
+          <Modal isOpen={this.state.modal} toggle={this.toggle}>
+            <ModalHeader toggle={this.toggle}>Favorite Story</ModalHeader>
+            <ModalBody>
+              <form onSubmit={this.handleOnSubmit}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    value={this.props.name}
+                    placeholder="Name"
+                    name="name"
+                    className="form-control"
+                    disabled="true"
+                    onChange={this.handleOnChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    value={this.props.description}
+                    placeholder="Description"
+                    name="description"
+                    className="form-control"
+                    disabled="true"
+                    onChange={this.handleOnChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    value={this.props.link}
+                    placeholder="Link to associated article"
+                    name="link"
+                    className="form-control"
+                    disabled="true"
+                    onChange={this.handleOnChange}
+                  />
+                </div>
+                <button type="submit" className="btn btn-primary">
+                  Favorite Story
+                </button>
+              </form>
+            </ModalBody>
+            <ModalFooter>
+              <Button color="secondary" onClick={this.toggle}>
+                Cancel
+              </Button>
+            </ModalFooter>
+          </Modal>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <p>Log in or sign up to favorite stories.</p>
+        </div>
+      );
+    }
   }
-};
+}
 
 const mapStateToProps = (state) => {
   return {
-    isLoggedIn: state.userReducer.isLoggedIn
+    isLoggedIn: state.userReducer.isLoggedIn,
   };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    persistNote: persistNote
-  }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NotesNew));
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+      persistNote: persistNote,
+    },
+    dispatch
+  );
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(NotesNew));
