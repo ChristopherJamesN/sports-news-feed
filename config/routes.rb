@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   post '/user_token' => 'user_token#create'
   get '/retrieve_sports_news' => 'application#retrieve_sports_news'
+  get '/retrieve_bachelor_news' => 'application#retrieve_bachelor_news'
 
   scope '/api' do
     resources :notes, only: [:index, :create, :update, :destroy]
