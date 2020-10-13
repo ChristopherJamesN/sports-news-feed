@@ -17,4 +17,15 @@ class ApplicationController < ActionController::Base
       res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=#{ENV['APIKEY']}"))
     end
    end
+
+   def retrieve_bachelor_news
+    res = fetch_bachelor_news_from_cache_or_api()
+    render json: res, status: 200
+   end
+
+   def fetch_bachelor_news_from_cache_or_api
+    Rails.cache.fetch("/retrieve_bachelor_news", expires_in: 6.hours) do
+      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/top-headlines?q=bachelor&apiKey=#{ENV['APIKEY']}"))
+    end
+   end
 end
