@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
    def fetch_bachelor_news_from_cache_or_api
     Rails.cache.fetch("/retrieve_bachelor_news", expires_in: 6.hours) do
-      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/top-headlines?q=bachelor&apiKey=#{ENV['APIKEY']}"))
+      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=Bachelorette&apiKey=#{ENV['APIKEY']}"))
     end
    end
 end
