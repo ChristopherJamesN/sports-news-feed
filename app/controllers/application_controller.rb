@@ -13,8 +13,10 @@ class ApplicationController < ActionController::Base
    end
 
    def fetch_sports_news_from_cache_or_api
+    t = Time.now - 500000
+    formattedDate = t.strftime("%F")
     Rails.cache.fetch("/retrieve_sports_news", expires_in: 6.hours) do
-      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=#{ENV['APIKEY']}"))
+      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/top-headlines?country=us&category=sports&from=#{formattedDate}&apiKey=#{ENV['APIKEY']}"))
     end
    end
 
@@ -24,8 +26,10 @@ class ApplicationController < ActionController::Base
    end
 
    def fetch_bachelor_news_from_cache_or_api
+    t = Time.now - 500000
+    formattedDate = t.strftime("%F")
     Rails.cache.fetch("/retrieve_bachelor_news", expires_in: 6.hours) do
-      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelor&apiKey=#{ENV['APIKEY']}"))
+      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelor&from=#{formattedDate}&apiKey=#{ENV['APIKEY']}"))
     end
    end
 
@@ -35,8 +39,10 @@ class ApplicationController < ActionController::Base
    end
 
    def fetch_bachelorette_news_from_cache_or_api
+    t = Time.now - 500000
+    formattedDate = t.strftime("%F")
     Rails.cache.fetch("/retrieve_bachelorette_news", expires_in: 6.hours) do
-      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelorette&apiKey=#{ENV['APIKEY']}"))
+      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelorette&from=#{formattedDate}&apiKey=#{ENV['APIKEY']}"))
     end
    end
 end
