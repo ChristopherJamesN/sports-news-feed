@@ -45,4 +45,17 @@ class ApplicationController < ActionController::Base
       res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelorette&from=#{formattedDate}&apiKey=#{ENV['APIKEY']}"))
     end
    end
+
+   def retrieve_news
+    res = fetch_news_from_cache_or_api(params[:searchTerm])
+    render json: res, status: 200
+   end
+
+   def fetch_news_from_cache_or_api(searchTerm)
+    t = Time.now - 500000
+    formattedDate = t.strftime("%F")
+    Rails.cache.fetch("/retrieve_news", expires_in: 6.hours) do
+      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=#{searchTerm}&from=#{formattedDate}&apiKey=#{ENV['APIKEY']}"))
+    end
+   end
 end
