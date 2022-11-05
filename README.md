@@ -9,7 +9,7 @@ To test out this application locally, fork and clone the repo.
 
 ## Usage
 
-Run `bundle install`, `npm install` and `rake start`. You should be automatically directed to the appropriate location in your browser to interact with the application.
+Run `bundle install`, `cd client && npm install` and `cd .. && rake start`. You should be automatically directed to the appropriate location in your browser to interact with the application.
 
 ## Deployment
 
