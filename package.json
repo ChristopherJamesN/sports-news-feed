@@ -13,8 +13,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm install && npm run build && cd ..",
-    "deploy": "cp -a client/build/. public/",
-    "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
+    "deploy": "cp -a client/build/. public/"
   },
   "repository": {
     "type": "git",
@@ -25,23 +24,5 @@
   "bugs": {
     "url": "https://github.com/ChristopherJamesN/react-redux-nba-news-feed/issues"
   },
-  "homepage": "https://github.com/ChristopherJamesN/react-redux-nba-news-feed#readme",
-  "dependencies": {
-    "ajv": "^6.12.6",
-    "bootstrap": "^4.5.3",
-    "jquery": "^3.5.0",
-    "popper.js": "^1.15.0",
-    "react": "^16.14.0",
-    "react-bootstrap": "^0.31.5",
-    "react-dom": "^16.14.0",
-    "react-redux": "^7.2.2",
-    "react-router-dom": "^5.0.1",
-    "react-router-redux": "^4.0.8",
-    "react-scripts": "^3.4.4",
-    "react-transition-group": "^4.2.1",
-    "reactstrap": "^8.7.1",
-    "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0",
-    "xmlhttprequest": "^1.8.0"
-  }
+  "homepage": "https://github.com/ChristopherJamesN/react-redux-nba-news-feed#readme"
 }
