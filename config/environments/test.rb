@@ -39,4 +39,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # See https://guides.rubyonrails.org/configuring.html#config-active-record-legacy-connection-handling.
+  config.active_record.legacy_connection_handling = false
 end

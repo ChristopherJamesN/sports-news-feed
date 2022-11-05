@@ -88,4 +88,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # See https://guides.rubyonrails.org/configuring.html#config-active-record-legacy-connection-handling.
+  config.active_record.legacy_connection_handling = false
 end
