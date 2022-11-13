@@ -24,3 +24,6 @@
 .env
 
 /public
+dbpassword
+
+/config/master.key
