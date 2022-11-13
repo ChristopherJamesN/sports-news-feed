@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     t = Time.now - 500000
     formattedDate = t.strftime("%F")
     Rails.cache.fetch("/retrieve_sports_news", expires_in: 6.hours) do
-      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/top-headlines?country=us&category=sports&from=#{formattedDate}&apiKey=#{ENV['APIKEY']}"))
+      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/top-headlines?country=us&category=sports&from=#{formattedDate}&apiKey=#{Rails.application.credentials.news[:api_key]}"))
     end
    end
 
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     t = Time.now - 500000
     formattedDate = t.strftime("%F")
     Rails.cache.fetch("/retrieve_bachelor_news", expires_in: 6.hours) do
-      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelor&from=#{formattedDate}&apiKey=#{ENV['APIKEY']}"))
+      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelor&from=#{formattedDate}&apiKey=#{Rails.application.credentials.news[:api_key]}"))
     end
    end
 
@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
     t = Time.now - 500000
     formattedDate = t.strftime("%F")
     Rails.cache.fetch("/retrieve_bachelorette_news", expires_in: 6.hours) do
-      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelorette&from=#{formattedDate}&apiKey=#{ENV['APIKEY']}"))
+      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelorette&from=#{formattedDate}&apiKey=#{Rails.application.credentials.news[:api_key]}"))
     end
    end
 
@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
     t = Time.now - 500000
     formattedDate = t.strftime("%F")
     Rails.cache.fetch("/retrieve_news?searhTerm=#{searchTerm}", expires_in: 6.hours) do
-      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=#{searchTerm}&language=en&from=#{formattedDate}&apiKey=#{ENV['APIKEY']}"))
+      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=#{searchTerm}&language=en&from=#{formattedDate}&apiKey=#{Rails.application.credentials.news[:api_key]}"))
     end
    end
 end

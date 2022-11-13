@@ -18,6 +18,8 @@ Using the Heroku CLI run `git push heroku master` to deploy the latest commit.
 
 ### GCloud Deployment
 
+#### Initial Provisioning and Deployment
+
 PostgresSQL instance can be created with:
 
 ```
@@ -63,7 +65,7 @@ gsutil iam ch allUsers:objectViewer gs://news-feed-368501-news-feed-media-bucket
 Generate a `config/credentials.yml.enc` with:
 
 ```
-bin/rails credentials:edit
+EDITOR="vi" bin/rails credentials:edit
 ```
 
 Copy and paste the PostgresSQL instance database password from `dbpassword`
@@ -128,6 +130,35 @@ Use Cloud Build to build the image, run the database migrations, and populate th
 ```
 gcloud builds submit --config cloudbuild.yaml \
     --substitutions _SERVICE_NAME=rails-news-feed,_INSTANCE_NAME=news-feed-postgres-instance,_REGION=us-central1,_SECRET_NAME=rails-master-key-secret
+```
+
+Deploy the Cloud Run service for the first time, setting the service region, base image, and connected Cloud SQL instance by running:
+
+```
+gcloud run deploy rails-news-feed \
+     --platform managed \
+     --region us-central1 \
+     --image gcr.io/news-feed-368501/rails-news-feed \
+     --add-cloudsql-instances news-feed-368501:us-central1:news-feed-postgres-instance \
+     --allow-unauthenticated
+```
+
+#### Deploying Updates to Google Cloud
+
+Run the Cloud Build build and migration script:
+
+```
+gcloud builds submit --config cloudbuild.yaml \
+     --substitutions _SERVICE_NAME=rails-news-feed,_INSTANCE_NAME=news-feed-postgres-instance,_REGION=us-central1,_SECRET_NAME=rails-master-key-secret
+```
+
+Deploy the service, specifying only the region and image:
+
+```
+gcloud run deploy rails-news-feed \
+     --platform managed \
+     --region us-central1 \
+     --image gcr.io/news-feed-368501/rails-news-feed
 ```
 
 ## Technical Details
