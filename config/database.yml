@@ -25,8 +25,8 @@ production:
 # [START cloudrun_rails_database]
 production:
   <<: *default
-  database: <%= ENV["PRODUCTION_DB_NAME"] %>
-  username: <%= ENV["PRODUCTION_DB_USERNAME"] %>
+  database: news-feed-postgres-database
+  username: news-feed-postgres-user
   password: <%= Rails.application.credentials.gcp[:db_password] %>
-  host: "<%= ENV.fetch("DB_SOCKET_DIR") { '/cloudsql' } %>/<%= ENV["CLOUD_SQL_CONNECTION_NAME"] %>"
+  host: "<%= ENV.fetch("DB_SOCKET_DIR") { '/cloudsql' } %>/news-feed-368501:us-central1:news-feed-postgres-instance"
 # [END cloudrun_rails_database]

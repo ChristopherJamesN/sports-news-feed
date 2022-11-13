@@ -10,6 +10,6 @@ local:
 # [START cloudrun_rails_storage]
 google:
   service: GCS
-  project: <%= ENV["GOOGLE_PROJECT_ID"] %>
-  bucket: <%= ENV["STORAGE_BUCKET_NAME"] %>
+  project: news-feed-368501
+  bucket: news-feed-368501-news-feed-media-bucket
 # [END cloudrun_rails_storage]

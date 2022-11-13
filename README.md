@@ -115,6 +115,21 @@ gcloud secrets add-iam-policy-binding rails-master-key-secret \
     --role roles/secretmanager.secretAccessor
 ```
 
+Grant permission for Cloud Build to access Cloud SQL:
+
+```
+gcloud projects add-iam-policy-binding news-feed-368501 \
+    --member serviceAccount:65433380411@cloudbuild.gserviceaccount.com \
+    --role roles/cloudsql.client
+```
+
+Use Cloud Build to build the image, run the database migrations, and populate the static assets:
+
+```
+gcloud builds submit --config cloudbuild.yaml \
+    --substitutions _SERVICE_NAME=rails-news-feed,_INSTANCE_NAME=news-feed-postgres-instance,_REGION=us-central1,_SECRET_NAME=rails-master-key-secret
+```
+
 ## Technical Details
 
 * The server side source code lives primarily in the `app` directory. The server side uses the Rails framework.

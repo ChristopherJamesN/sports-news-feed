@@ -4,7 +4,7 @@
 # [START cloudrun_rails_base_image]
 # Pinning the OS to buster because the nodejs install script is buster-specific.
 # Be sure to update the nodejs install command if the base image OS is updated.
-FROM ruby:3.0-buster
+FROM ruby:3.1.2-buster
 # [END cloudrun_rails_base_image]
 
 RUN (curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor | apt-key add -) && \
@@ -37,9 +37,6 @@ ENV RAILS_LOG_TO_STDOUT=true
 ARG MASTER_KEY
 ENV RAILS_MASTER_KEY=${MASTER_KEY}
 # [END cloudrun_rails_dockerfile_key]
-
-# pre-compile Rails assets with master key
-RUN bundle exec rake assets:precompile
 
 EXPOSE 8080
 CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "8080"]
