@@ -29,6 +29,8 @@ RUN gem install bundler && \
 # Copy application code to the container image
 COPY . /app
 
+RUN npm run build && npm run deploy
+
 ENV RAILS_ENV=production
 ENV RAILS_SERVE_STATIC_FILES=true
 # Redirect Rails log to STDOUT for Cloud Run to capture
