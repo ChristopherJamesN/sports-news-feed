@@ -173,6 +173,14 @@ gcloud run deploy rails-news-feed \
 * The `rake start` command starts a rails server on http://localhost:3001/ and a webpack development
 server with hot reloading serving the client application on http://localhost:3000/.
 
+## Source Formatting
+
+To format the Ruby source code, the [RuboCop gem](https://github.com/rubocop/rubocop) is used.
+
+```
+bundle exec rubocop -a --require rubocop-rails
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ChristopherJamesN/react-redux-nba-news-feed. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
