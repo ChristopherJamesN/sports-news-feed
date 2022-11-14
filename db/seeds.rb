@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Note.create(name: 'First story', description: 'This is the description of the first story.', link: 'www.google.com', comments: ['Some comment', 'Second Comment'], user_id: 1)
-Note.create(name: 'Second story', description: 'This is the description of the second story.', link: 'www.google.com', comments: ['Some comment', 'Second Comment'], user_id: 1)
-Note.create(name: 'Third story', description: 'This is the description of the third story.', link: 'www.google.com', comments: ['Some comment', 'Second Comment'], user_id: 1)
+Note.create(name: 'First story', description: 'This is the description of the first story.', link: 'www.google.com',
+            comments: ['Some comment', 'Second Comment'], user_id: 1)
+Note.create(name: 'Second story', description: 'This is the description of the second story.', link: 'www.google.com',
+            comments: ['Some comment', 'Second Comment'], user_id: 1)
+Note.create(name: 'Third story', description: 'This is the description of the third story.', link: 'www.google.com',
+            comments: ['Some comment', 'Second Comment'], user_id: 1)

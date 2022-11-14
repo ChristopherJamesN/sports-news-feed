@@ -1,12 +1,12 @@
 class NotesController < ApplicationController
-  before_action :authenticate_user, only: [:index, :create, :update, :destroy]
+  before_action :authenticate_user, only: %i[index create update destroy]
 
   def index
     if current_user && Note.where(user_id: current_user.id)
       @notes = Note.where(user_id: current_user.id)
-      render json: @notes, status: 200
+      render json: @notes, status: :ok
     else
-      render json: {errors: "You do not have any saved stories."}, status: 500
+      render json: { errors: 'You do not have any saved stories.' }, status: :internal_server_error
     end
   end
 
@@ -14,9 +14,9 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
     @note.user_id = current_user.id
     if @note.save
-      render json: @note, status: 201
+      render json: @note, status: :created
     else
-      render json: { errors: note.errors.full_messages }, status: 500
+      render json: { errors: note.errors.full_messages }, status: :internal_server_error
     end
   end
 
@@ -27,8 +27,8 @@ class NotesController < ApplicationController
       @note.save
       render json: @note
     else
-      redirect "/login"
-      render json: { errors: note.errors.full_messages }, status: 500
+      redirect '/login'
+      render json: { errors: note.errors.full_messages }, status: :internal_server_error
     end
   end
 
@@ -47,8 +47,8 @@ class NotesController < ApplicationController
   end
 
   private
+
   def note_params
     params.require(:note).permit(:name, :description, :link, :comments, :user_id)
   end
-
 end
