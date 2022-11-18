@@ -44,53 +44,56 @@ class Navigation extends Component {
               </NavLink>
             </NavItem>
             <br></br>
-
-            {!this.props.isLoggedIn ? (
-              <Nav navbar>
-                <NavItem>
-                  <NavLink
-                    to="/signin"
-                    style={{ textDecoration: 'none' }}
-                    onClick={this.toggle}
-                  >
-                    &nbsp; Login &nbsp;
-                  </NavLink>
-                </NavItem>
-                <br></br>
-                <NavItem>
-                  <NavLink
-                    to="/signup"
-                    style={{ textDecoration: 'none' }}
-                    onClick={this.toggle}
-                  >
-                    &nbsp; Sign Up &nbsp;
-                  </NavLink>
-                </NavItem>
-                <br></br>
-              </Nav>
-            ) : (
-              <Nav navbar>
-                <NavItem>
-                  <NavLink
-                    to="/notes"
-                    style={{ textDecoration: 'none' }}
-                    onClick={this.toggle}
-                  >
-                    &nbsp; Saved Stories &nbsp;
-                  </NavLink>
-                </NavItem>
-                <br></br>
-                <NavItem>
-                  <NavLink
-                    to="/signout"
-                    style={{ textDecoration: 'none' }}
-                    onClick={this.toggle}
-                  >
-                    &nbsp; Sign Out &nbsp;
-                  </NavLink>
-                </NavItem>
-                <br></br>
-              </Nav>
+            {process.env.NODE_ENV !== 'production' && (
+              <>
+                {!this.props.isLoggedIn ? (
+                  <Nav navbar>
+                    <NavItem>
+                      <NavLink
+                        to="/signin"
+                        style={{ textDecoration: 'none' }}
+                        onClick={this.toggle}
+                      >
+                        &nbsp; Login &nbsp;
+                      </NavLink>
+                    </NavItem>
+                    <br></br>
+                    <NavItem>
+                      <NavLink
+                        to="/signup"
+                        style={{ textDecoration: 'none' }}
+                        onClick={this.toggle}
+                      >
+                        &nbsp; Sign Up &nbsp;
+                      </NavLink>
+                    </NavItem>
+                    <br></br>
+                  </Nav>
+                ) : (
+                  <Nav navbar>
+                    <NavItem>
+                      <NavLink
+                        to="/notes"
+                        style={{ textDecoration: 'none' }}
+                        onClick={this.toggle}
+                      >
+                        &nbsp; Saved Stories &nbsp;
+                      </NavLink>
+                    </NavItem>
+                    <br></br>
+                    <NavItem>
+                      <NavLink
+                        to="/signout"
+                        style={{ textDecoration: 'none' }}
+                        onClick={this.toggle}
+                      >
+                        &nbsp; Sign Out &nbsp;
+                      </NavLink>
+                    </NavItem>
+                    <br></br>
+                  </Nav>
+                )}
+              </>
             )}
           </Nav>
         </Collapse>
