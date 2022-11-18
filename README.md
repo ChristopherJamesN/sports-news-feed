@@ -1,6 +1,6 @@
 # react-redux-nba-news-feed
 
-A web application built with a React-Redux frontend and a Rails backend that can be used to view and take notes on sports news. Demo hosted on Heroku here: https://agile-reef-34726.herokuapp.com/.
+A web application built with a React-Redux frontend and a Rails backend that can be used to view and take notes on sports news. Demo hosted on Google Cloud here: https://rails-news-feed-jt3432sekq-uc.a.run.app/.
 
 ## Installation
 
@@ -10,11 +10,6 @@ To test out this application locally, fork and clone the repo.
 ## Usage
 
 Run `bundle install` , `cd client && npm install` and `cd .. && rake start` . You should be automatically directed to the appropriate location in your browser to interact with the application.
-
-## Deployment
-
-Application is deployed on on Heroku.
-Using the Heroku CLI run `git push heroku master` to deploy the latest commit.
 
 ### GCloud Deployment
 
