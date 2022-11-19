@@ -14,20 +14,20 @@ steps:
     name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/${PROJECT_ID}/${_SERVICE_NAME}']
 
-  - id: 'apply migrations'
-    name: 'gcr.io/google-appengine/exec-wrapper'
-    entrypoint: 'bash'
-    args:
-      [
-        '-c',
-        '/buildstep/execute.sh -i gcr.io/${PROJECT_ID}/${_SERVICE_NAME} -s ${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME} -e RAILS_MASTER_KEY=$$RAILS_KEY -- bundle exec rails db:migrate',
-      ]
-    secretEnv: ['RAILS_KEY']
+#  - id: 'apply migrations'
+#    name: 'gcr.io/google-appengine/exec-wrapper'
+#    entrypoint: 'bash'
+#    args:
+#      [
+#        '-c',
+#        '/buildstep/execute.sh -i gcr.io/${PROJECT_ID}/${_SERVICE_NAME} -s ${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME} -e RAILS_MASTER_KEY=$$RAILS_KEY -- bundle exec rails db:migrate',
+#      ]
+#    secretEnv: ['RAILS_KEY']
 
 substitutions:
-  _REGION: us-central1
+  #_REGION: us-central1
   _SERVICE_NAME: rails-news-feed
-  _INSTANCE_NAME: news-feed-postgres-instance
+  # _INSTANCE_NAME: news-feed-postgres-instance
   _SECRET_NAME: rails-master-key
 
 availableSecrets:

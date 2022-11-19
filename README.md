@@ -156,6 +156,22 @@ gcloud run deploy rails-news-feed \
      --image gcr.io/news-feed-368501/rails-news-feed
 ```
 
+or without a Postgres instance setup:
+
+```
+gcloud builds submit --config cloudbuild.yaml \
+     --substitutions _SERVICE_NAME=rails-news-feed,_SECRET_NAME=rails-master-key-secret
+```
+
+Deploy the service, specifying only the region and image:
+
+```
+gcloud run deploy rails-news-feed \
+     --platform managed \
+     --region us-central1 \
+     --image gcr.io/news-feed-368501/rails-news-feed
+```
+
 ## Technical Details
 
 * The server side source code lives primarily in the `app` directory. The server side uses the Rails framework.
