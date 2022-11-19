@@ -7,12 +7,17 @@ class Homepage extends Component {
   render() {
     return (
       <div>
-        <Alert color="info" isOpen={this.props.isLoggedIn}>
-          You are logged in.
-        </Alert>
-        <Alert color="info" isOpen={!this.props.isLoggedIn}>
-          You are logged out.
-        </Alert>
+        {process.env.NODE_ENV !== 'production' && (
+          <>
+            {' '}
+            <Alert color="info" isOpen={this.props.isLoggedIn}>
+              You are logged in.
+            </Alert>
+            <Alert color="info" isOpen={!this.props.isLoggedIn}>
+              You are logged out.
+            </Alert>
+          </>
+        )}
         <IntroText />
       </div>
     );
