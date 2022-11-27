@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 
 class BackButton extends Component {
   static contextTypes = {
-    router: () => null
+    router: () => null,
   };
 
   goBack = () => {
