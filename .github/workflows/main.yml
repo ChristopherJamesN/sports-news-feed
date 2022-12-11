@@ -14,10 +14,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.2
-      - name: Install pronto-brakeman
-        run: |
-          gem install specific_install
-          gem specific_install https://github.com/zenom/pronto-brakeman
       - name: Setup pronto
         run: gem install pronto
       - name: Run Pronto
