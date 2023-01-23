@@ -104,7 +104,7 @@ news:
   api_key: API_KEY
 ```
 
-Note: The news api key will be the api key that you get from https://newsapi.org/.
+Note: The news api key will need to be generated from https://newsapi.org/.
 
 The `config/master.key` needs to be stored in Google Cloud secrets manager
 in order to decrypt the `config/credentials/yml.enc` file.
@@ -203,6 +203,33 @@ gcloud run deploy rails-news-feed \
      --platform managed \
      --region us-central1 \
      --image gcr.io/news-feed-368501/rails-news-feed
+```
+
+Note: If you update the `config/master.key` file locally you will need
+to add a new version of the `rails-master-key-secret` secret to the
+gcloud project before you build a new image. This can be done with:
+
+```
+gcloud secrets versions add rails-master-key-secret --data-file config/master.key
+```
+
+After adding a new version of the secret you may also need to
+re-grant permissions for viewing the secret:
+
+Grant access to the secret to the Cloud Run service account with:
+
+```
+gcloud secrets add-iam-policy-binding rails-master-key-secret \
+    --member serviceAccount:65433380411-compute@developer.gserviceaccount.com \
+    --role roles/secretmanager.secretAccessor
+```
+
+Grant access to the secret to the Cloud Build service account with:
+
+```
+gcloud secrets add-iam-policy-binding rails-master-key-secret \
+    --member serviceAccount:65433380411@cloudbuild.gserviceaccount.com \
+    --role roles/secretmanager.secretAccessor
 ```
 
 ## Technical Details
