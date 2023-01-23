@@ -36,6 +36,8 @@ into the file that is opened via the above command:
 secret_key_base: GENERATED_VALUE
 gcp:
   db_password: PASSWORD
+news:
+  api_key: API_KEY
 ```
 
 ### GCloud Deployment
@@ -98,7 +100,11 @@ into the file that is opened via the above command:
 secret_key_base: GENERATED_VALUE
 gcp:
   db_password: PASSWORD
+news:
+  api_key: API_KEY
 ```
+
+Note: The news api key will be the api key that you get from https://newsapi.org/.
 
 The `config/master.key` needs to be stored in Google Cloud secrets manager
 in order to decrypt the `config/credentials/yml.enc` file.
