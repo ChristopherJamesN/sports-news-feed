@@ -11,6 +11,33 @@ To test out this application locally, fork and clone the repo.
 
 Run `bundle install` , `cd client && npm install` and `cd .. && rake start` . You should be automatically directed to the appropriate location in your browser to interact with the application.
 
+Note: You may also need to delete and recreate the `config/credentials.yml.enc` file if you
+fork this project. Here are some details copied from the [GCloud Deployment section](#gcloud-deployment)
+for reference:
+
+A random password for the database user can be created and written to a
+file called `dbpassword` with:
+
+```
+cat /dev/urandom | LC_ALL=C tr -dc '[:alpha:]'| fold -w 50 | head -n1 > dbpassword
+```
+
+Generate a `config/credentials.yml.enc` with:
+
+```
+EDITOR="vi" bin/rails credentials:edit
+```
+
+Copy and paste the PostgresSQL instance database password from `dbpassword`
+
+into the file that is opened via the above command:
+
+```
+secret_key_base: GENERATED_VALUE
+gcp:
+  db_password: PASSWORD
+```
+
 ### GCloud Deployment
 
 #### Initial Provisioning and Deployment
@@ -183,6 +210,10 @@ gcloud run deploy rails-news-feed \
 * `app/controllers/application_controller.rb` makes requests to retrieve news stories from https://newsapi.org/, responses are cached for six hours to avoid exceeding newsapi rate limits.
 * The `rake start` command starts a rails server on http://localhost:3001/ and a webpack development
 server with hot reloading serving the client application on http://localhost:3000/.
+
+Note: To save costs, I do not currently include the postgres instance in the GCloud deployment.
+This means that you cannot login and save/take notes on news stories on the deployed version
+of the app.
 
 ## Source Formatting
 
