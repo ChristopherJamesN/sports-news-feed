@@ -11,7 +11,7 @@
     "node": "10.14.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cd client && npm install && npm run test && cd ..",
     "build": "cd client && npm install && npm run build && cd ..",
     "deploy": "cp -a client/build/. public/"
   },
