@@ -11,6 +11,9 @@ To test out this application locally, fork and clone the repo.
 
 Run `bundle install` , `cd client && npm install` and `cd .. && rake start` . You should be automatically directed to the appropriate location in your browser to interact with the application.
 
+Or, if you have already installed the required dependencies, you can just run `rake start` from
+the root of the project.
+
 Note: You may also need to delete and recreate the `config/credentials.yml.enc` file if you
 fork this project. Here are some details copied from the [GCloud Deployment section](#gcloud-deployment)
 for reference:
