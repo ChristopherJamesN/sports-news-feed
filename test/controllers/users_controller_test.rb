@@ -1,4 +1,4 @@
-require 'test_helper'
+require './test/test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -13,7 +13,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test 'should create user' do
     assert_difference('User.count') do
       post users_url,
-           params: { user: { admin: @user.admin, email: @user.email, password_digest: @user.password_digest } }, as: :json
+           params: { user: { admin: @user.admin, email: @user.email, password_digest: @user.password_digest } },
+           as: :json
     end
 
     assert_response 201
@@ -26,7 +27,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update user' do
     patch user_url(@user),
-          params: { user: { admin: @user.admin, email: @user.email, password_digest: @user.password_digest } }, as: :json
+          params: { user: { admin: @user.admin, email: @user.email, password_digest: @user.password_digest } },
+          as: :json
     assert_response 200
   end
 

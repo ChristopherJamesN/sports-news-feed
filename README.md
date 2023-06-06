@@ -240,6 +240,7 @@ gcloud secrets add-iam-policy-binding rails-master-key-secret \
 * The server side source code lives primarily in the `app` directory. The server side uses the Rails framework.
   + The configuration files for the server live in the `config` directory.
   + Server side test code lives in the `test` directory.
+    - Run tests with `rspec`. For example to run the tests in test/controllers/users_controller_test.rb use `rspec test/controllers/users_controller_test.rb`.
   + The `lib/tasks` directory contains `rake` task definitions.
 * Database related files (schema, seeds, and migrations) live in the `db` directory.
 * The client side source code lives in the `client` directory. The client side uses the React framework.
