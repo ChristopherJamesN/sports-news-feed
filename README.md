@@ -43,6 +43,34 @@ news:
   api_key: API_KEY
 ```
 
+### Client side dependencies
+
+If using an m1 Mac you will need to use the `-x86_64` architecture version of node to install
+dependencies in order to prevent errors like:
+
+```
+Error: Cannot find module \'node-darwin-x64/package.json\'
+```
+
+Note that the above error message might be preceded by a misleading error message like:
+
+```
+npm ERR! ERROR: npm v9.6.3 is known not to run on Node.js v11.15.0.  This version of npm supports the following node versions: `^14.17.0 || ^16.13.0 || >=18.0.0`. You can find the latest version at https://nodejs.org/.
+```
+
+This misleading error message might be shown even if you are not using Node.js version 11.15.0.
+
+Also see https://github.com/motdotla/dotenv/issues/560 and https://www.npmjs.com/package/node-darwin-x64
+for more details.
+
+To uninstall a version of node and reinstall with the `-x86_64` architecture version run:
+
+```
+nvm uninstall 16.13.2
+arch -x86_64 zsh
+nvm install 16.13.2
+```
+
 ### GCloud Deployment
 
 #### Initial Provisioning and Deployment
