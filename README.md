@@ -21,13 +21,13 @@ for reference:
 A random password for the database user can be created and written to a
 file called `dbpassword` with:
 
-```
+```shell
 cat /dev/urandom | LC_ALL=C tr -dc '[:alpha:]'| fold -w 50 | head -n1 > dbpassword
 ```
 
 Generate a `config/credentials.yml.enc` with:
 
-```
+```shell
 EDITOR="vi" bin/rails credentials:edit
 ```
 
@@ -35,7 +35,7 @@ Copy and paste the PostgresSQL instance database password from `dbpassword`
 
 into the file that is opened via the above command:
 
-```
+```shell
 secret_key_base: GENERATED_VALUE
 gcp:
   db_password: PASSWORD
@@ -48,13 +48,13 @@ news:
 If using an m1 Mac you will need to use the `-x86_64` architecture version of node to install
 dependencies in order to prevent errors like:
 
-```
+```shell
 Error: Cannot find module \'node-darwin-x64/package.json\'
 ```
 
 Note that the above error message might be preceded by a misleading error message like:
 
-```
+```shell
 npm ERR! ERROR: npm v9.6.3 is known not to run on Node.js v11.15.0.  This version of npm supports the following node versions: `^14.17.0 || ^16.13.0 || >=18.0.0`. You can find the latest version at https://nodejs.org/.
 ```
 
@@ -65,7 +65,7 @@ for more details.
 
 To uninstall a version of node and reinstall with the `-x86_64` architecture version run:
 
-```
+```shell
 nvm uninstall 16.13.2
 arch -x86_64 zsh
 nvm install 16.13.2
@@ -77,7 +77,7 @@ nvm install 16.13.2
 
 PostgresSQL instance can be created with:
 
-```
+```shell
 gcloud sql instances create news-feed-postgres-instance \
     --database-version POSTGRES_12 \
     --tier db-f1-micro \
@@ -86,7 +86,7 @@ gcloud sql instances create news-feed-postgres-instance \
 
 The database can then be created with:
 
-```
+```shell
 gcloud sql databases create news-feed-postgres-database \
     --instance news-feed-postgres-instance
 ```
@@ -94,32 +94,32 @@ gcloud sql databases create news-feed-postgres-database \
 A random password for the database user can be created and written to a
 file called `dbpassword` with:
 
-```
+```shell
 cat /dev/urandom | LC_ALL=C tr -dc '[:alpha:]'| fold -w 50 | head -n1 > dbpassword
 ```
 
 Create a user within the recently created instance and set its password with:
 
-```
+```shell
 gcloud sql users create news-feed-postgres-user \
    --instance=news-feed-postgres-instance --password=$(cat dbpassword)
 ```
 
 A Cloud Storage bucket can be created with:
 
-```
+```shell
 gsutil mb -l us-central1 gs://news-feed-368501-news-feed-media-bucket
 ```
 
 To make objects in the bucket public, run:
 
-```
+```shell
 gsutil iam ch allUsers:objectViewer gs://news-feed-368501-news-feed-media-bucket
 ```
 
 Generate a `config/credentials.yml.enc` with:
 
-```
+```shell
 EDITOR="vi" bin/rails credentials:edit
 ```
 
@@ -127,7 +127,7 @@ Copy and paste the PostgresSQL instance database password from `dbpassword`
 
 into the file that is opened via the above command:
 
-```
+```shell
 secret_key_base: GENERATED_VALUE
 gcp:
   db_password: PASSWORD
@@ -142,27 +142,26 @@ in order to decrypt the `config/credentials/yml.enc` file.
 
 Create a new secret with:
 
-```
+```shell
 gcloud secrets create rails-master-key-secret --data-file config/master.key
 ```
 
 Confirm creation of the secret with:
 
-```
+```shell
 gcloud secrets describe rails-master-key-secret
-
 gcloud secrets versions access latest --secret rails-master-key-secret
 ```
 
 Get the value of the project number with:
 
-```
+```shell
 gcloud projects describe news-feed-368501 --format='value(projectNumber)'
 ```
 
 Grant access to the secret to the Cloud Run service account with:
 
-```
+```shell
 gcloud secrets add-iam-policy-binding rails-master-key-secret \
     --member serviceAccount:65433380411-compute@developer.gserviceaccount.com \
     --role roles/secretmanager.secretAccessor
@@ -170,7 +169,7 @@ gcloud secrets add-iam-policy-binding rails-master-key-secret \
 
 Grant access to the secret to the Cloud Build service account with:
 
-```
+```shell
 gcloud secrets add-iam-policy-binding rails-master-key-secret \
     --member serviceAccount:65433380411@cloudbuild.gserviceaccount.com \
     --role roles/secretmanager.secretAccessor
@@ -178,7 +177,7 @@ gcloud secrets add-iam-policy-binding rails-master-key-secret \
 
 Grant permission for Cloud Build to access Cloud SQL:
 
-```
+```shell
 gcloud projects add-iam-policy-binding news-feed-368501 \
     --member serviceAccount:65433380411@cloudbuild.gserviceaccount.com \
     --role roles/cloudsql.client
@@ -186,14 +185,14 @@ gcloud projects add-iam-policy-binding news-feed-368501 \
 
 Use Cloud Build to build the image, run the database migrations, and populate the static assets:
 
-```
+```shell
 gcloud builds submit --config cloudbuild.yaml \
     --substitutions _SERVICE_NAME=rails-news-feed,_INSTANCE_NAME=news-feed-postgres-instance,_REGION=us-central1,_SECRET_NAME=rails-master-key-secret
 ```
 
 Deploy the Cloud Run service for the first time, setting the service region, base image, and connected Cloud SQL instance by running:
 
-```
+```shell
 gcloud run deploy rails-news-feed \
      --platform managed \
      --region us-central1 \
@@ -206,14 +205,14 @@ gcloud run deploy rails-news-feed \
 
 Run the Cloud Build build and migration script:
 
-```
+```shell
 gcloud builds submit --config cloudbuild.yaml \
      --substitutions _SERVICE_NAME=rails-news-feed,_INSTANCE_NAME=news-feed-postgres-instance,_REGION=us-central1,_SECRET_NAME=rails-master-key-secret
 ```
 
 Deploy the service, specifying only the region and image:
 
-```
+```shell
 gcloud run deploy rails-news-feed \
      --platform managed \
      --region us-central1 \
@@ -222,14 +221,14 @@ gcloud run deploy rails-news-feed \
 
 or without a Postgres instance setup:
 
-```
+```shell
 gcloud builds submit --config cloudbuild.yaml \
      --substitutions _SERVICE_NAME=rails-news-feed,_SECRET_NAME=rails-master-key-secret
 ```
 
 Deploy the service, specifying only the region and image:
 
-```
+```shell
 gcloud run deploy rails-news-feed \
      --platform managed \
      --region us-central1 \
@@ -240,7 +239,7 @@ Note: If you update the `config/master.key` file locally you will need
 to add a new version of the `rails-master-key-secret` secret to the
 gcloud project before you build a new image. This can be done with:
 
-```
+```shell
 gcloud secrets versions add rails-master-key-secret --data-file config/master.key
 ```
 
@@ -249,7 +248,7 @@ re-grant permissions for viewing the secret:
 
 Grant access to the secret to the Cloud Run service account with:
 
-```
+```shell
 gcloud secrets add-iam-policy-binding rails-master-key-secret \
     --member serviceAccount:65433380411-compute@developer.gserviceaccount.com \
     --role roles/secretmanager.secretAccessor
@@ -257,7 +256,7 @@ gcloud secrets add-iam-policy-binding rails-master-key-secret \
 
 Grant access to the secret to the Cloud Build service account with:
 
-```
+```shell
 gcloud secrets add-iam-policy-binding rails-master-key-secret \
     --member serviceAccount:65433380411@cloudbuild.gserviceaccount.com \
     --role roles/secretmanager.secretAccessor
@@ -284,7 +283,7 @@ of the app.
 
 To format the Ruby source code, the [RuboCop gem](https://github.com/rubocop/rubocop) is used.
 
-```
+```shell
 bundle exec rubocop -a --require rubocop-rails
 ```
 
