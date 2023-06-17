@@ -27,9 +27,9 @@ class ApplicationController < ActionController::Base
 
   def fetch_bachelor_news_from_cache_or_api
     t = Time.now - 500_000
-    formattedDate = t.strftime('%F')
+    formatted_date = t.strftime('%F')
     Rails.cache.fetch('/retrieve_bachelor_news', expires_in: 6.hours) do
-      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelor&from=#{formattedDate}&apiKey=#{Rails.application.credentials.news[:api_key]}"))
+      Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelor&from=#{formatted_date}&apiKey=#{Rails.application.credentials.news[:api_key]}"))
     end
   end
 
@@ -40,9 +40,9 @@ class ApplicationController < ActionController::Base
 
   def fetch_bachelorette_news_from_cache_or_api
     t = Time.now - 500_000
-    formattedDate = t.strftime('%F')
+    formatted_date = t.strftime('%F')
     Rails.cache.fetch('/retrieve_bachelorette_news', expires_in: 6.hours) do
-      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelorette&from=#{formattedDate}&apiKey=#{Rails.application.credentials.news[:api_key]}"))
+      Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelorette&from=#{formatted_date}&apiKey=#{Rails.application.credentials.news[:api_key]}"))
     end
   end
 
@@ -51,11 +51,11 @@ class ApplicationController < ActionController::Base
     render json: res, status: :ok
   end
 
-  def fetch_news_from_cache_or_api(searchTerm)
+  def fetch_news_from_cache_or_api(search_term)
     t = Time.now - 500_000
-    formattedDate = t.strftime('%F')
-    Rails.cache.fetch("/retrieve_news?searhTerm=#{searchTerm}", expires_in: 6.hours) do
-      res = Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=#{searchTerm}&language=en&from=#{formattedDate}&apiKey=#{Rails.application.credentials.news[:api_key]}"))
+    formatted_date = t.strftime('%F')
+    Rails.cache.fetch("/retrieve_news?searhTerm=#{search_term}", expires_in: 6.hours) do
+      Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=#{search_term}&language=en&from=#{formatted_date}&apiKey=#{Rails.application.credentials.news[:api_key]}"))
     end
   end
 end
