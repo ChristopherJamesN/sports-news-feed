@@ -8,12 +8,14 @@ development:
   database: christophernady
   pool: 5
   timeout: 5000
+  port: 5430
 
 test:
   adapter: postgresql
   database: test_postgresql
   pool: 5
   timeout: 5000
+  port: 5430
 
 production:
   adapter: postgresql
