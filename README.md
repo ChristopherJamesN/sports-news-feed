@@ -71,9 +71,9 @@ arch -x86_64 zsh
 nvm install 16.13.2
 ```
 
-### GCloud Deployment
+## GCloud Deployment
 
-#### Initial Provisioning and Deployment
+### Initial Provisioning and Deployment
 
 PostgresSQL instance can be created with:
 
@@ -201,29 +201,13 @@ gcloud run deploy rails-news-feed \
      --allow-unauthenticated
 ```
 
-#### Deploying Updates to Google Cloud
+### Deploying Updates to Google Cloud
 
 Run the Cloud Build build and migration script:
 
 ```shell
 gcloud builds submit --config cloudbuild.yaml \
      --substitutions _SERVICE_NAME=rails-news-feed,_INSTANCE_NAME=news-feed-postgres-instance,_REGION=us-central1,_SECRET_NAME=rails-master-key-secret
-```
-
-Deploy the service, specifying only the region and image:
-
-```shell
-gcloud run deploy rails-news-feed \
-     --platform managed \
-     --region us-central1 \
-     --image gcr.io/news-feed-368501/rails-news-feed
-```
-
-or without a Postgres instance setup:
-
-```shell
-gcloud builds submit --config cloudbuild.yaml \
-     --substitutions _SERVICE_NAME=rails-news-feed,_SECRET_NAME=rails-master-key-secret
 ```
 
 Deploy the service, specifying only the region and image:
@@ -260,6 +244,22 @@ Grant access to the secret to the Cloud Build service account with:
 gcloud secrets add-iam-policy-binding rails-master-key-secret \
     --member serviceAccount:65433380411@cloudbuild.gserviceaccount.com \
     --role roles/secretmanager.secretAccessor
+```
+
+### Deploying Updates to Google Cloud Without a Postgres Instance
+
+```shell
+gcloud builds submit --config cloudbuild.yaml \
+     --substitutions _SERVICE_NAME=rails-news-feed,_SECRET_NAME=rails-master-key-secret
+```
+
+Deploy the service, specifying only the region and image:
+
+```shell
+gcloud run deploy rails-news-feed \
+     --platform managed \
+     --region us-central1 \
+     --image gcr.io/news-feed-368501/rails-news-feed
 ```
 
 ## Technical Details
