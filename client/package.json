@@ -5,9 +5,9 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "bootstrap": "^4.5.2",
-    "isomorphic-fetch": "^3.0.0",
-    "jest-worker": "^29.6.1",
-    "jquery": "^3.5.0",
+    "isomorphic-fetch": "3.0.0",
+    "jest-worker": "29.6.2",
+    "jquery": "3.7.0",
     "popper.js": "^1.15.0",
     "react": "^16.8.6",
     "react-bootstrap": "^0.31.5",
