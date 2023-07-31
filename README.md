@@ -334,11 +334,9 @@ A couple of similar reported issues on Stack Overflow:
 * https://stackoverflow.com/questions/73464400/error-when-try-to-run-npm-build-on-react-project (no accepted answer).
 * https://stackoverflow.com/questions/74848909/react-js-npm-run-start-return-error-syntaxerror-unexpected-token (accepted answer is to update node version).
 
-This got me thinking, so I changed `"build": "react-scripts build",` to `"build": "node -v && react-scripts build",`
+This got me thinking, so I changed `"build": "react-scripts build",` to `"build": "node -v && react-scripts build",` in `client/package.json` . Now when I run `npm run build` I see the node version is 11.15.0:
 
-in `client/package.json` . Now when I run `npm run build` I see the node version is 11.15.0:
-
-```
+```shell
 client@0.1.0 build
 > node -v && react-scripts build
 
@@ -349,7 +347,7 @@ v11.15.0
 
 `nvm ls` shows:
 
-```
+```shell
 nvm ls
         v6.11.2
        v12.20.0
@@ -386,6 +384,76 @@ v16.20.1
 ```
 
 So I am not sure why the `build` script is using Node version 11.15.0.
+
+`nvm uninstall 11.15.0` shows that version 11.15.0 is not installed:
+
+```shell
+nvm uninstall 11.15.0
+N/A version is not installed...
+```
+
+If I try `node -v && nvm use 16.20.1 && react-scripts build` as the `build` script, I get an error like:
+
+```shell
+v11.15.0
+sh: nvm: command not found
+```
+
+To find which node was being I used I set `which node && nvm use 16.20.1 && react-scripts build` as the `build` script with gave me:
+
+```shell
+npm run build
+
+> client@0.1.0 build
+> which node && nvm use 16.20.1 && react-scripts build
+
+/Users/christophernady/Development/code/node_modules/.bin/node
+sh: nvm: command not found
+```
+
+So apparently I had this old node version installed locally (and it was probably being used by the NPM scripts due to something with how my `PATH` is setup, I haven't dug into this):
+
+```shell
+/Users/christophernady/Development/code/node_modules/.bin/node -v
+v11.15.0
+```
+
+After I removed the old version with:
+
+```shell
+rm -rf /Users/christophernady/Development/code/node_modules/.bin/node
+```
+
+then `npm run build` was successful (and the node version I specified with nvm was used):
+
+```shell
+npm run build
+
+> client@0.1.0 build
+> which node && react-scripts build
+
+/Users/christophernady/.nvm/versions/node/v16.20.1/bin/node
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  113.46 kB  build/static/js/main.d49ca668.js
+  23.46 kB   build/static/css/main.1ffee203.css
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+```
 
 ## Source Formatting
 
