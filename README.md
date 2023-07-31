@@ -282,7 +282,7 @@ of the app.
 ### Upgrading to react-scripts version 5.0.x
 
 After updating `react-scripts` from version 4.0.0 to 5.0.1 the following errors occur when running
-`npm run build` or `npm run start` in the client directory:
+`npm run build` or `npm run start` locally in the client directory:
 
 ```
 npm run start
@@ -325,6 +325,67 @@ Here are a few of the commits showing things I have tried to resolve the error:
 
 and the original commit where I bumped the `react-scripts` version from 4.0.0 to 5.0.1 can be found
 here: https://github.com/ChristopherJamesN/sports-news-feed/commit/7fcb992630bc63b41798211952c96542ecedc777.
+
+#### An issue with the Node version used?
+
+In [this reported issue](https://answers.netlify.com/t/react-app-doesnt-deploy-via-git-repo-but-does-with-netlify-cli/73700/12) on Netlify forums the solution was to bump the node version, similar to [this issue](https://answers.netlify.com/t/react-scripts-syntax-error-on-build/75092/6).
+
+A couple of similar reported issues on Stack Overflow:
+* https://stackoverflow.com/questions/73464400/error-when-try-to-run-npm-build-on-react-project (no accepted answer).
+* https://stackoverflow.com/questions/74848909/react-js-npm-run-start-return-error-syntaxerror-unexpected-token (accepted answer is to update node version).
+
+This got me thinking, so I changed `"build": "react-scripts build",` to `"build": "node -v && react-scripts build",`
+
+in `client/package.json` . Now when I run `npm run build` I see the node version is 11.15.0:
+
+```
+client@0.1.0 build
+> node -v && react-scripts build
+
+v11.15.0
+/Users/christophernady/Development/code/sports-news-feed/client/node_modules/eslint-webpack-plugin/node_modules/jest-worker/build/index.js:110
+  _ending;
+```
+
+`nvm ls` shows:
+
+```
+nvm ls
+        v6.11.2
+       v12.20.0
+       v14.18.2
+       v16.13.2
+       v16.17.1
+       v16.18.0
+->     v16.20.1
+        v18.6.0
+       v18.12.1
+        v20.3.1
+         system
+default -> 18.12 (-> v18.12.1)
+iojs -> N/A (default)
+unstable -> N/A (default)
+node -> stable (-> v20.3.1) (default)
+stable -> 20.3 (-> v20.3.1) (default)
+lts/* -> lts/hydrogen (-> N/A)
+lts/argon -> v4.9.1 (-> N/A)
+lts/boron -> v6.17.1 (-> N/A)
+lts/carbon -> v8.17.0 (-> N/A)
+lts/dubnium -> v10.24.1 (-> N/A)
+lts/erbium -> v12.22.12 (-> N/A)
+lts/fermium -> v14.21.3 (-> N/A)
+lts/gallium -> v16.20.1
+lts/hydrogen -> v18.17.0 (-> N/A)
+```
+
+and `node -v` shows
+
+```shell
+node -v
+v16.20.1
+```
+
+So I am not sure why the `build` script is using Node version 11.15.0.
 
 ## Source Formatting
 
