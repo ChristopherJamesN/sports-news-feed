@@ -281,7 +281,7 @@ of the app.
 
 ### Upgrading to react-scripts version 5.0.x
 
-After updating `react-scripts` from version 4.0.0 to 5.0.1 the following errors occur when running
+After updating `react-scripts` from version 4.0.0 to 5.0.1 the following errors were occurring when running
 `npm run build` or `npm run start` locally in the client directory:
 
 ```
@@ -313,7 +313,7 @@ Post-commit there is a Github workflow that runs `npm run build` , for example [
 This build completes successfully, but if I try with the same node version (16.20.1) locally it fails
 with the above error.
 
-Here are a few of the commits showing things I have tried to resolve the error:
+Here are a few of the commits showing things I tried to resolve the error:
 * https://github.com/ChristopherJamesN/sports-news-feed/commit/c9b384cdc56125d67f72281f07ed46661b8d1e80
 * https://github.com/ChristopherJamesN/sports-news-feed/commit/327e5604d85fdb6df555ad0258fd1ed641a78c16
 * https://github.com/ChristopherJamesN/sports-news-feed/commit/b85ff07390adc35bcb8a2f0c08e3d1e040771376
@@ -383,7 +383,7 @@ node -v
 v16.20.1
 ```
 
-So I am not sure why the `build` script is using Node version 11.15.0.
+So I was not sure why the `build` script was using Node version 11.15.0.
 
 `nvm uninstall 11.15.0` shows that version 11.15.0 is not installed:
 
@@ -399,7 +399,7 @@ v11.15.0
 sh: nvm: command not found
 ```
 
-To find which node was being I used I set `which node && nvm use 16.20.1 && react-scripts build` as the `build` script with gave me:
+To find which node binary was being I used I set `which node && nvm use 16.20.1 && react-scripts build` as the `build` script and ran `npm run build` :
 
 ```shell
 npm run build
@@ -453,6 +453,20 @@ You may serve it with a static server:
 Find out more about deployment here:
 
   https://cra.link/deployment
+```
+
+For future reference, the `-a` option for the `which` Lists all instances of executables found (instead of just the first one of each).
+
+```shell
+ which -a node
+/opt/homebrew/bin/node
+/Users/christophernady/.nvm/versions/node/v18.12.1/bin/node
+/opt/homebrew/bin/node
+/opt/homebrew/bin/node
+/Users/christophernady/.nvm/versions/node/v16.20.1/bin/node
+/Users/christophernady/.nvm/versions/node/v16.18.0/bin/node
+/Users/christophernady/.nvm/versions/node/v20.3.1/bin/node
+/Users/christophernady/.nvm/versions/node/v18.12.1/bin/node
 ```
 
 ### RVM Issues
