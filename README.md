@@ -455,6 +455,42 @@ Find out more about deployment here:
   https://cra.link/deployment
 ```
 
+### RVM Issues
+
+If you run `rake start` and you get:
+
+```shell
+rake start
+Your Ruby version is 2.6.10, but your Gemfile specified 3.1.2
+```
+
+and then you try to switch your Ruby version with `rvm` you might get:
+
+```shell
+rvm use 3.1.2
+Required ruby-2.7.0 is not installed.
+To install do: 'rvm install "ruby-2.7.0"'
+
+RVM is not a function, selecting rubies with 'rvm use ...' will not work.
+
+You need to change your terminal emulator preferences to allow login shell.
+Sometimes it is required to use `/bin/bash --login` as the command.
+Please visit https://rvm.io/integration/gnome-terminal/ for an example.
+```
+
+If you use `zsh` as your default shell you then need to run:
+
+```shell
+/bin/zsh --login
+```
+
+and now switching ruby versions with `rvm` should work:
+
+```shell
+rvm use 3.1.2            
+Using /Users/christophernady/.rvm/gems/ruby-3.1.2
+```
+
 ## Source Formatting
 
 To format the Ruby source code, the [RuboCop gem](https://github.com/rubocop/rubocop) is used.
