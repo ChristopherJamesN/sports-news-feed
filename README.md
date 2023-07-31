@@ -279,6 +279,53 @@ Note: To save costs, I do not currently include the postgres instance in the GCl
 This means that you cannot login and save/take notes on news stories on the deployed version
 of the app.
 
+### Upgrading to react-scripts version 5.0.x
+
+After updating `react-scripts` from version 4.0.0 to 5.0.1 the following errors occur when running
+`npm run build` or `npm run start` in the client directory:
+
+```
+npm run start
+
+> client@0.1.0 start
+> react-scripts start
+
+/Users/christophernady/Development/code/sports-news-feed/client/node_modules/eslint-webpack-plugin/node_modules/jest-worker/build/index.js:110
+  _ending;
+         ^
+
+SyntaxError: Unexpected token ;
+    at Module._compile (internal/modules/cjs/loader.js:760:23)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:827:10)
+    at Module.load (internal/modules/cjs/loader.js:685:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:620:12)
+    at Module.require (internal/modules/cjs/loader.js:723:19)
+    at require (internal/modules/cjs/helpers.js:14:16)
+    at Object.<anonymous> (/Users/christophernady/Development/code/sports-news-feed/client/node_modules/eslint-webpack-plugin/dist/getESLint.js:9:5)
+    at Module._compile (internal/modules/cjs/loader.js:816:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:827:10)
+    at Module.load (internal/modules/cjs/loader.js:685:32)
+```
+
+I found someone else reporting a similar issue [here](https://community.atlassian.com/t5/Bitbucket-questions/TypeError-intermediate-value-slice-reverse-flatmap-is-not-a/qaq-p/2111363) without a resolution.
+
+Post-commit there is a Github workflow that runs `npm run build` , for example [here](https://github.com/ChristopherJamesN/sports-news-feed/actions/runs/5707996673/job/15465227497).
+This build completes successfully, but if I try with the same node version (16.20.1) locally it fails
+with the above error.
+
+Here are a few of the commits showing things I have tried to resolve the error:
+* https://github.com/ChristopherJamesN/sports-news-feed/commit/c9b384cdc56125d67f72281f07ed46661b8d1e80
+* https://github.com/ChristopherJamesN/sports-news-feed/commit/327e5604d85fdb6df555ad0258fd1ed641a78c16
+* https://github.com/ChristopherJamesN/sports-news-feed/commit/b85ff07390adc35bcb8a2f0c08e3d1e040771376
+* https://github.com/ChristopherJamesN/sports-news-feed/commit/f768b373225765d5b10f1b925e42890a83d9b18e
+* https://github.com/ChristopherJamesN/sports-news-feed/commit/9bae58533337e7e39c98a9109501d4c2758f8143
+* https://github.com/ChristopherJamesN/sports-news-feed/commit/a89b4f956541584717be5c441251d8feb1f36bf1
+* https://github.com/ChristopherJamesN/sports-news-feed/commit/8f0f0eb24b71a8b37588da73c41c93566466549c
+* https://github.com/ChristopherJamesN/sports-news-feed/commit/1fefe52086724a237347446416d67f18da0877ec
+
+and the original commit where I bumped the `react-scripts` version from 4.0.0 to 5.0.1 can be found
+here: https://github.com/ChristopherJamesN/sports-news-feed/commit/7fcb992630bc63b41798211952c96542ecedc777.
+
 ## Source Formatting
 
 To format the Ruby source code, the [RuboCop gem](https://github.com/rubocop/rubocop) is used.
