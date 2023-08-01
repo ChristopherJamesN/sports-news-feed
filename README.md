@@ -309,7 +309,7 @@ SyntaxError: Unexpected token ;
 
 I found someone else reporting a similar issue [here](https://community.atlassian.com/t5/Bitbucket-questions/TypeError-intermediate-value-slice-reverse-flatmap-is-not-a/qaq-p/2111363) without a resolution.
 
-Post-commit there is a Github workflow (defined in [.github/workflows/client_test.yml](https://github.com/ChristopherJamesN/sports-news-feed/blob/master/.github/workflows/client_test.yml)) that runs `npm run build` and `npm run test` . [Here](https://github.com/ChristopherJamesN/sports-news-feed/actions/runs/5707996673/job/15465227497) is an example run.
+Post-commit there is a Github workflow (defined in [.github/workflows/client_test.yml](.github/workflows/client_test.yml)) that runs `npm run build` and `npm run test` . [Here](https://github.com/ChristopherJamesN/sports-news-feed/actions/runs/5707996673/job/15465227497) is an example run.
 The build kicked off by the workflow was completing successfully, but if I tried with the same node version (16.20.1) locally it would fail with the above error.
 
 Here are a few of the commits showing things I tried to resolve the error:
