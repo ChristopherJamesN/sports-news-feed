@@ -284,7 +284,7 @@ of the app.
 After updating `react-scripts` from version 4.0.0 to 5.0.1 the following errors were occurring when running
 `npm run build` or `npm run start` locally in the client directory:
 
-```
+```shell
 npm run start
 
 > client@0.1.0 start
@@ -309,8 +309,8 @@ SyntaxError: Unexpected token ;
 
 I found someone else reporting a similar issue [here](https://community.atlassian.com/t5/Bitbucket-questions/TypeError-intermediate-value-slice-reverse-flatmap-is-not-a/qaq-p/2111363) without a resolution.
 
-Post-commit there is a Github workflow that runs `npm run build` , for example [here](https://github.com/ChristopherJamesN/sports-news-feed/actions/runs/5707996673/job/15465227497).
-This build completes successfully, but if I try with the same node version (16.20.1) locally it fails
+Post-commit there is a Github workflow (defined in .github/workflows/client_test.yml) that runs `npm run build` and `npm run test` . [Here](https://github.com/ChristopherJamesN/sports-news-feed/actions/runs/5707996673/job/15465227497) is an example run.
+This build was completing successfully, but if I try with the same node version (16.20.1) locally it fails
 with the above error.
 
 Here are a few of the commits showing things I tried to resolve the error:
