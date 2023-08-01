@@ -309,9 +309,8 @@ SyntaxError: Unexpected token ;
 
 I found someone else reporting a similar issue [here](https://community.atlassian.com/t5/Bitbucket-questions/TypeError-intermediate-value-slice-reverse-flatmap-is-not-a/qaq-p/2111363) without a resolution.
 
-Post-commit there is a Github workflow (defined in .github/workflows/client_test.yml) that runs `npm run build` and `npm run test` . [Here](https://github.com/ChristopherJamesN/sports-news-feed/actions/runs/5707996673/job/15465227497) is an example run.
-This build was completing successfully, but if I try with the same node version (16.20.1) locally it fails
-with the above error.
+Post-commit there is a Github workflow (defined in [.github/workflows/client_test.yml](https://github.com/ChristopherJamesN/sports-news-feed/blob/master/.github/workflows/client_test.yml)) that runs `npm run build` and `npm run test` . [Here](https://github.com/ChristopherJamesN/sports-news-feed/actions/runs/5707996673/job/15465227497) is an example run.
+The build kicked off by the workflow was completing successfully, but if I tried with the same node version (16.20.1) locally it would fail with the above error.
 
 Here are a few of the commits showing things I tried to resolve the error:
 * https://github.com/ChristopherJamesN/sports-news-feed/commit/c9b384cdc56125d67f72281f07ed46661b8d1e80
@@ -345,7 +344,7 @@ v11.15.0
   _ending;
 ```
 
-`nvm ls` shows:
+`nvm ls` showed:
 
 ```shell
 nvm ls
@@ -376,7 +375,7 @@ lts/gallium -> v16.20.1
 lts/hydrogen -> v18.17.0 (-> N/A)
 ```
 
-and `node -v` shows
+and `node -v` showed
 
 ```shell
 node -v
@@ -385,14 +384,14 @@ v16.20.1
 
 So I was not sure why the `build` script was using Node version 11.15.0.
 
-`nvm uninstall 11.15.0` shows that version 11.15.0 is not installed:
+`nvm uninstall 11.15.0` showed that version 11.15.0 is not installed:
 
 ```shell
 nvm uninstall 11.15.0
 N/A version is not installed...
 ```
 
-If I try `node -v && nvm use 16.20.1 && react-scripts build` as the `build` script, I get an error like:
+If I tried `node -v && nvm use 16.20.1 && react-scripts build` as the `build` script, I got an error like:
 
 ```shell
 v11.15.0
@@ -455,7 +454,7 @@ Find out more about deployment here:
   https://cra.link/deployment
 ```
 
-For future reference, the `-a` option for the `which` Lists all instances of executables found (instead of just the first one of each).
+For future reference, the `-a` option for the `which` command lists all instances of executables found (instead of just the first one of each).
 
 ```shell
  which -a node
