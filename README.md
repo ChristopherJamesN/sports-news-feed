@@ -43,6 +43,26 @@ news:
   api_key: API_KEY
 ```
 
+### JSON endpoints
+
+When developing locally you can test out the json endpoints defined in app/controllers/application_controller.rb via http://localhost:3001/.
+
+For example:
+
+http://localhost:3001/retrieve_bachelorette_news.json to retrieve bachelorette news.
+http://localhost:3001/retrieve_bachelor_news.json to retrieve bachelor news.
+http://localhost:3001/retrieve_news.json?searchTerm=%22some%20news%22 to retrieve general news matching the search term "some news".
+
+The same endpoints can be queried on the deployed application. For example:
+
+https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_bachelorette_news.json to retrieve bachelorette news.
+https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_bachelor_news.json to retrieve bachelor news.
+https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=%22some%20news%22 to retrieve general news matching the search term "some news".
+
+The `retrieve_news` endpoint in particular is used by https://github.com/ChristopherJamesN/twitter-bot/ to find news to tweet out.
+
+See https://github.com/ChristopherJamesN/twitter-bot/blob/main/src/utils/make_tweets.py#L148-L156 for where these calls are made.
+
 ### Client side dependencies
 
 If using an m1 Mac you will need to use the `-x86_64` architecture version of node to install
