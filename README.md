@@ -278,6 +278,8 @@ gcloud run deploy rails-news-feed \
      --image gcr.io/news-feed-368501/rails-news-feed
 ```
 
+After deploying a new image, it can be useful to delete the old images from https://console.cloud.google.com/gcr/images/news-feed-368501/GLOBAL/rails-news-feed. This will reduce Google Cloud costs.
+
 ## Technical Details
 
 * The server side source code lives primarily in the `app` directory. The server side uses the Rails framework.
