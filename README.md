@@ -49,14 +49,10 @@ When developing locally you can test out the json endpoints defined in app/contr
 
 For example:
 
-http://localhost:3001/retrieve_bachelorette_news.json to retrieve bachelorette news.
-http://localhost:3001/retrieve_bachelor_news.json to retrieve bachelor news.
 http://localhost:3001/retrieve_news.json?searchTerm=%22some%20news%22 to retrieve general news matching the search term "some news".
 
 The same endpoints can be queried on the deployed application. For example:
 
-https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_bachelorette_news.json to retrieve bachelorette news.
-https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_bachelor_news.json to retrieve bachelor news.
 https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=%22some%20news%22 to retrieve general news matching the search term "some news".
 
 The `retrieve_news` endpoint in particular is used by https://github.com/ChristopherJamesN/twitter-bot/ to find news to tweet out.

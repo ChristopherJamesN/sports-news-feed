@@ -20,32 +20,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def retrieve_bachelor_news
-    res = fetch_bachelor_news_from_cache_or_api
-    render json: res, status: :ok
-  end
-
-  def fetch_bachelor_news_from_cache_or_api
-    t = Time.now - 500_000
-    formatted_date = t.strftime('%F')
-    Rails.cache.fetch('/retrieve_bachelor_news', expires_in: 6.hours) do
-      Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelor&from=#{formatted_date}&excludeDomains=biztoc.com&apiKey=#{Rails.application.credentials.news[:api_key]}"))
-    end
-  end
-
-  def retrieve_bachelorette_news
-    res = fetch_bachelorette_news_from_cache_or_api
-    render json: res, status: :ok
-  end
-
-  def fetch_bachelorette_news_from_cache_or_api
-    t = Time.now - 500_000
-    formatted_date = t.strftime('%F')
-    Rails.cache.fetch('/retrieve_bachelorette_news', expires_in: 6.hours) do
-      Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=bachelorette&from=#{formatted_date}&excludeDomains=biztoc.com&apiKey=#{Rails.application.credentials.news[:api_key]}"))
-    end
-  end
-
   def retrieve_news
     res = fetch_news_from_cache_or_api(params[:searchTerm])
     render json: res, status: :ok
