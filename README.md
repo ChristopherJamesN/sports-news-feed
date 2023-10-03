@@ -290,6 +290,8 @@ After deploying a new image, it can be useful to delete the old images from http
 * Database related files (schema, seeds, and migrations) live in the `db` directory.
 * The client side source code lives in the `client` directory. The client side uses the React framework.
 * `app/controllers/application_controller.rb` makes requests to retrieve news stories from https://newsapi.org/, responses are cached for six hours to avoid exceeding newsapi rate limits.
+* The current period newsapi.org API usage can be checked at https://newsapi.org/account if you are logged into your newsapi.org account.
+  + Based on my reading of the docs, there is no programmatic way to check your API usage (or at least none that is documented as of Monday, October 2, 2023).
 * The `rake start` command starts a rails server on http://localhost:3001/ and a webpack development
 server with hot reloading serving the client application on http://localhost:3000/.
 
