@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   def fetch_news_from_cache_or_api(search_term)
     t = Time.now - 500_000
     formatted_date = t.strftime('%F')
-    excluded_domains = "biztoc.com,dailycaller.com,rlsbb.ru,thefutoncritic.com,drunkenstepfather.com"
+    excluded_domains = 'biztoc.com,dailycaller.com,rlsbb.ru,thefutoncritic.com,drunkenstepfather.com,egotasticsports.com'
     Rails.cache.fetch("/retrieve_news?searhTerm=#{search_term}", expires_in: 6.hours) do
       Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=#{search_term}&language=en&from=#{formatted_date}&excludeDomains=#{excluded_domains}/&apiKey=#{Rails.application.credentials.news[:api_key]}"))
     end
