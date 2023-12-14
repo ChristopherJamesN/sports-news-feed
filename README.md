@@ -57,7 +57,7 @@ https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=%2
 
 The `retrieve_news` endpoint in particular is used by https://github.com/ChristopherJamesN/twitter-bot/ to find news to tweet out.
 
-See https://github.com/ChristopherJamesN/twitter-bot/blob/main/src/utils/make_tweets.py#L148-L156 for where these calls are made.
+See https://github.com/ChristopherJamesN/twitter-bot/blob/main/src/utils/make_tweets.py#L154-L162 for where these calls are made.
 
 ### Client side dependencies
 
