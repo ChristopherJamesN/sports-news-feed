@@ -55,6 +55,12 @@ The same endpoints can be queried on the deployed application. For example:
 
 https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=%22some%20news%22 to retrieve general news matching the search term "some news".
 
+or, from the command line:
+
+```shell
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=%22some%20news%22" | jq .
+```
+
 The `retrieve_news` endpoint in particular is used by https://github.com/ChristopherJamesN/twitter-bot/ to find news to tweet out.
 
 See https://github.com/ChristopherJamesN/twitter-bot/blob/main/src/utils/make_tweets.py#L154-L162 for where these calls are made.
