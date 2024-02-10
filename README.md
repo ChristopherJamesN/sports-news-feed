@@ -281,7 +281,8 @@ Deploy the service, specifying only the region and image:
 gcloud run deploy rails-news-feed \
      --platform managed \
      --region us-central1 \
-     --image gcr.io/news-feed-368501/rails-news-feed
+     --image gcr.io/news-feed-368501/rails-news-feed &&
+echo "After deploying a new image, it can be useful to delete the old images from https://console.cloud.google.com/gcr/images/news-feed-368501/GLOBAL/rails-news-feed. This will reduce Google Cloud costs."
 ```
 
 After deploying a new image, it can be useful to delete the old images from https://console.cloud.google.com/gcr/images/news-feed-368501/GLOBAL/rails-news-feed. This will reduce Google Cloud costs.
