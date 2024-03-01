@@ -11,8 +11,6 @@ gem 'dalli'
 
 gem 'listen'
 
-gem 'newrelic_rpm'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.0.4'
 
