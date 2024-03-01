@@ -287,6 +287,12 @@ echo "After deploying a new image, it can be useful to delete the old images fro
 
 After deploying a new image, it can be useful to delete the old images from https://console.cloud.google.com/gcr/images/news-feed-368501/GLOBAL/rails-news-feed. This will reduce Google Cloud costs.
 
+To test that the service is working as intended after pushing changes, you can query it using `curl` as described above. For example:
+
+```shell
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=%22some%20news%22" | jq .
+```
+
 ## Technical Details
 
 * The server side source code lives primarily in the `app` directory. The server side uses the Rails framework.
