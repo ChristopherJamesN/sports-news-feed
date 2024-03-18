@@ -95,7 +95,57 @@ nvm install 16.13.2
 
 ## GCloud Deployment
 
-TODO: Migrate from Google Cloud Container Registry to Artifact Registry by May 15, 2024. See https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr for details.
+### Container Registry to Artifact Registry Migration
+
+I used the following on Sunday, March 17, 2024 to route all traffic to Artifact registry.
+
+https://cloud.google.com/artifact-registry/docs/transition/setup-gcr-repo#copy contains details on how to copy images from Container Registry to Artifact registry.
+
+```shell
+gcloud services enable \                                 
+    cloudresourcemanager.googleapis.com \
+    artifactregistry.googleapis.com
+```
+
+and then:
+
+```shell
+gcloud projects add-iam-policy-binding news-feed-368501 \
+    --member='serviceAccount:service-65433380411@gcp-sa-artifactregistry.iam.gserviceaccount.com' \
+    --role='roles/storage.objectViewer'
+```
+
+and then:
+
+```shell
+gcrane cp -r gcr.io/news-feed-368501 us-docker.pkg.dev/news-feed-368501/gcr.io
+```
+
+and then to transfer traffic to the Artifact Registry image see https://cloud.google.com/artifact-registry/docs/transition/setup-gcr-repo#redirect-enable.
+
+```shell
+gcloud projects add-iam-policy-binding news-feed-368501 \
+    --member='user:nady.christopher@gmail.com' \
+    --role='roles/artifactregistry.admin'
+
+gcloud projects add-iam-policy-binding news-feed-368501 \
+    --member='user:nady.christopher@gmail.com' \
+    --role='roles/storage.admin'
+```
+
+and then:
+
+```shell
+gcloud artifacts settings enable-upgrade-redirection \
+    --project=news-feed-368501 --dry-run
+```
+
+and then:
+
+```shell
+gcloud artifacts settings enable-upgrade-redirection \
+    --project=news-feed-368501
+```
 
 ### Initial Provisioning and Deployment
 
@@ -286,10 +336,10 @@ gcloud run deploy rails-news-feed \
      --platform managed \
      --region us-central1 \
      --image gcr.io/news-feed-368501/rails-news-feed &&
-echo "After deploying a new image, it can be useful to delete the old images from https://console.cloud.google.com/gcr/images/news-feed-368501/GLOBAL/rails-news-feed. This will reduce Google Cloud costs."
+echo "After deploying a new image, it can be useful to delete the old images from https://console.cloud.google.com/artifacts/docker/news-feed-368501/us/gcr.io/rails-news-feed?project=news-feed-368501. This will reduce Google Cloud costs."
 ```
 
-After deploying a new image, it can be useful to delete the old images from https://console.cloud.google.com/gcr/images/news-feed-368501/GLOBAL/rails-news-feed. This will reduce Google Cloud costs.
+After deploying a new image, it can be useful to delete the old images from https://console.cloud.google.com/artifacts/docker/news-feed-368501/us/gcr.io/rails-news-feed?project=news-feed-368501. This will reduce Google Cloud costs.
 
 To test that the service is working as intended after pushing changes, you can query it using `curl` as described above. For example:
 
