@@ -97,9 +97,9 @@ nvm install 16.13.2
 
 ### Container Registry to Artifact Registry Migration
 
-I used the following on Sunday, March 17, 2024 to route all traffic to Artifact registry.
+I used the following steps on Sunday, March 17, 2024 to copy all Container Registry images and redirect all gcr.io traffic to Artifact registry.
 
-https://cloud.google.com/artifact-registry/docs/transition/setup-gcr-repo#copy contains details on how to copy images from Container Registry to Artifact registry.
+https://cloud.google.com/artifact-registry/docs/transition/setup-gcr-repo#copy contains details on the first step, copying images from Container Registry to Artifact registry.
 
 ```shell
 gcloud services enable \                                 
@@ -121,7 +121,7 @@ and then:
 gcrane cp -r gcr.io/news-feed-368501 us-docker.pkg.dev/news-feed-368501/gcr.io
 ```
 
-and then to transfer traffic to the Artifact Registry image see https://cloud.google.com/artifact-registry/docs/transition/setup-gcr-repo#redirect-enable.
+For details on the second step, redirecting gcr.io traffic to Artifact Registry, see https://cloud.google.com/artifact-registry/docs/transition/setup-gcr-repo#redirect-enable.
 
 ```shell
 gcloud projects add-iam-policy-binding news-feed-368501 \
@@ -146,6 +146,8 @@ and then:
 gcloud artifacts settings enable-upgrade-redirection \
     --project=news-feed-368501
 ```
+
+After performing the above operations, I also disabled the Container Registry API following the instructions here: https://cloud.google.com/container-registry/docs/enable-service#disable-api and deleted the Cloud Storage bucket, `artifacts.news-feed-368501.appspot.com,` for the Container Registry following the instructions here: https://cloud.google.com/artifact-registry/docs/transition/setup-gcr-repo#cleanup.
 
 ### Initial Provisioning and Deployment
 
