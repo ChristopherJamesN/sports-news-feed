@@ -95,6 +95,8 @@ nvm install 16.13.2
 
 ## GCloud Deployment
 
+TODO: Migrate from Google Cloud Container Registry to Artifact Registry by May 15, 2024. See https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr for details.
+
 ### Initial Provisioning and Deployment
 
 PostgresSQL instance can be created with:
@@ -270,12 +272,14 @@ gcloud secrets add-iam-policy-binding rails-master-key-secret \
 
 ### Deploying Updates to Google Cloud Without a Postgres Instance
 
+Run the Cloud Build build script to create a new image with:
+
 ```shell
 gcloud builds submit --config cloudbuild.yaml \
      --substitutions _SERVICE_NAME=rails-news-feed,_SECRET_NAME=rails-master-key-secret
 ```
 
-Deploy the service, specifying only the region and image:
+Deploy the service, specifying only the region and image with:
 
 ```shell
 gcloud run deploy rails-news-feed \
