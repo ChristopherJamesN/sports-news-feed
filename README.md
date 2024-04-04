@@ -349,6 +349,12 @@ To test that the service is working as intended after pushing changes, you can q
 curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=%22some%20news%22" | jq .
 ```
 
+### Observability
+
+Application logs can be viewed on Google Cloud console [here](https://console.cloud.google.com/logs/query;query=logName%3D%22projects%2Fnews-feed-368501%2Flogs%2Frun.googleapis.com%252Fstdout%22).
+
+Application traces can be found [here](https://console.cloud.google.com/traces/list?project=news-feed-368501).
+
 ## Technical Details
 
 * The server side source code lives primarily in the `app` directory. The server side uses the Rails framework.
