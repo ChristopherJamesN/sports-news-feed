@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   EXCLUDED_DOMAINS = 'biztoc.com,dailycaller.com,rlsbb.ru,thefutoncritic.com,drunkenstepfather.com,'\
   'egotasticsports.com,zacjohnson.com,smartbitchestrashybooks.com,rlsbb.cc,'\
-  'cscoblogs-prod-17bj.appspot.com,sarkarinaukriblog.com,cnet.com'.freeze
+  'cscoblogs-prod-17bj.appspot.com,sarkarinaukriblog.com,cnet.com,extratv.com'.freeze
 
   def fallback_index_html
     render file: '../client/public/index.html'
