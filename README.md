@@ -352,19 +352,19 @@ curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchT
 To get the first "article" object from the list of articles returned from the API, you can process the input with `jq` like this:
 
 ```shell
-curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq . | jq '.articles' | jq '.[0]'
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles' | jq '.[0]'
 ```
 
 To get the URL of the first article you can use:
 
 ```shell
-curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq . | jq '.articles' | jq '.[0]' | jq '.url'
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles' | jq '.[0]' | jq '.url'
 ```
 
 Sort by URL and then get the first three articles:
 
 ```shell
-curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq . | jq '.articles' | jq 'sort_by(.url)' | jq '.[:3]'
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles | sort_by(.url)' | jq '.[:3]'
 ```
 
 ### Observability
