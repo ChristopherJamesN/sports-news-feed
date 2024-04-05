@@ -349,6 +349,24 @@ To test that the service is working as intended after pushing changes, you can q
 curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=%22some%20news%22" | jq .
 ```
 
+To get the first "article" object from the list of articles returned from the API, you can process the input with `jq` like this:
+
+```shell
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq . | jq '.articles' | jq '.[0]'
+```
+
+To get the URL of the first article you can use:
+
+```shell
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq . | jq '.articles' | jq '.[0]' | jq '.url'
+```
+
+Sort by URL and then get the first three articles:
+
+```shell
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq . | jq '.articles' | jq 'sort_by(.url)' | jq '.[:3]'
+```
+
 ### Observability
 
 Application logs can be viewed on Google Cloud console [here](https://console.cloud.google.com/logs/query;query=logName%3D%22projects%2Fnews-feed-368501%2Flogs%2Frun.googleapis.com%252Fstdout%22).
