@@ -51,6 +51,12 @@ For example:
 
 http://localhost:3001/retrieve_news.json?searchTerm=%22some%20news%22 to retrieve general news matching the search term "some news".
 
+Or, from the command line:
+
+```shell
+curl "http://localhost:3001/retrieve_news.json?searchTerm=%22some%20news%22" | jq .
+```
+
 The same endpoints can be queried on the deployed application. For example:
 
 https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=%22some%20news%22 to retrieve general news matching the search term "some news".
