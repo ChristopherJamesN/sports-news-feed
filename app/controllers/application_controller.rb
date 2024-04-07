@@ -3,6 +3,8 @@ require 'net/http'
 class ApplicationController < ActionController::Base
   include Knock::Authenticable
 
+  # TODO: Even with extratv.com in the EXCLUDED_DOMAINS, the api is still returning stories from extratv.com.
+  # For example see https://mail.google.com/mail/u/0/#label/Nady+Analytics/FMfcgzGxSbqlSJdJNRNvhqdBQLVZJJWR.
   EXCLUDED_DOMAINS = 'biztoc.com,dailycaller.com,rlsbb.ru,thefutoncritic.com,drunkenstepfather.com,'\
   'egotasticsports.com,zacjohnson.com,smartbitchestrashybooks.com,rlsbb.cc,'\
   'cscoblogs-prod-17bj.appspot.com,sarkarinaukriblog.com,cnet.com,extratv.com'.freeze
@@ -33,7 +35,9 @@ class ApplicationController < ActionController::Base
     t = Time.now - 500_000
     formatted_date = t.strftime('%F')
     Rails.cache.fetch("/retrieve_news?searhTerm=#{search_term}", expires_in: 6.hours) do
-      Net::HTTP.get(URI.parse("https://newsapi.org/v2/everything?q=#{search_term}&language=en&from=#{formatted_date}&excludeDomains=#{EXCLUDED_DOMAINS}/&apiKey=#{Rails.application.credentials.news[:api_key]}"))
+      news_api_request_uri = "https://newsapi.org/v2/everything?q=#{search_term}&language=en&from=#{formatted_date}&excludeDomains=#{EXCLUDED_DOMAINS}/&apiKey=#{Rails.application.credentials.news[:api_key]}"
+      puts "Making a request to #{news_api_request_uri}"
+      Net::HTTP.get(URI.parse(news_api_request_uri))
     end
   end
 end
