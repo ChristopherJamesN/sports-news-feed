@@ -49,22 +49,22 @@ When developing locally you can test out the json endpoints defined in app/contr
 
 For example:
 
-http://localhost:3001/retrieve_news.json?searchTerm=%22some%20news%22 to retrieve general news matching the search term "some news".
+http://localhost:3001/retrieve_news.json?searchTerm=sports to retrieve news articles matching the search term "sports".
 
 Or, from the command line:
 
 ```shell
-curl "http://localhost:3001/retrieve_news.json?searchTerm=%22some%20news%22" | jq .
+curl "http://localhost:3001/retrieve_news.json?searchTerm=sports" | jq .
 ```
 
 The same endpoints can be queried on the deployed application. For example:
 
-https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=%22some%20news%22 to retrieve general news matching the search term "some news".
+https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports to retrieve news articles matching the search term "sports".
 
 or, from the command line:
 
 ```shell
-curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=%22some%20news%22" | jq .
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq .
 ```
 
 The `retrieve_news` endpoint in particular is used by https://github.com/ChristopherJamesN/twitter-bot/ to find news to tweet out.
@@ -352,25 +352,25 @@ After deploying a new image, it can be useful to delete the old images from http
 To test that the service is working as intended after pushing changes, you can query it using `curl` as described above. For example:
 
 ```shell
-curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=%22some%20news%22" | jq .
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq .
 ```
 
 To get the first "article" object from the list of articles returned from the API, you can process the input with `jq` like this:
 
 ```shell
-curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles' | jq '.[0]'
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles | .[0]'
 ```
 
 To get the URL of the first article you can use:
 
 ```shell
-curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles' | jq '.[0]' | jq '.url'
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles | .[0] | .url'
 ```
 
-Sort by URL and then get the first three articles:
+Sort by URL and then get the first three articles with a command like:
 
 ```shell
-curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles | sort_by(.url)' | jq '.[:3]'
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles | sort_by(.url) | .[:3]'
 ```
 
 ### Observability
