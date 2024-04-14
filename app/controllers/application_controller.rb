@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
 
   # TODO: Even with extratv.com in the EXCLUDED_DOMAINS, the api is still returning stories from extratv.com.
   # For example see https://mail.google.com/mail/u/0/#label/Nady+Analytics/FMfcgzGxSbqlSJdJNRNvhqdBQLVZJJWR.
-  EXCLUDED_DOMAINS = 'biztoc.com,dailycaller.com,rlsbb.ru,thefutoncritic.com,drunkenstepfather.com,'\
+  EXCLUDED_DOMAINS = 'extratv.com,biztoc.com,dailycaller.com,rlsbb.ru,thefutoncritic.com,drunkenstepfather.com,'\
   'egotasticsports.com,zacjohnson.com,smartbitchestrashybooks.com,rlsbb.cc,'\
-  'cscoblogs-prod-17bj.appspot.com,sarkarinaukriblog.com,cnet.com,extratv.com'.freeze
+  'cscoblogs-prod-17bj.appspot.com,sarkarinaukriblog.com,cnet.com'.freeze
 
   def fallback_index_html
     render file: '../client/public/index.html'
