@@ -373,6 +373,12 @@ Sort by URL and then get the first three articles with a command like:
 curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles | sort_by(.url) | .[:3]'
 ```
 
+To check for articles with a certain url you could use:
+
+```shell
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles | .[] | .url' | grep www.skysports.com
+```
+
 ### Observability
 
 Application logs can be viewed on Google Cloud console [here](https://console.cloud.google.com/logs/query;query=logName%3D%22projects%2Fnews-feed-368501%2Flogs%2Frun.googleapis.com%252Fstdout%22).
