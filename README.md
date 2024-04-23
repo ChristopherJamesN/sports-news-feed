@@ -344,7 +344,7 @@ gcloud run deploy rails-news-feed \
      --platform managed \
      --region us-central1 \
      --image gcr.io/news-feed-368501/rails-news-feed &&
-echo "After deploying a new image, it can be useful to delete the old images from https://console.cloud.google.com/artifacts/docker/news-feed-368501/us/gcr.io/rails-news-feed?project=news-feed-368501. This will reduce Google Cloud costs."
+echo "After deploying a new sports news feed image, it can be useful to delete the old images from https://console.cloud.google.com/artifacts/docker/news-feed-368501/us/gcr.io/rails-news-feed?project=news-feed-368501. This will reduce Google Cloud costs" && osascript -e 'display notification "Deployment of new sports news feed image complete. After deploying a new sports news feed image, it can be useful to delete the old images from https://console.cloud.google.com/artifacts/docker/news-feed-368501/us/gcr.io/rails-news-feed?project=news-feed-368501. This will reduce Google Cloud costs"'
 ```
 
 After deploying a new image, it can be useful to delete the old images from https://console.cloud.google.com/artifacts/docker/news-feed-368501/us/gcr.io/rails-news-feed?project=news-feed-368501. This will reduce Google Cloud costs.
@@ -378,6 +378,8 @@ To check for articles with a certain url you could use:
 ```shell
 curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles | .[] | .url' | grep www.skysports.com
 ```
+
+TODO: What about filtering the results by a certain URL instead of only returning the URL's that match with `grep` as in the example above?
 
 ### Observability
 
