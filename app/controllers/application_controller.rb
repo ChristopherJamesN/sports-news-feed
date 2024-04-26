@@ -3,11 +3,9 @@ require 'net/http'
 class ApplicationController < ActionController::Base
   include Knock::Authenticable
 
-  # TODO: Even with extratv.com in the EXCLUDED_DOMAINS, the api is still returning stories from extratv.com.
-  # For example see https://mail.google.com/mail/u/0/#label/Nady+Analytics/FMfcgzGxSbqlSJdJNRNvhqdBQLVZJJWR.
   EXCLUDED_DOMAINS = 'thegatewaypundit.com,extratv.com,biztoc.com,dailycaller.com,rlsbb.ru,thefutoncritic.com,'\
   'drunkenstepfather.com,egotasticsports.com,zacjohnson.com,smartbitchestrashybooks.com,rlsbb.cc,'\
-  'bestadsontv.com,cscoblogs-prod-17bj.appspot.com,sarkarinaukriblog.com,cnet.com'.freeze
+  'bestadsontv.com,slickdeals.net,cscoblogs-prod-17bj.appspot.com,sarkarinaukriblog.com,cnet.com'.freeze
 
   def fallback_index_html
     render file: '../client/public/index.html'
