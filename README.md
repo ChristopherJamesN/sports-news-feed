@@ -334,7 +334,8 @@ Run the Cloud Build build script to create a new image with:
 
 ```shell
 gcloud builds submit --config cloudbuild.yaml \
-     --substitutions _SERVICE_NAME=rails-news-feed,_SECRET_NAME=rails-master-key-secret
+     --substitutions _SERVICE_NAME=rails-news-feed,_SECRET_NAME=rails-master-key-secret &&
+osascript -e 'display notification "Build and push of new sports-news-feed app image has completed."'
 ```
 
 Deploy the service, specifying only the region and image with:
