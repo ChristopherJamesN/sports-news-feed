@@ -380,7 +380,11 @@ To check for articles with a certain url you could use:
 curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles | .[] | .url' | grep www.skysports.com
 ```
 
-TODO: What about filtering the results by a certain URL instead of only returning the URL's that match with `grep` as in the example above?
+Or, alternatively, to return all objects that have a url that contains `www.skysports.com` , you can use the following:
+
+```shell
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports"  | jq '.articles | map(select(.url | contains("www.skysports.com")))'
+```
 
 ### Observability
 
