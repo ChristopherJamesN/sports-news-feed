@@ -136,7 +136,7 @@ export function fetchSportsNews() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_NEWS' });
 
-    return fetch('/retrieve_sports_news')
+    return fetch('/retrieve_news?searchTerm=sports')
       .then((response) => {
         return response.json();
       })
