@@ -350,6 +350,8 @@ echo "After deploying a new sports news feed image, it can be useful to delete t
 
 After deploying a new image, it can be useful to delete the old images from https://console.cloud.google.com/artifacts/docker/news-feed-368501/us/gcr.io/rails-news-feed?project=news-feed-368501. This will reduce Google Cloud costs.
 
+#### Testing deployments with `curl`
+
 To test that the service is working as intended after pushing changes, you can query it using `curl` as described above. For example:
 
 ```shell
@@ -384,6 +386,12 @@ Or, alternatively, to return all objects that have a url that contains `www.skys
 
 ```shell
 curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports"  | jq '.articles | map(select(.url | contains("www.skysports.com")))'
+```
+
+To return all objects that have a url that contains `cnet.com` , you can use the following:
+
+```shell
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports"  | jq '.articles | map(select(.url | contains("cnet.com")))'
 ```
 
 ### Observability
