@@ -361,25 +361,25 @@ curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchT
 To get the first "article" object from the list of articles returned from the API, you can process the input with `jq` like this:
 
 ```shell
-curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles | .[0]'
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles[0]'
 ```
 
 To get the URL of the first article you can use:
 
 ```shell
-curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles | .[0] | .url'
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles[0].url'
 ```
 
 Sort by URL and then get the first three articles with a command like:
 
 ```shell
-curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles | sort_by(.url) | .[:3]'
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles | sort_by(.url)[:3]'
 ```
 
 To check for articles with a certain url you could use:
 
 ```shell
-curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles | .[] | .url' | grep www.skysports.com
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports" | jq '.articles[].url' | grep www.skysports.com
 ```
 
 Or, alternatively, to return all objects that have a url that contains `www.skysports.com` , you can use the following:
