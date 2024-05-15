@@ -23,7 +23,13 @@ class ApplicationController < ActionController::Base
   end
 
   def fetch_news_from_cache_or_api(search_term)
-    t = Time.now - 500_000
+    # Don't search for articles that were published more than one day ago.
+    # Proof from irb:
+    # 3.1.2 :004 > Time.now
+    # => 2024-05-14 19:14:24.173067 -0500
+    # 3.1.2 :005 > Time.now - 86_400
+    # => 2024-05-13 19:14:26.433881 -0500
+    t = Time.now - 86_400
     formatted_date = t.strftime('%F')
     Rails.cache.fetch("/retrieve_news?searhTerm=#{search_term}", expires_in: 6.hours) do
       news_api_request_uri = "https://newsapi.org/v2/everything?q=#{search_term}&language=en&from=#{formatted_date}&excludeDomains=#{EXCLUDED_DOMAINS}/&apiKey=#{Rails.application.credentials.news[:api_key]}"
