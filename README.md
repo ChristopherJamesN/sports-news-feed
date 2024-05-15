@@ -394,6 +394,18 @@ To return all objects that have a url that contains `cnet.com` , you can use the
 curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports"  | jq '.articles | map(select(.url | contains("cnet.com")))'
 ```
 
+#### Testing newsapi.org with `curl`
+
+To test out requests directly to newsapi.org with `curl` , you can use a command like the following:
+
+```shell
+curl "https://newsapi.org/v2/everything?q=sports&language=en&from=2024-05-13/&apiKey=your-api-key" | jq .
+```
+
+```shell
+curl "https://newsapi.org/v2/everything?q=sports&language=en&from=2024-05-13&excludeDomains=bestadsontv.com,slickdeals.net,cscoblogs-prod-17bj.appspot.com,sarkarinaukriblog.com,cnet.com/&apiKey=your-api-key" | jq .
+```
+
 ### Observability
 
 Application logs can be viewed on Google Cloud console [here](https://console.cloud.google.com/logs/query;query=logName%3D%22projects%2Fnews-feed-368501%2Flogs%2Frun.googleapis.com%252Fstdout%22).
