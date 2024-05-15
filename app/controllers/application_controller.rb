@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     t = Time.now - 86_400
     formatted_date = t.strftime('%F')
     Rails.cache.fetch("/retrieve_news?searhTerm=#{search_term}", expires_in: 6.hours) do
-      news_api_request_uri = "https://newsapi.org/v2/everything?q=#{search_term}&language=en&from=#{formatted_date}&excludeDomains=#{EXCLUDED_DOMAINS}/&apiKey=#{Rails.application.credentials.news[:api_key]}"
+      news_api_request_uri = "https://newsapi.org/v2/everything?q=#{search_term}&language=en&from=#{formatted_date}&excludeDomains=#{EXCLUDED_DOMAINS}&apiKey=#{Rails.application.credentials.news[:api_key]}"
       puts "Making a request to #{news_api_request_uri}"
       Net::HTTP.get(URI.parse(news_api_request_uri))
     end
