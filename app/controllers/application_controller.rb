@@ -3,6 +3,12 @@ require 'net/http'
 class ApplicationController < ActionController::Base
   include Knock::Authenticable
 
+  # TODO: Remove cnet.com from search results.
+  # cnet.com is still showing up in the responses from newsapi.org, for example see this email:
+  # https://mail.google.com/mail/u/0/#search/send+twee/FMfcgzGxTFdxlxhnxRmgwFzStmPKVjfn. It should not
+  # be included in responses since it is included in EXCLUDED_DOMAINS.
+  # You can also observe this by running:
+  # curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports"  | jq '.articles | map(select(.url | contains("cnet.com")))'
   EXCLUDED_DOMAINS = 'thegatewaypundit.com,extratv.com,biztoc.com,dailycaller.com,rlsbb.ru,thefutoncritic.com,'\
   'screenrant.com,drunkenstepfather.com,egotasticsports.com,zacjohnson.com,smartbitchestrashybooks.com,rlsbb.cc,'\
   'bestadsontv.com,slickdeals.net,cscoblogs-prod-17bj.appspot.com,sarkarinaukriblog.com,cnet.com'.freeze
