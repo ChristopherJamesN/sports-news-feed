@@ -408,7 +408,7 @@ curl "https://newsapi.org/v2/everything?q=sports&language=en&from=2024-05-13&exc
 
 ### Observability
 
-Application logs can be viewed on Google Cloud console [here](https://console.cloud.google.com/logs/query;query=logName%3D%22projects%2Fnews-feed-368501%2Flogs%2Frun.googleapis.com%252Fstdout%22).
+Application logs can be viewed on Google Cloud console [here](https://console.cloud.google.com/logs?project=news-feed-368501).
 
 Application traces can be found [here](https://console.cloud.google.com/traces/list?project=news-feed-368501).
 
