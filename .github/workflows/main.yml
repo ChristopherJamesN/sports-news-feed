@@ -1,5 +1,8 @@
 name: Pronto
-on: [pull_request]
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   pronto:
@@ -8,16 +11,26 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - run: |
-          git fetch --no-tags --prune --depth=10 origin +refs/heads/*:refs/remotes/origin/*
-      - name: Setup Ruby
+
+      - name: Fetch all branches
+        run: git fetch --all
+
+      - name: Checkout base branch
+        run: git checkout ${{ github.base_ref }}
+
+      - name: Install Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.2
-      - name: Setup pronto
-        run: gem install pronto pronto-rubocop
-      - name: Run Pronto
-        run: pronto run -f github_status github_pr -c origin/${{ github.base_ref }}
-        env:
-          PRONTO_PULL_REQUEST_ID: ${{ github.event.pull_request.number }}
-          PRONTO_GITHUB_ACCESS_TOKEN: '${{ github.token }}'
+
+      - name: Install dependencies
+        run: |
+          gem install pronto
+          gem install pronto-rubocop  # Add other pronto runners as needed
+          gem install faraday-retry
+
+      - name: Run Pronto with verbose logging
+        run: |
+          PRONTO_PULL_REQUEST_ID="$(jq --raw-output .number "$GITHUB_EVENT_PATH")" \
+          PRONTO_GITHUB_ACCESS_TOKEN="${{ secrets.GITHUB_TOKEN }}" \
+          pronto run -f github_status github_pr -c origin/${{ github.base_ref }} -v
