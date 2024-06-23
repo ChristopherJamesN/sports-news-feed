@@ -29,8 +29,14 @@ jobs:
           gem install pronto-rubocop  # Add other pronto runners as needed
           gem install faraday-retry
 
+      - name: Set environment variables
+        run: |
+          echo "PRONTO_PULL_REQUEST_ID=$(jq --raw-output .number $GITHUB_EVENT_PATH)" >> $GITHUB_ENV
+          echo "PRONTO_GITHUB_ACCESS_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+
       - name: Run Pronto with verbose logging
         run: |
-          PRONTO_PULL_REQUEST_ID="$(jq --raw-output .number "$GITHUB_EVENT_PATH")" \
-          PRONTO_GITHUB_ACCESS_TOKEN="${{ secrets.GITHUB_TOKEN }}" \
           pronto run -v -f github_status github_pr -c origin/${{ github.base_ref }}
+        env:
+          PRONTO_PULL_REQUEST_ID: ${{ env.PRONTO_PULL_REQUEST_ID }}
+          PRONTO_GITHUB_ACCESS_TOKEN: ${{ env.PRONTO_GITHUB_ACCESS_TOKEN }}
