@@ -141,9 +141,11 @@ export function fetchSportsNews() {
         return response.json();
       })
       .then((responseJSON) => {
-        if (responseJSON.status==='error') {
-          console.warn("Could not retrieve sports news from the news api due to an error.", responseJSON.message);
-          return [];
+        if (responseJSON.status === 'error') {
+          throw new Error(
+            'Could not retrieve sports news from the news api due to an error: ' +
+              responseJSON.message
+          );
         }
         const sportsNewsResponse = responseJSON.articles;
         sportsNewsResponse.forEach((article) => {
@@ -151,7 +153,10 @@ export function fetchSportsNews() {
         });
         return sportsNewsResponse;
       })
-      .then((news) => dispatch({ type: 'ADD_SPORTS_NEWS', news }));
+      .then((news) => dispatch({ type: 'ADD_SPORTS_NEWS', news }))
+      .catch(function (error) {
+        console.warn(error);
+      });
   };
 }
 
