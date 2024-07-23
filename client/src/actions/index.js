@@ -141,6 +141,10 @@ export function fetchSportsNews() {
         return response.json();
       })
       .then((responseJSON) => {
+        if (responseJSON.status==='error') {
+          console.warn("Could not retrieve sports news from the news api due to an error.", responseJSON.message);
+          return [];
+        }
         const sportsNewsResponse = responseJSON.articles;
         sportsNewsResponse.forEach((article) => {
           article.source = article.source.name;
