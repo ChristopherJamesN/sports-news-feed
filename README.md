@@ -1,6 +1,6 @@
-# react-redux-nba-news-feed
+# Sports News Feed
 
-A web application built with a React-Redux frontend and a Rails backend that can be used to view and take notes on sports news. Demo hosted on Google Cloud here: https://rails-news-feed-jt3432sekq-uc.a.run.app/.
+A web application built with a React-Redux frontend and a Rails backend that can be used to view sports news. Demo hosted on Google Cloud here: https://rails-news-feed-jt3432sekq-uc.a.run.app/.
 
 ## Installation
 
