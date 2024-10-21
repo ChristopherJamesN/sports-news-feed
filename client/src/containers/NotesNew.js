@@ -94,11 +94,7 @@ class NotesNew extends Component {
         </div>
       );
     } else {
-      return (
-        <div>
-          <p>Log in or sign up to favorite stories.</p>
-        </div>
-      );
+      return <div></div>;
     }
   }
 }
