@@ -394,6 +394,12 @@ To return all objects that have a url that contains `cnet.com` , you can use the
 curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports"  | jq '.articles | map(select(.url | contains("cnet.com")))'
 ```
 
+To retrieve the titles for all articles that have a url that contains `www.cbssports.com`, you can use:
+
+```shell
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports"  | jq '.articles | map(select(.url | contains("www.cbssports.com")))[].title'
+```
+
 #### Testing newsapi.org with `curl`
 
 To test out requests directly to newsapi.org with `curl` , you can use a command like the following:
