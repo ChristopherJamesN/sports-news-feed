@@ -12,7 +12,7 @@ gem 'dalli'
 gem 'listen'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0.8'
+gem 'rails', '~> 7.1'
 
 gem 'rubocop'
 gem 'rubocop-rails', require: false
@@ -29,7 +29,7 @@ gem 'dotenv-rails'
 gem 'rack-cors', require: 'rack/cors'
 
 # Use Puma as the app server
-gem 'puma', '~> 5.6'
+gem 'puma', '~> 6'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
