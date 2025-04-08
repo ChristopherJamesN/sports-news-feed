@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   'bestadsontv.com,slickdeals.net,cscoblogs-prod-17bj.appspot.com,sarkarinaukriblog.com,cnet.com,'\
   'sorozatjunkie.hu,bloguismo.com,dealcatcher.com,breitbart.com,americanthinker.com,kicksonfire.com,'\
   'indiatimes.com,fark.com,twistedsifter.com,cheezburger.com,ericcressey.com,moonbattery.com,'\
-  'yahoo.com,mindbodygreen.com,dailysignal.com,naturalnews.com'.freeze
+  'yahoo.com,mindbodygreen.com,dailysignal.com,naturalnews.com,canonrumors.com'.freeze
 
   def fallback_index_html
     render file: '../client/public/index.html'
