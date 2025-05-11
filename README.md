@@ -5,7 +5,7 @@ A web application built with a React-Redux frontend and a Rails backend that can
 ## Installation
 
 To test out this application locally, fork and clone the repo.
- `$ git clone your-local-fork-here`
+`$ git clone your-local-fork-here`
 
 ## Usage
 
@@ -108,7 +108,7 @@ I used the following steps on Sunday, March 17, 2024 to copy all Container Regis
 https://cloud.google.com/artifact-registry/docs/transition/setup-gcr-repo#copy contains details on the first step, copying images from Container Registry to Artifact registry.
 
 ```shell
-gcloud services enable \                                 
+gcloud services enable \
     cloudresourcemanager.googleapis.com \
     artifactregistry.googleapis.com
 ```
@@ -420,18 +420,18 @@ Application traces can be found [here](https://console.cloud.google.com/traces/l
 
 ## Technical Details
 
-* The server side source code lives primarily in the `app` directory. The server side uses the Rails framework.
-  + The configuration files for the server live in the `config` directory.
-  + Server side test code lives in the `test` directory.
+- The server side source code lives primarily in the `app` directory. The server side uses the Rails framework.
+  - The configuration files for the server live in the `config` directory.
+  - Server side test code lives in the `test` directory.
     - Run tests with `rspec`. For example to run the tests in test/controllers/users_controller_test.rb use `rspec test/controllers/users_controller_test.rb`.
-  + The `lib/tasks` directory contains `rake` task definitions.
-* Database related files (schema, seeds, and migrations) live in the `db` directory.
-* The client side source code lives in the `client` directory. The client side uses the React framework.
-* `app/controllers/application_controller.rb` makes requests to retrieve news stories from https://newsapi.org/, responses are cached for six hours to avoid exceeding newsapi rate limits.
-* The current period newsapi.org API usage can be checked at https://newsapi.org/account if you are logged into your newsapi.org account.
-  + Based on my reading of the docs, there is no programmatic way to check your API usage (or at least none that is documented as of Monday, October 2, 2023).
-* The `rake start` command starts a rails server on http://localhost:3001/ and a webpack development
-server with hot reloading serving the client application on http://localhost:3000/.
+  - The `lib/tasks` directory contains `rake` task definitions.
+- Database related files (schema, seeds, and migrations) live in the `db` directory.
+- The client side source code lives in the `client` directory. The client side uses the React framework.
+- `app/controllers/application_controller.rb` makes requests to retrieve news stories from https://newsapi.org/, responses are cached for six hours to avoid exceeding newsapi rate limits.
+- The current period newsapi.org API usage can be checked at https://newsapi.org/account if you are logged into your newsapi.org account.
+  - Based on my reading of the docs, there is no programmatic way to check your API usage (or at least none that is documented as of Monday, October 2, 2023).
+- The `rake start` command starts a rails server on http://localhost:3001/ and a webpack development
+  server with hot reloading serving the client application on http://localhost:3000/.
 
 Note: To save costs, I do not currently include the postgres instance in the GCloud deployment.
 This means that you cannot login and save/take notes on news stories on the deployed version
@@ -471,14 +471,15 @@ Post-commit there is a Github workflow (defined in [.github/workflows/client_tes
 The build kicked off by the workflow was completing successfully, but if I tried with the same node version (16.20.1) locally it would fail with the above error.
 
 Here are a few of the commits showing things I tried to resolve the error:
-* https://github.com/ChristopherJamesN/sports-news-feed/commit/c9b384cdc56125d67f72281f07ed46661b8d1e80
-* https://github.com/ChristopherJamesN/sports-news-feed/commit/327e5604d85fdb6df555ad0258fd1ed641a78c16
-* https://github.com/ChristopherJamesN/sports-news-feed/commit/b85ff07390adc35bcb8a2f0c08e3d1e040771376
-* https://github.com/ChristopherJamesN/sports-news-feed/commit/f768b373225765d5b10f1b925e42890a83d9b18e
-* https://github.com/ChristopherJamesN/sports-news-feed/commit/9bae58533337e7e39c98a9109501d4c2758f8143
-* https://github.com/ChristopherJamesN/sports-news-feed/commit/a89b4f956541584717be5c441251d8feb1f36bf1
-* https://github.com/ChristopherJamesN/sports-news-feed/commit/8f0f0eb24b71a8b37588da73c41c93566466549c
-* https://github.com/ChristopherJamesN/sports-news-feed/commit/1fefe52086724a237347446416d67f18da0877ec
+
+- https://github.com/ChristopherJamesN/sports-news-feed/commit/c9b384cdc56125d67f72281f07ed46661b8d1e80
+- https://github.com/ChristopherJamesN/sports-news-feed/commit/327e5604d85fdb6df555ad0258fd1ed641a78c16
+- https://github.com/ChristopherJamesN/sports-news-feed/commit/b85ff07390adc35bcb8a2f0c08e3d1e040771376
+- https://github.com/ChristopherJamesN/sports-news-feed/commit/f768b373225765d5b10f1b925e42890a83d9b18e
+- https://github.com/ChristopherJamesN/sports-news-feed/commit/9bae58533337e7e39c98a9109501d4c2758f8143
+- https://github.com/ChristopherJamesN/sports-news-feed/commit/a89b4f956541584717be5c441251d8feb1f36bf1
+- https://github.com/ChristopherJamesN/sports-news-feed/commit/8f0f0eb24b71a8b37588da73c41c93566466549c
+- https://github.com/ChristopherJamesN/sports-news-feed/commit/1fefe52086724a237347446416d67f18da0877ec
 
 and the original commit where I bumped the `react-scripts` version from 4.0.0 to 5.0.1 can be found
 here: https://github.com/ChristopherJamesN/sports-news-feed/commit/7fcb992630bc63b41798211952c96542ecedc777.
@@ -488,8 +489,9 @@ here: https://github.com/ChristopherJamesN/sports-news-feed/commit/7fcb992630bc6
 In [this reported issue](https://answers.netlify.com/t/react-app-doesnt-deploy-via-git-repo-but-does-with-netlify-cli/73700/12) on Netlify forums the solution was to bump the node version, similar to [this issue](https://answers.netlify.com/t/react-scripts-syntax-error-on-build/75092/6).
 
 A couple of similar reported issues on Stack Overflow:
-* https://stackoverflow.com/questions/73464400/error-when-try-to-run-npm-build-on-react-project (no accepted answer).
-* https://stackoverflow.com/questions/74848909/react-js-npm-run-start-return-error-syntaxerror-unexpected-token (accepted answer is to update node version).
+
+- https://stackoverflow.com/questions/73464400/error-when-try-to-run-npm-build-on-react-project (no accepted answer).
+- https://stackoverflow.com/questions/74848909/react-js-npm-run-start-return-error-syntaxerror-unexpected-token (accepted answer is to update node version).
 
 This got me thinking, so I changed `"build": "react-scripts build",` to `"build": "node -v && react-scripts build",` in `client/package.json` . Now when I run `npm run build` I see the node version is 11.15.0:
 
@@ -658,7 +660,7 @@ If you use `zsh` as your default shell you then need to run:
 and now switching ruby versions with `rvm` should work:
 
 ```shell
-rvm use 3.1.2            
+rvm use 3.1.2
 Using /Users/christophernady/.rvm/gems/ruby-3.1.2
 ```
 
