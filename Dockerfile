@@ -20,6 +20,8 @@ WORKDIR /app
 # Application dependencies
 COPY Gemfile Gemfile.lock ./
 
+RUN gem update --system
+
 RUN gem install bundler && \
   bundle config set --local deployment 'true' && \
   bundle config set --local without 'development test' && \
