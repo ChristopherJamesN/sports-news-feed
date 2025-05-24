@@ -15,6 +15,14 @@ RUN (curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -) && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
   apt-get update && apt-get install -y yarn
 
+  RUN apt-get update -qq && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    libxml2-dev \
+    libxslt-dev \
+    zlib1g-dev && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 # Application dependencies
@@ -23,6 +31,7 @@ COPY Gemfile Gemfile.lock ./
 RUN gem update --system
 
 RUN gem install bundler && \
+  gem install mini_portile2 --no-document && \
   bundle config set --local deployment 'true' && \
   bundle config set --local without 'development test' && \
   bundle install  --jobs 1
