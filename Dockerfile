@@ -25,7 +25,7 @@ RUN gem update --system
 RUN gem install bundler && \
   bundle config set --local deployment 'true' && \
   bundle config set --local without 'development test' && \
-  bundle install
+  bundle install  --jobs 1
 
 
 # Copy application code to the container image
