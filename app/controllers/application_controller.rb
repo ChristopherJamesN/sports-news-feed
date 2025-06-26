@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   'sorozatjunkie.hu,bloguismo.com,dealcatcher.com,breitbart.com,americanthinker.com,kicksonfire.com,'\
   'indiatimes.com,fark.com,twistedsifter.com,cheezburger.com,ericcressey.com,moonbattery.com,'\
   'yahoo.com,mindbodygreen.com,dailysignal.com,naturalnews.com,canonrumors.com,sneakernews.com,'\
-  '101greatgoals.com,ozbargain.com,nofilmschool.com,newsweek.com'.freeze
+  '101greatgoals.com,ozbargain.com,nofilmschool.com,newsweek.com,hypebeast.com'.freeze
 
   def fallback_index_html
     render file: '../client/public/index.html'
