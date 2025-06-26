@@ -394,6 +394,18 @@ To return all objects that have a url that contains `cnet.com` , you can use the
 curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports"  | jq '.articles | map(select(.url | contains("cnet.com")))'
 ```
 
+Or, with a shell variable set to the url you want to retrieve with:
+
+```shell
+URL_TO_FIND="espn.com"
+```
+
+then run:
+
+```shell
+curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchTerm=sports"  | jq -r --arg URL_TO_FIND "$URL_TO_FIND" '.articles | map(select(.url | contains($URL_TO_FIND)))'
+```
+
 To retrieve the titles for all articles that have a url that contains `www.cbssports.com`, you can use:
 
 ```shell
