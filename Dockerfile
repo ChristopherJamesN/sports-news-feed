@@ -2,14 +2,14 @@
 # https://hub.docker.com/_/ruby
 
 # [START cloudrun_rails_base_image]
-# Pinning the OS to buster because the nodejs install script is buster-specific.
-# Be sure to update the nodejs install command if the base image OS is updated.
-FROM ruby:3.1.2-buster
+FROM ruby:3.1.2-bullseye
 # [END cloudrun_rails_base_image]
 
-RUN (curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor | apt-key add -) && \
-  echo "deb https://deb.nodesource.com/node_14.x buster main"      > /etc/apt/sources.list.d/nodesource.list && \
-  apt-get update && apt-get install -y nodejs lsb-release
+RUN apt-get update && apt-get install -y curl gpg
+RUN mkdir -p /etc/apt/keyrings && \
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_22.x nodistro main" > /etc/apt/sources.list.d/nodesource.list && \
+    apt-get update && apt-get install -y nodejs
 
 RUN (curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -) && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
