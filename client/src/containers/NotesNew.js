@@ -54,7 +54,7 @@ class NotesNew extends Component {
                     placeholder="Name"
                     name="name"
                     className="form-control"
-                    disabled="true"
+                    disabled={true}
                     onChange={this.handleOnChange}
                   />
                 </div>
@@ -65,7 +65,7 @@ class NotesNew extends Component {
                     placeholder="Description"
                     name="description"
                     className="form-control"
-                    disabled="true"
+                    disabled={true}
                     onChange={this.handleOnChange}
                   />
                 </div>
@@ -76,7 +76,7 @@ class NotesNew extends Component {
                     placeholder="Link to associated article"
                     name="link"
                     className="form-control"
-                    disabled="true"
+                    disabled={true}
                     onChange={this.handleOnChange}
                   />
                 </div>
