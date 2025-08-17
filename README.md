@@ -678,7 +678,18 @@ Using /Users/christophernady/.rvm/gems/ruby-3.1.2
 
 ### Ruby installation issues
 
-https://bugs.ruby-lang.org/issues/20706 solved a tricky bug I was running into when installing ruby with `rbenv` and/or `rvm`. `brew uninstall binutils` and then re-installing the ruby version resolved the issue for me.
+https://bugs.ruby-lang.org/issues/20706 solved a tricky bug I was running into when installing ruby with `rbenv` and/or `rvm`. `brew uninstall binutils` and then re-installing the ruby version resolved the issue for me, which would show up in `ruby-build.20250817100142.77521.log` logs after running `rbenv install 3.2.9 -- --disable-shared` like this:
+
+```
+linking ruby
+ld: warning: ignoring duplicate libraries: '-ldl', '-lobjc', '-lpthread', 'yjit/target/release/libyjit.a'
+ld: archive member '/' not a mach-o file in './libruby.3.2-static.a'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[2]: *** [ruby] Error 1
+make[1]: *** [ruby] Error 2
+make: *** [build-ext] Error 2
+external command failed with status 2
+```
 
 ## Source Formatting
 
