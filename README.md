@@ -676,6 +676,10 @@ rvm use 3.1.2
 Using /Users/christophernady/.rvm/gems/ruby-3.1.2
 ```
 
+### Ruby installation issues
+
+https://bugs.ruby-lang.org/issues/20706 solved a tricky bug I was running into when installing ruby with `rbenv` and/or `rvm`. `brew uninstall binutils` and then re-installing the ruby version resolved the issue for me.
+
 ## Source Formatting
 
 To format the Ruby source code, the [RuboCop gem](https://github.com/rubocop/rubocop) is used.
