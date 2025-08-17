@@ -2,7 +2,7 @@
 # https://hub.docker.com/_/ruby
 
 # [START cloudrun_rails_base_image]
-FROM ruby:3.1.2-bullseye
+FROM ruby:3.2.9-bullseye
 # [END cloudrun_rails_base_image]
 
 RUN apt-get update && apt-get install -y curl gpg
