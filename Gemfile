@@ -12,7 +12,7 @@ gem 'dalli'
 gem 'listen'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.1'
+gem 'rails', '~> 7.2'
 
 gem 'rubocop'
 gem 'rubocop-rails', require: false
