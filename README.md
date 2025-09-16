@@ -397,7 +397,7 @@ curl "https://rails-news-feed-jt3432sekq-uc.a.run.app/retrieve_news.json?searchT
 Or, with a shell variable set to the url you want to retrieve with:
 
 ```shell
-URL_TO_FIND="espn.com"
+URL_TO_FIND="ozbargain.com.au"
 ```
 
 then run:
