@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
   'indiatimes.com,fark.com,twistedsifter.com,cheezburger.com,ericcressey.com,moonbattery.com,'\
   'yahoo.com,mindbodygreen.com,dailysignal.com,naturalnews.com,canonrumors.com,sneakernews.com,'\
   '101greatgoals.com,ozbargain.com,nofilmschool.com,newsweek.com,hypebeast.com,challies.com,dealnews.com,'\
-  'yankodesign.com,freerepublic.com,ozbargain.com.au,nep123.com,bmwblog.com,cbssports.com,nypost.com'.freeze
+  'yankodesign.com,freerepublic.com,ozbargain.com.au,nep123.com,bmwblog.com,cbssports.com,nypost.com,'\
+  'dcrainmaker.com'.freeze
 
   def fallback_index_html
     render file: '../client/public/index.html'
