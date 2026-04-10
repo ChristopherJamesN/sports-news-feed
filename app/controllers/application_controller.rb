@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   '101greatgoals.com,ozbargain.com,nofilmschool.com,newsweek.com,hypebeast.com,challies.com,dealnews.com,'\
   'yankodesign.com,freerepublic.com,ozbargain.com.au,nep123.com,bmwblog.com,cbssports.com,nypost.com,'\
   'dcrainmaker.com,fstoppers.com,sportingnews.com,mediagazer.com,covers.com,uncrate.com,bringatrailer.com,'\
-  'alltoc.com'.freeze
+  'alltoc.com,livedoor.jp'.freeze
 
   def fallback_index_html
     render file: '../client/public/index.html'
