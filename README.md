@@ -190,13 +190,13 @@ gcloud sql users create news-feed-postgres-user \
 A Cloud Storage bucket can be created with:
 
 ```shell
-gsutil mb -l us-central1 gs://news-feed-368501-news-feed-media-bucket
+gcloud storage buckets create -l us-central1 gs://news-feed-368501-news-feed-media-bucket
 ```
 
 To make objects in the bucket public, run:
 
 ```shell
-gsutil iam ch allUsers:objectViewer gs://news-feed-368501-news-feed-media-bucket
+gcloud storage buckets add-iam-policy-binding --member=allUsers --role=objectViewer gs://news-feed-368501-news-feed-media-bucket
 ```
 
 Generate a `config/credentials.yml.enc` with:
