@@ -48,7 +48,7 @@ gem 'foreman', '~> 0.87.2'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
-gem 'nokogiri', '~> 1.18.9', platform: :ruby
+gem 'nokogiri', '~> 1.19.1', platform: :ruby
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
